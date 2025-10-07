@@ -1,156 +1,108 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kuota Kita – Unlimited Promo</title>
-<style>
-  :root {
-    --accent: #00e6a8;
-    --bg: #0e1117;
-    --card: #161b22;
-    --text: #c9d1d9;
-    --muted: #8b949e;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    font-family: "Poppins", sans-serif;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 16px;
-  }
-  .card {
-    max-width: 420px;
-    background: var(--card);
-    padding: 24px;
-    border-radius: 16px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.6);
-    text-align: center;
-    border: 1px solid rgba(255,255,255,0.05);
-    animation: fadeIn 1s ease-in-out;
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-  }
-  h1 {
-    color: var(--accent);
-    font-size: 22px;
-    margin: 8px 0 4px;
-  }
-  p.tagline {
-    color: var(--muted);
-    font-size: 13px;
-    margin-bottom: 18px;
-  }
-  .marquee {
-    overflow: hidden;
-    white-space: nowrap;
-    color: #ffd97a;
-    font-weight: 600;
-    animation: scroll 9s linear infinite;
-  }
-  @keyframes scroll {
-    from { transform: translateX(100%); }
-    to { transform: translateX(-100%); }
-  }
-  .package {
-    background: rgba(255,255,255,0.03);
-    border-radius: 12px;
-    padding: 12px;
-    margin-bottom: 10px;
-    transition: 0.2s;
-  }
-  .package:hover {
-    transform: translateY(-2px);
-    background: rgba(255,255,255,0.08);
-  }
-  .title {
-    color: var(--accent);
-    font-weight: 600;
-    font-size: 15px;
-  }
-  .price {
-    color: #ffd97a;
-    font-weight: bold;
-    font-size: 17px;
-  }
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 8px 0 0;
-    font-size: 13px;
-    color: var(--muted);
-  }
-  a.btn {
-    display: block;
-    background: var(--accent);
-    color: #0e1117;
-    font-weight: bold;
-    text-decoration: none;
-    padding: 10px 0;
-    border-radius: 8px;
-    margin-top: 14px;
-    transition: 0.2s;
-    animation: pulse 1.8s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(0,230,168,0.6); }
-    50% { box-shadow: 0 0 20px 5px rgba(0,230,168,0.3); }
-  }
-  a.btn:hover {
-    opacity: 0.9;
-    transform: scale(1.03);
-  }
-  .social-buttons {
-    margin-top: 20px;
-  }
-  .social-buttons a {
-    display: inline-block;
-    margin: 5px;
-    text-decoration: none;
-    color: var(--text);
-    background: rgba(255,255,255,0.05);
-    padding: 8px 14px;
-    border-radius: 10px;
-    font-size: 13px;
-    transition: 0.2s;
-  }
-  .social-buttons a:hover {
-    background: var(--accent);
-    color: #0e1117;
-  }
-  footer {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 14px;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuota Kita Premium</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f9fafb;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, #007bff, #00b4d8);
+      color: white;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .package {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .package:hover {
+      transform: translateY(-5px);
+    }
+    .title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: .5rem;
+      color: #007bff;
+    }
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: .5rem;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1rem;
+    }
+    li {
+      margin: .3rem 0;
+    }
+    .btn {
+      display: inline-block;
+      background: #00b4d8;
+      color: white;
+      padding: .6rem 1.2rem;
+      border-radius: .8rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .btn:hover {
+      background: #0090b8;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #f1f3f5;
+    }
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .socials a {
+      text-decoration: none;
+      color: white;
+      background: #007bff;
+      padding: .6rem 1.2rem;
+      border-radius: .8rem;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+    .socials a:hover {
+      background: #00b4d8;
+    }
+  </style>
 </head>
 <body>
-  <div class="card">
-    <div class="marquee">🔥Kuota – Config🔥</div>
-    <h1>ORDER SEKARANG</h1>
-    <p class="tagline">Internet tanpa batas – cepat, stabil, & terpercaya 💥</p>
+  <header>
+    <h1>🌐VPN</h1>
+    <p>Order cepat, harga hemat, dan kuota tahan lama!</p>
+  </header>
 
+  <div class="container">
     <div class="package">
-      <div class="title">💠 XL Bizz Lite</div>
-      <div class="price">Rp 50.000</div>
-      <ul>
-        <li>Unlimited • Aktif 1 Bulan</li>
-        <li>Support semua daerah</li>
-        <li>Sudah + Config</li>
-      </ul>
-      <a href="https://wa.me/628565050103?text=Halo%20saya%20mau%20order%20XL%20Bizz%20Lite%20Rp50.000" target="_blank" class="btn">💬 Order Sekarang</a>
-    </div>
-
-    <div class="package">
-      <div class="title">💠 XL Bizz Tayo</div>
+      <div class="title">💠 Bezz Tayi</div>
       <div class="price">Rp 65.000</div>
       <ul>
         <li>Unlimited • Aktif 1 Bulan</li>
@@ -161,23 +113,69 @@
     </div>
 
     <div class="package">
-      <div class="title">💠 XL Double YouTube</div>
-      <div class="price">Rp 75.000</div>
+      <div class="title">💠 Bezz Lide</div>
+      <div class="price">Rp 55.000</div>
       <ul>
         <li>Unlimited • Aktif 1 Bulan</li>
         <li>Support semua daerah</li>
         <li>Sudah + Config</li>
       </ul>
-      <a href="https://wa.me/628565050103?text=Halo%20saya%20mau%20order%20XL%20Double%20YouTube%20Rp75.000" target="_blank" class="btn">💬 Order Sekarang</a>
+      <a href="https://wa.me/628565050103?text=Halo%20saya%20mau%20order%20XL%20Bizz%20Lite%20Rp55.000" target="_blank" class="btn">💬 Order Sekarang</a>
     </div>
 
-    <div class="social-buttons">
+    <div class="package">
+      <div class="title">💠 YouTube Unlimited</div>
+      <div class="price">Rp 45.000</div>
+      <ul>
+        <li>Unlimited Streaming</li>
+        <li>Aktif 30 Hari</li>
+        <li>Sudah + Config</li>
+      </ul>
+      <a href="https://wa.me/628565050103?text=Halo%20saya%20mau%20order%20XL%20YouTube%20Unlimited%20Rp45.000" target="_blank" class="btn">💬 Order Sekarang</a>
+    </div>
+
+    <div class="package">
+      <div class="title">💠 Isat Apps Fun</div>
+      <div class="price">Rp 30.000</div>
+      <ul>
+        <li>12GB • Aktif 1 Bulan</li>
+        <li>Support semua daerah</li>
+        <li>Kuota siap pakai (+ Config)</li>
+      </ul>
+      <a href="https://wa.me/628565050103?text=Halo%20saya%20mau%20order%20Indosat%20Apps%20Fun%20Rp30.000" target="_blank" class="btn">💬 Order Sekarang</a>
+    </div>
+
+    <div class="package">
+      <div class="title">💠 aXeL Edukasi</div>
+      <div class="price">Rp 12.000</div>
+      <ul>
+        <li>15GB • Aktif 7 Hari</li>
+        <li>Support semua daerah</li>
+        <li>Kuota siap pakai (+ Config)</li>
+      </ul>
+      <a href="https://wa.me/628565050103?text=Halo%20saya%20mau%20order%20XL%20Edukasi%20Rp12.000" target="_blank" class="btn">💬 Order Sekarang</a>
+    </div>
+
+    <div class="package">
+      <div class="title">💠 XL Conference</div>
+      <div class="price">Rp 14.000</div>
+      <ul>
+        <li>15GB • Aktif 7 Hari</li>
+        <li>Support semua daerah</li>
+        <li>Kuota siap pakai (+ Config)</li>
+      </ul>
+      <a href="https://wa.me/628565050103?text=Halo%20saya%20mau%20order%20XL%20Conference%20Rp14.000" target="_blank" class="btn">💬 Order Sekarang</a>
+    </div>
+  </div>
+
+  <footer>
+    <h3>Ikuti Kami di Sosial Media</h3>
+    <div class="socials">
       <a href="https://t.me/penyediainternet" target="_blank">📢 Telegram</a>
-      <a href="https://chat.whatsapp.com/JEFilJwIAkK6OJLJ2s6MOX?mode=ems_copy_t" target="_blank">💬 WhatsApp Grup</a>
+      <a href="https://chat.whatsapp.com/JEFilJwIAkK6OJLJ2s6MOX?mode=ems_copy_t" target="_blank">💬 WhatsApp Channel</a>
       <a href="https://www.instagram.com/newprojectpremium?igsh=bjZrY2kxa21reXpn" target="_blank">📸 Instagram</a>
     </div>
-
-    <footer>© 2025 Asisten Mas Pras – Semua paket ready tiap hari 🚀</footer>
-  </div>
+    <p style="margin-top:1rem;">© 2025 asisten mas pras– All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
