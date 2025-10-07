@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kuota Kita – Unlimited Promo</title>
+<style>
+  :root {
+    --accent: #00e6a8;
+    --bg: #0e1117;
+    --card: #161b22;
+    --text: #c9d1d9;
+    --muted: #8b949e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    font-family: "Poppins", sans-serif;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 16px;
+  }
+  .card {
+    max-width: 420px;
+    background: var(--card);
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.05);
+    animation: fadeIn 1s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  h1 {
+    color: var(--accent);
+    font-size: 22px;
+    margin: 8px 0 4px;
+  }
+  p.tagline {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+  .marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    color: #ffd97a;
+    font-weight: 600;
+    animation: scroll 9s linear infinite;
+  }
+  @keyframes scroll {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+  }
+  .package {
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 10px;
+    transition: 0.2s;
+  }
+  .package:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.08);
+  }
+  .title {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .price {
+    color: #ffd97a;
+    font-weight: bold;
+    font-size: 17px;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  a.btn {
+    display: block;
+    background: var(--accent);
+    color: #0e1117;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 0;
+    border-radius: 8px;
+    margin-top: 14px;
+    transition: 0.2s;
+    animation: pulse 1.8s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0,230,168,0.6); }
+    50% { box-shadow: 0 0 20px 5px rgba(0,230,168,0.3); }
+  }
+  a.btn:hover {
+    opacity: 0.9;
+    transform: scale(1.03);
+  }
+  footer {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 14px;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="marquee">🔥Kuota – Config🔥</div>
+    <h1>ORDER SEKARANG</h1>
+    <p class="tagline">Internet tanpa batas – cepat, stabil, & terpercaya 💥</p>
+
+    <div class="package">
+      <div class="title">💠 XL Bizz Lite</div>
+      <div class="price">Rp 50.000</div>
+      <ul>
+        <li>Unlimited • Aktif 1 Bulan</li>
+        <li>Support semua daerah</li>
+        <li>Sudah + Config</li>
+      </ul>
+      <a href="https://wa.me/message/JTNDDV7LXQYDD1?text=Halo%20saya%20mau%20order%20XL%20Bizz%20Lite%20Rp50.000" target="_blank" class="btn">💬 Order Sekarang</a>
+    </div>
+
+    <div class="package">
+      <div class="title">💠 XL Bizz Tayo</div>
+      <div class="price">Rp 65.000</div>
+      <ul>
+        <li>Unlimited • Aktif 1 Bulan</li>
+        <li>Support semua daerah</li>
+        <li>Sudah + Config</li>
+      </ul>
+      <a href="https://wa.me/message/JTNDDV7LXQYDD1?text=Halo%20saya%20mau%20order%20XL%20Bizz%20Tayo%20Rp65.000" target="_blank" class="btn">💬 Order Sekarang</a>
+    </div>
+
+    <div class="package">
+      <div class="title">💠 XL Double YouTube</div>
+      <div class="price">Rp 75.000</div>
+      <ul>
+        <li>Unlimited • Aktif 1 Bulan</li>
+        <li>Support semua daerah</li>
+        <li>Sudah + Config</li>
+      </ul>
+      <a href="https://wa.me/message/JTNDDV7LXQYDD1?text=Halo%20saya%20mau%20order%20XL%20Double%20YouTube%20Rp75.000" target="_blank" class="btn">💬 Order Sekarang</a>
+    </div>
+
+    <footer>© 2025 Asisten Mas Pras – Semua paket ready tiap hari 🚀</footer>
+  </div>
+</body>
+</html>
