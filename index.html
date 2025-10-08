@@ -30,6 +30,10 @@
     .order-float{position:fixed;bottom:20px;right:20px;z-index:999}
     .order-float button{background:linear-gradient(90deg,var(--accent),#7c3aed);color:#04202a;padding:14px 20px;border:none;border-radius:999px;font-weight:700;cursor:pointer;box-shadow:0 0 12px rgba(6,182,212,0.4)}
     .order-float button:hover{opacity:0.9}
+    .asisten-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:12px}
+    .asisten-card{background:var(--card);border:1px solid rgba(255,255,255,0.05);border-radius:10px;padding:12px;text-align:center}
+    .asisten-card h4{margin:6px 0;color:var(--accent)}
+    .asisten-card a{color:#38bdf8;text-decoration:none;font-size:14px;word-break:break-all}
   </style>
 </head>
 <body>
@@ -46,11 +50,84 @@
     </header>
 
     <main style="margin-top:18px">
+      <!-- Daftar paket -->
       <section class="grid">
-        <!-- daftar paket tetap di sini -->
+        <article class="card">
+          <div class="price">Rp.12.000 <span style="font-size:13px;color:var(--muted);font-weight:600">(XL Edukasi)</span></div>
+          <div class="tag">15GB — Masa aktif 7 hari</div>
+          <ul class="features">
+            <li>Support semua daerah</li>
+            <li>Kuota siap pakai (sudah + config)</li>
+          </ul>
+          <div class="cta">
+            <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103?text=Order%20Rp12.000%20XL%20Edukasi'">Order via WA</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="price">Rp.14.000 <span style="font-size:13px;color:var(--muted);font-weight:600">(XL Conference)</span></div>
+          <div class="tag">15GB — Masa aktif 7 hari</div>
+          <ul class="features">
+            <li>Support semua daerah</li>
+            <li>Kuota siap pakai (sudah + config)</li>
+          </ul>
+          <div class="cta">
+            <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103?text=Order%20Rp14.000%20XL%20Conference'">Order via WA</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="price">Rp.30.000 <span style="font-size:13px;color:var(--muted);font-weight:600">(Indosat Apps Fun)</span></div>
+          <div class="tag">12GB — Masa aktif 1 bulan</div>
+          <ul class="features">
+            <li>Support semua daerah</li>
+            <li>Kuota siap pakai (sudah + config)</li>
+          </ul>
+          <div class="cta">
+            <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103?text=Order%20Rp30.000%20Indosat%20Apps%20Fun'">Order via WA</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="price">Rp.50.000 <span style="font-size:13px;color:var(--muted);font-weight:600">(XL Bizz Lite)</span></div>
+          <div class="tag">Unlimited — Masa aktif 1 bulan</div>
+          <ul class="features">
+            <li>Support semua daerah</li>
+            <li>Saran: jangan pakai nomor utama</li>
+            <li>Kuota siap pakai (sudah + config)</li>
+          </ul>
+          <div class="cta">
+            <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103?text=Order%20Rp50.000%20XL%20Bizz%20Lite'">Order via WA</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="price">Rp.65.000 <span style="font-size:13px;color:var(--muted);font-weight:600">(XL Bizz Tayo)</span></div>
+          <div class="tag">Unlimited — Masa aktif 1 bulan</div>
+          <ul class="features">
+            <li>Support semua daerah</li>
+            <li>Saran: jangan pakai nomor utama</li>
+            <li>Kuota siap pakai (sudah + config)</li>
+          </ul>
+          <div class="cta">
+            <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103?text=Order%20Rp65.000%20XL%20Bizz%20Tayo'">Order via WA</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="price">Rp.75.000 <span style="font-size:13px;color:var(--muted);font-weight:600">(XL Double YouTube)</span></div>
+          <div class="tag">Unlimited — Masa aktif 1 bulan</div>
+          <ul class="features">
+            <li>Support semua daerah</li>
+            <li>Kuota siap pakai (sudah + config)</li>
+          </ul>
+          <div class="cta">
+            <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103?text=Order%20Rp75.000%20XL%20Double%20YouTube'">Order via WA</button>
+          </div>
+        </article>
       </section>
 
-      <section id="contact" style="margin-top:18px">
+      <section id="contact" style="margin-top:24px">
         <div class="card">
           <h3 style="margin:0 0 8px">Kontak & Cara Order</h3>
           <ul class="features" style="margin-top:8px">
@@ -59,11 +136,20 @@
           </ul>
 
           <h4 style="margin-top:16px;color:var(--accent)">Kontak Admin Asisten</h4>
-          <ul class="features">
-            <li>Asisten 1 — <a href="https://wa.me/6285956485876?text=Halo%20Admin%201,%20saya%20butuh%20bantuan%20order" style="color:#38bdf8;text-decoration:none">+62 859-5648-5876</a></li>
-            <li>Asisten 2 — <a href="https://wa.me/6285129240336?text=Halo%20Admin%202,%20saya%20butuh%20bantuan%20order" style="color:#38bdf8;text-decoration:none">+62 851-2924-0336</a></li>
-            <li>Asisten 3 — <a href="https://wa.me/6282302119600?text=Halo%20Admin%203,%20saya%20butuh%20bantuan%20order" style="color:#38bdf8;text-decoration:none">+62 823-0211-9600</a></li>
-          </ul>
+          <div class="asisten-grid">
+            <div class="asisten-card">
+              <h4>Asisten 1</h4>
+              <a href="https://wa.me/6285956485876?text=Halo%20Admin%201,%20saya%20butuh%20bantuan%20order">+62 859-5648-5876</a>
+            </div>
+            <div class="asisten-card">
+              <h4>Asisten 2</h4>
+              <a href="https://wa.me/6285129240336?text=Halo%20Admin%202,%20saya%20butuh%20bantuan%20order">+62 851-2924-0336</a>
+            </div>
+            <div class="asisten-card">
+              <h4>Asisten 3</h4>
+              <a href="https://wa.me/6282302119600?text=Halo%20Admin%203,%20saya%20butuh%20bantuan%20order">+62 823-0211-9600</a>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -74,7 +160,7 @@
   </div>
 
   <div class="order-float">
-    <button onclick="location.href='https://wa.me/628565050103?text=Halo%20saya%20ingin%20order%20paket%20kuota%20KUOTA%20KITA'">💬 Order Sekarang</button>
+    <button onclick="location.href='https://wa.me/628565050103?text=Halo,%20saya%20ingin%20order%20paket%20kuota'">💬 Order Sekarang</button>
   </div>
 </body>
-</html>
+          </html>
