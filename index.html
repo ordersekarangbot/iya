@@ -1,251 +1,177 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kuota Kita Premium</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KUOTA KITA — Paket & Harga</title>
+  <meta name="description" content="Daftar paket kuota siap pakai, harga, dan fitur. Cocok untuk jualan via WA/IG/Toko online." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary: #007bff;
-      --secondary: #00b4d8;
-      --bg: #f9fafb;
-      --card: #ffffff;
-      --text: #222;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg);
-      margin: 0;
-      padding: 0;
-      color: var(--text);
-    }
-
-    header {
-      text-align: center;
-      padding: 3rem 1rem 2rem 1rem;
-      color: white;
-      background: linear-gradient(270deg, var(--primary), var(--secondary), #0096c7);
-      background-size: 600% 600%;
-      animation: gradientMove 6s ease infinite;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    @keyframes gradientMove {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-
-    /* Animasi Welcome bergerak */
-    .welcome {
-      font-size: 1.2rem;
-      font-weight: 600;
-      text-shadow: 0 0 8px rgba(255,255,255,0.8);
-      color: #fff;
-      animation: moveText 10s linear infinite, glow 2s ease-in-out infinite alternate;
-      white-space: nowrap;
-      position: absolute;
-      top: 10px;
-      left: 100%;
-    }
-
-    @keyframes moveText {
-      0% { left: 100%; }
-      100% { left: -100%; }
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 5px #fff, 0 0 10px #00b4d8; }
-      to { text-shadow: 0 0 15px #fff, 0 0 25px #48cae4; }
-    }
-
-    header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.3rem;
-    }
-
-    header p {
-      font-size: 1rem;
-      opacity: 0.9;
-    }
-
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .package {
-      background: var(--card);
-      border-radius: 1rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      text-align: center;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .package:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
-
-    .title {
-      font-weight: 600;
-      font-size: 1.2rem;
-      margin-bottom: .5rem;
-      color: var(--primary);
-    }
-
-    .price {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: .5rem;
-      color: var(--secondary);
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-    }
-
-    li {
-      margin: .3rem 0;
-    }
-
-    .btn {
-      display: inline-block;
-      background: var(--secondary);
-      color: white;
-      padding: .6rem 1.2rem;
-      border-radius: .8rem;
-      text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 0 10px rgba(0,180,216,0.4);
-      transition: all 0.3s ease;
-      animation: pulse 2s infinite;
-    }
-
-    .btn:hover {
-      background: var(--primary);
-      transform: scale(1.05);
-    }
-
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 10px rgba(0,180,216,0.4); }
-      50% { box-shadow: 0 0 20px rgba(0,180,216,0.7); }
-    }
-
-    .masa-aktif {
-      background: #ffffff;
-      margin: 2rem auto;
-      max-width: 800px;
-      border-radius: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    .masa-aktif h3 {
-      color: #007bff;
-      margin-bottom: 1rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #f1f3f5;
-    }
-
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .socials a {
-      text-decoration: none;
-      color: white;
-      background: var(--primary);
-      padding: .6rem 1.2rem;
-      border-radius: .8rem;
-      transition: 0.3s;
-      font-weight: 500;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .socials a:hover {
-      background: var(--secondary);
-      transform: translateY(-3px);
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
-    }
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#06b6d4;--muted:#94a3b8;--glass:rgba(255,255,255,0.03)}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#e6eef6;background:linear-gradient(180deg,#071023 0%, #071726 100%)}
+    .container{max-width:980px;margin:32px auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;color:#04202a;font-weight:700}
+    h1{margin:0;font-size:20px}
+    p.lead{margin:6px 0 18px;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    @media (max-width:720px){.grid{grid-template-columns:1fr}}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:14px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    .price{font-size:18px;font-weight:700}
+    .tag{display:inline-block;background:var(--glass);padding:6px 8px;border-radius:999px;font-size:12px;color:var(--muted);margin-top:8px}
+    ul.features{list-style:none;padding:0;margin:12px 0 0}
+    ul.features li{padding:6px 0;border-top:1px dashed rgba(255,255,255,0.02);font-size:14px;color:#dff2fb}
+    .cta{display:flex;gap:8px;margin-top:14px}
+    .btn{padding:10px 12px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#7c3aed);color:#04202a}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    footer{color:var(--muted);font-size:13px;text-align:center;margin-top:22px}
+    .meta{display:flex;gap:12px;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:13px;margin-top:8px}
+    .badge{background:#071726;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,0.02)}
+    .note{margin-top:10px;color:#9fdde6;font-size:13px}
+    .floating-btn{position:fixed;bottom:24px;right:24px;background:linear-gradient(90deg,var(--accent),#7c3aed);color:#04202a;font-weight:700;padding:14px 18px;border-radius:999px;box-shadow:0 4px 12px rgba(0,0,0,0.3);cursor:pointer;animation:pulse 2s infinite}
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
   </style>
 </head>
 <body>
-  <header>
-    <div class="welcome">✨ Selamat Datang di Kuota Kita Premium 💥</div>
-    <h1>Mas Pras VPN</h1>
-    <p>Order cepat, harga hemat, dan kuota tahan lama!</p>
-  </header>
-
   <div class="container">
-    <div class="package">
-      <div class="title">💠 XL Bizz Tayo</div>
-      <div class="price">Rp 65.000</div>
-      <ul>
-        <li>Unlimited • Aktif 45 Hari</li>
+    <header>
+      <div class="brand">
+        <div class="logo">KK</div>
+        <div>
+          <h1>KUOTA KITA</h1>
+          <p class="lead">Paket kuota siap pakai — sudah + config. Order langsung via WhatsApp.</p>
+        </div>
+      </div>
+      <div class="meta">
+        <div class="badge">Ready & Config</div>
+        <div class="badge">Support Semua Daerah</div>
+      </div>
+    </header><main style="margin-top:18px">
+  <section class="grid">
+    <article class="card">
+      <div class="price">Rp.12.000 <span style="font-size:13px;color:var(--muted);font-weight:600">(XL Edukasi)</span></div>
+      <div class="tag">15GB — Masa aktif 7 hari</div>
+      <ul class="features">
         <li>Support semua daerah</li>
-        <li>Sudah + Config</li>
+        <li>Kuota siap pakai (sudah + config)</li>
       </ul>
-      <a href="https://wa.me/628565050103?text=Halo%20saya%20mau%20order%20XL%20Bizz%20Tayo%20Rp65.000" target="_blank" class="btn">💬 Order Sekarang</a>
-    </div>
+      <div class="cta">
+        <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103'">Order via WA</button>
+        <button class="btn btn-ghost" onclick="copyText('Rp.12.000 - XL Edukasi — 15GB — 7 hari')">Copy teks</button>
+      </div>
+    </article>
 
-    <div class="package">
-      <div class="title">💠 XL Bizz Lite</div>
-      <div class="price">Rp 50.000</div>
-      <ul>
-        <li>Unlimited • Aktif 45 Hari</li>
+    <article class="card">
+      <div class="price">Rp.14.000 <span style="font-size:13px;color:var(--muted);font-weight:600">(XL Conference)</span></div>
+      <div class="tag">15GB — Masa aktif 7 hari</div>
+      <ul class="features">
         <li>Support semua daerah</li>
-        <li>Sudah + Config</li>
+        <li>Kuota siap pakai (sudah + config)</li>
       </ul>
-      <a href="https://wa.me/628565050103?text=Halo%20saya%20mau%20order%20XL%20Bizz%20Lite%20Rp50.000" target="_blank" class="btn">💬 Order Sekarang</a>
-    </div>
+      <div class="cta">
+        <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103'">Order via WA</button>
+        <button class="btn btn-ghost" onclick="copyText('Rp.14.000 - XL Conference — 15GB — 7 hari')">Copy teks</button>
+      </div>
+    </article>
 
-    <div class="package">
-      <div class="title">💠 YouTube Unlimited</div>
-      <div class="price">Rp 75.000</div>
-      <ul>
-        <li>Unlimited Streaming</li>
-        <li>Aktif 45 Hari</li>
-        <li>Sudah + Config</li>
+    <article class="card">
+      <div class="price">Rp.30.000 <span style="font-size:13px;color:var(--muted);font-weight:600">(Indosat Apps Fun)</span></div>
+      <div class="tag">12GB — Masa aktif 1 bulan</div>
+      <ul class="features">
+        <li>Support semua daerah</li>
+        <li>Kuota siap pakai (sudah + config)</li>
       </ul>
-      <a href="https://wa.me/628565050103?text=Halo%20saya%20mau%20order%20YouTube%20Unlimited%20Rp75.000" target="_blank" class="btn">💬 Order Sekarang</a>
-    </div>
-  </div>
+      <div class="cta">
+        <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103'">Order via WA</button>
+        <button class="btn btn-ghost" onclick="copyText('Rp.30.000 - Indosat Apps Fun — 12GB — 1 bulan')">Copy teks</button>
+      </div>
+    </article>
 
-  <footer>
-    <h3>Ikuti Kami di Sosial Media</h3>
-    <div class="socials">
-      <a href="https://t.me/penyediainternet" target="_blank">📢 Telegram</a>
-      <a href="https://chat.whatsapp.com/JEFilJwIAkK6OJLJ2s6MOX?mode=ems_copy_t" target="_blank">💬 WhatsApp Channel</a>
-      <a href="https://www.instagram.com/newprojectpremium?igsh=bjZrY2kxa21reXpn" target="_blank">📸 Instagram</a>
+    <article class="card">
+      <div class="price">Rp.50.000 <span style="font-size:13px;color:var(--muted);font-weight:600">(XL Bizz Lite)</span></div>
+      <div class="tag">Unlimited — Masa aktif 1 bulan</div>
+      <ul class="features">
+        <li>Support semua daerah</li>
+        <li>Saran: jangan pakai nomor utama</li>
+        <li>Kuota siap pakai (sudah + config)</li>
+      </ul>
+      <div class="cta">
+        <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103'">Order via WA</button>
+        <button class="btn btn-ghost" onclick="copyText('Rp.50.000 - XL Bizz Lite — Unlimited — 1 bulan')">Copy teks</button>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="price">Rp.65.000 <span style="font-size:13px;color:var(--muted);font-weight:600">(XL Bizz Tayo)</span></div>
+      <div class="tag">Unlimited — Masa aktif 1 bulan</div>
+      <ul class="features">
+        <li>Support semua daerah</li>
+        <li>Saran: jangan pakai nomor utama</li>
+        <li>Kuota siap pakai (sudah + config)</li>
+      </ul>
+      <div class="cta">
+        <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103'">Order via WA</button>
+        <button class="btn btn-ghost" onclick="copyText('Rp.65.000 - XL Bizz Tayo — Unlimited — 1 bulan')">Copy teks</button>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="price">Rp.75.000 <span style="font-size:13px;color:var(--muted);font-weight:600">(XL Double YouTube)</span></div>
+      <div class="tag">Unlimited — Masa aktif 1 bulan</div>
+      <ul class="features">
+        <li>Support semua daerah</li>
+        <li>Kuota siap pakai (sudah + config)</li>
+      </ul>
+      <div class="cta">
+        <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103'">Order via WA</button>
+        <button class="btn btn-ghost" onclick="copyText('Rp.75.000 - XL Double YouTube — Unlimited — 1 bulan')">Copy teks</button>
+      </div>
+    </article>
+
+  </section>
+
+  <section style="margin-top:18px">
+    <div class="card">
+      <h3 style="margin:0 0 8px">Pilihan masa aktif tambahan</h3>
+      <p class="note">Masa aktif 30 hari: Rp.3.500 — Masa aktif 45 hari: Rp.7.000</p>
+      <p style="margin-top:8px;color:var(--muted);font-size:14px">Butuh teks promosi singkat? Klik tombol untuk menyalin teks ready-to-send.</p>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="copyText('Order kuota mudah! Cek paket & harga di sini. WA: +628565050103')">Salin teks promosi</button>
+        <button class="btn btn-ghost" onclick="location.href='#contact'">Kontak</button>
+      </div>
     </div>
-    <p style="margin-top:1rem;">© 2025 Kuota Kita Premium – All Rights Reserved.</p>
-  </footer>
-</body>
-        </html>
+  </section>
+
+  <section id="contact" style="margin-top:18px">
+    <div class="card">
+      <h3 style="margin:0 0 8px">Kontak & Cara Order</h3>
+      <ul class="features" style="margin-top:8px">
+        <li>Hubungi: <strong>+628565050103</strong></li>
+        <li>Order via WA / Telegram / DM Instagram</li>
+        <li>Catatan: Harga dapat berubah—update halaman bila perlu</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div>© KUOTA KITA — Siap pakai & Config. Buat halaman ini di GitHub Pages dengan file <code>index.html</code>.</div>
+</footer>
+
+  </div><a class="floating-btn" href="https://wa.me/628565050103" target="_blank">💬 Order Sekarang</a>
+
+  <script>
+    function copyText(text){
+      navigator.clipboard?.writeText(text).then(()=>{
+        alert('Teks disalin ke clipboard:\n'+text);
+      }).catch(()=>{
+        prompt('Salin teks ini:', text);
+      });
+    }
+  </script></body>
+          </html>
