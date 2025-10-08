@@ -13,8 +13,6 @@
     html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#e6eef6;background:linear-gradient(180deg,#071023 0%, #071726 100%)}
     .container{max-width:980px;margin:32px auto;padding:20px}
     header{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;color:#04202a;font-weight:700}
     h1{margin:0;font-size:20px}
     p.lead{margin:6px 0 18px;color:var(--muted)}
     .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
@@ -31,20 +29,17 @@
     footer{color:var(--muted);font-size:13px;text-align:center;margin-top:22px}
     .meta{display:flex;gap:12px;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:13px;margin-top:8px}
     .badge{background:#071726;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,0.02)}
-    .note{margin-top:10px;color:#9fdde6;font-size:13px}
-    .floating-btn{position:fixed;bottom:24px;right:24px;background:linear-gradient(90deg,var(--accent),#7c3aed);color:#04202a;font-weight:700;padding:14px 18px;border-radius:999px;box-shadow:0 4px 12px rgba(0,0,0,0.3);cursor:pointer;animation:pulse 2s infinite}
-    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
+    .order-float{position:fixed;bottom:20px;right:20px;z-index:999}
+    .order-float button{background:linear-gradient(90deg,var(--accent),#7c3aed);color:#04202a;padding:14px 20px;border:none;border-radius:999px;font-weight:700;cursor:pointer;box-shadow:0 0 12px rgba(6,182,212,0.4)}
+    .order-float button:hover{opacity:0.9}
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <div class="brand">
-        <div class="logo">ordersekarang</div>
-        <div>
-          <h1>KUOTA KITA</h1>
-          <p class="lead">Paket kuota siap pakai — sudah + config. Order langsung via WhatsApp.</p>
-        </div>
+      <div>
+        <h1>KUOTA KITA</h1>
+        <p class="lead">Paket kuota siap pakai — sudah + config. Order langsung via WhatsApp.</p>
       </div>
       <div class="meta">
         <div class="badge">Ready & Config</div>
@@ -131,19 +126,6 @@
         <button class="btn btn-ghost" onclick="copyText('Rp.75.000 - XL Double YouTube — Unlimited — 1 bulan')">Copy teks</button>
       </div>
     </article>
-
-  </section>
-
-  <section style="margin-top:18px">
-    <div class="card">
-      <h3 style="margin:0 0 8px">Pilihan masa aktif tambahan</h3>
-      <p class="note">Masa aktif 30 hari: Rp.3.500 — Masa aktif 45 hari: Rp.7.000</p>
-      <p style="margin-top:8px;color:var(--muted);font-size:14px">Butuh teks promosi singkat? Klik tombol untuk menyalin teks ready-to-send.</p>
-      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-        <button class="btn btn-primary" onclick="copyText('Order kuota mudah! Cek paket & harga di sini. WA: +628565050103')">Salin teks promosi</button>
-        <button class="btn btn-ghost" onclick="location.href='#contact'">Kontak</button>
-      </div>
-    </div>
   </section>
 
   <section id="contact" style="margin-top:18px">
@@ -152,19 +134,19 @@
       <ul class="features" style="margin-top:8px">
         <li>Hubungi: <strong>+628565050103</strong></li>
         <li>Order via WA / Telegram / DM Instagram</li>
+        <li>Catatan: Harga dapat berubah—update halaman bila perlu</li>
       </ul>
     </div>
   </section>
-
 </main>
 
 <footer>
-  <div>© asisten mas prass — Siap pakai & Config.</code>.</div>
+  <div>©  ASISTEN MAS PRAS  — Siap pakai & Config.</code>.</div>
 </footer>
 
-  </div><a class="floating-btn" href="https://wa.me/628565050103" target="_blank">💬 Order Sekarang</a>
-
-  <script>
+  </div>  <div class="order-float">
+    <button onclick="location.href='https://wa.me/628565050103'">💬 Order Sekarang</button>
+  </div>  <script>
     function copyText(text){
       navigator.clipboard?.writeText(text).then(()=>{
         alert('Teks disalin ke clipboard:\n'+text);
@@ -173,4 +155,4 @@
       });
     }
   </script></body>
-          </html>
+  </html>
