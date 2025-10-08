@@ -5,19 +5,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kuota Kita Premium</title>
   <style>
+    :root {
+      --primary: #007bff;
+      --secondary: #00b4d8;
+      --bg: #f9fafb;
+      --card: #ffffff;
+      --text: #222;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background: #f9fafb;
+      background: var(--bg);
       margin: 0;
       padding: 0;
-      color: #222;
+      color: var(--text);
     }
+
     header {
       text-align: center;
-      padding: 2rem;
-      background: linear-gradient(135deg, #007bff, #00b4d8);
+      padding: 3rem 1rem 2rem 1rem;
       color: white;
+      background: linear-gradient(270deg, var(--primary), var(--secondary), #0096c7);
+      background-size: 600% 600%;
+      animation: gradientMove 6s ease infinite;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
+
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* Animasi Welcome bergerak */
+    .welcome {
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-shadow: 0 0 8px rgba(255,255,255,0.8);
+      color: #fff;
+      animation: moveText 10s linear infinite, glow 2s ease-in-out infinite alternate;
+      white-space: nowrap;
+      position: absolute;
+      top: 10px;
+      left: 100%;
+    }
+
+    @keyframes moveText {
+      0% { left: 100%; }
+      100% { left: -100%; }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #fff, 0 0 10px #00b4d8; }
+      to { text-shadow: 0 0 15px #fff, 0 0 25px #48cae4; }
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    header p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -26,48 +80,71 @@
       max-width: 1000px;
       margin: auto;
     }
+
     .package {
-      background: white;
+      background: var(--card);
       border-radius: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       padding: 1.5rem;
       text-align: center;
-      transition: transform 0.2s;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
+
     .package:hover {
-      transform: translateY(-5px);
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
+
     .title {
       font-weight: 600;
       font-size: 1.2rem;
       margin-bottom: .5rem;
-      color: #007bff;
+      color: var(--primary);
     }
+
     .price {
       font-size: 1.5rem;
       font-weight: bold;
       margin-bottom: .5rem;
+      color: var(--secondary);
     }
+
     ul {
       list-style: none;
       padding: 0;
       margin-bottom: 1rem;
+      font-size: 0.9rem;
     }
+
     li {
       margin: .3rem 0;
     }
+
     .btn {
       display: inline-block;
-      background: #00b4d8;
+      background: var(--secondary);
       color: white;
       padding: .6rem 1.2rem;
       border-radius: .8rem;
       text-decoration: none;
       font-weight: 600;
+      box-shadow: 0 0 10px rgba(0,180,216,0.4);
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
     }
+
     .btn:hover {
-      background: #0090b8;
+      background: var(--primary);
+      transform: scale(1.05);
     }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 10px rgba(0,180,216,0.4); }
+      50% { box-shadow: 0 0 20px rgba(0,180,216,0.7); }
+    }
+
     .masa-aktif {
       background: #ffffff;
       margin: 2rem auto;
@@ -77,24 +154,18 @@
       padding: 1.5rem;
       text-align: center;
     }
+
     .masa-aktif h3 {
       color: #007bff;
       margin-bottom: 1rem;
     }
-    .masa-aktif ul {
-      list-style: none;
-      padding: 0;
-      margin-bottom: 1rem;
-    }
-    .masa-aktif li {
-      margin: .5rem 0;
-      font-weight: 500;
-    }
+
     footer {
       text-align: center;
       padding: 2rem;
       background: #f1f3f5;
     }
+
     .socials {
       display: flex;
       justify-content: center;
@@ -102,8 +173,82 @@
       margin-top: 1rem;
       flex-wrap: wrap;
     }
+
     .socials a {
       text-decoration: none;
+      color: white;
+      background: var(--primary);
+      padding: .6rem 1.2rem;
+      border-radius: .8rem;
+      transition: 0.3s;
+      font-weight: 500;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .socials a:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="welcome">✨ Selamat Datang di Kuota Kita Premium 💥</div>
+    <h1>Mas Pras VPN</h1>
+    <p>Order cepat, harga hemat, dan kuota tahan lama!</p>
+  </header>
+
+  <div class="container">
+    <div class="package">
+      <div class="title">💠 XL Bizz Tayo</div>
+      <div class="price">Rp 65.000</div>
+      <ul>
+        <li>Unlimited • Aktif 45 Hari</li>
+        <li>Support semua daerah</li>
+        <li>Sudah + Config</li>
+      </ul>
+      <a href="https://wa.me/628565050103?text=Halo%20saya%20mau%20order%20XL%20Bizz%20Tayo%20Rp65.000" target="_blank" class="btn">💬 Order Sekarang</a>
+    </div>
+
+    <div class="package">
+      <div class="title">💠 XL Bizz Lite</div>
+      <div class="price">Rp 55.000</div>
+      <ul>
+        <li>Unlimited • Aktif 45 Hari</li>
+        <li>Support semua daerah</li>
+        <li>Sudah + Config</li>
+      </ul>
+      <a href="https://wa.me/628565050103?text=Halo%20saya%20mau%20order%20XL%20Bizz%20Lite%20Rp55.000" target="_blank" class="btn">💬 Order Sekarang</a>
+    </div>
+
+    <div class="package">
+      <div class="title">💠 YouTube Unlimited</div>
+      <div class="price">Rp 75.000</div>
+      <ul>
+        <li>Unlimited Streaming</li>
+        <li>Aktif 45 Hari</li>
+        <li>Sudah + Config</li>
+      </ul>
+      <a href="https://wa.me/628565050103?text=Halo%20saya%20mau%20order%20YouTube%20Unlimited%20Rp75.000" target="_blank" class="btn">💬 Order Sekarang</a>
+    </div>
+  </div>
+
+  <footer>
+    <h3>Ikuti Kami di Sosial Media</h3>
+    <div class="socials">
+      <a href="https://t.me/penyediainternet" target="_blank">📢 Telegram</a>
+      <a href="https://chat.whatsapp.com/JEFilJwIAkK6OJLJ2s6MOX?mode=ems_copy_t" target="_blank">💬 WhatsApp Channel</a>
+      <a href="https://www.instagram.com/newprojectpremium?igsh=bjZrY2kxa21reXpn" target="_blank">📸 Instagram</a>
+    </div>
+    <p style="margin-top:1rem;">© 2025 Kuota Kita Premium – All Rights Reserved.</p>
+  </footer>
+</body>
+</html>      text-decoration: none;
       color: white;
       background: #007bff;
       padding: .6rem 1.2rem;
