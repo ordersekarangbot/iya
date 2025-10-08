@@ -24,32 +24,23 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial; color: var(--text); background: linear-gradient(135deg, #071023 0%, #0f1724 100%); line-height: 1.6; }
+    html, body { height: 100%; font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial; color: var(--text); background: linear-gradient(135deg, #071023 0%, #0f1724 100%); line-height: 1.6; scroll-behavior: smooth; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-    /* Header */
-    header { padding: 40px 0 20px; position: relative; overflow: hidden; }
+    header { padding: 40px 0 20px; }
     .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
     .logo { display: flex; align-items: center; gap: 12px; }
     .logo-icon { width: 50px; height: 50px; background: var(--gradient); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: var(--glow); }
     .logo-icon i { font-size: 24px; color: #04202a; }
-    .logo-text h1 { font-size: 28px; font-weight: 700; margin: 0; background: linear-gradient(90deg, var(--accent), var(--accent-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .logo-text p { font-size: 14px; color: var(--text-muted); margin: 0; }
-    .header-badges { display: flex; gap: 10px; flex-wrap: wrap; }
-    .badge { background: rgba(6, 182, 212, 0.1); color: var(--accent); padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; border: 1px solid rgba(6, 182, 212, 0.2); display: flex; align-items: center; gap: 6px; box-shadow: var(--glow); }
-    .badge i { font-size: 10px; }
+    .logo-text h1 { font-size: 28px; font-weight: 700; background: linear-gradient(90deg, var(--accent), var(--accent-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .logo-text p { font-size: 14px; color: var(--text-muted); }
 
-    /* Hero Section */
     .hero { text-align: center; padding: 40px 0 60px; max-width: 800px; margin: 0 auto; }
-    .hero h2 { font-size: 40px; font-weight: 700; margin-bottom: 16px; line-height: 1.2; color: var(--accent); text-shadow: var(--glow); }
+    .hero h2 { font-size: 40px; font-weight: 700; margin-bottom: 16px; color: var(--accent); text-shadow: var(--glow); }
     .hero p { font-size: 18px; color: var(--text-muted); margin-bottom: 30px; }
-    .hero-badges { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
-    .hero-badge { display: flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.05); padding: 10px 16px; border-radius: 10px; font-size: 14px; box-shadow: var(--glow); }
-    .hero-badge i { color: var(--accent); }
 
-    /* Package Grid */
     .section-title { text-align: center; margin-bottom: 40px; }
-    .section-title h2 { font-size: 32px; font-weight: 700; margin-bottom: 10px; color: var(--accent); text-shadow: var(--glow); }
+    .section-title h2 { font-size: 32px; font-weight: 700; color: var(--accent); text-shadow: var(--glow); }
     .section-title p { color: var(--text-muted); max-width: 600px; margin: 0 auto; }
 
     .packages-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px; margin-bottom: 60px; }
@@ -61,50 +52,29 @@
     .package-name { font-size: 18px; font-weight: 600; }
     .package-provider { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
     .package-price { font-size: 24px; font-weight: 700; color: var(--accent); text-shadow: var(--glow); }
-    .package-details { margin: 20px 0; }
+
     .package-tag { display: inline-block; background: rgba(6, 182, 212, 0.1); color: var(--accent); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 16px; box-shadow: var(--glow); }
     .package-features { list-style: none; }
     .package-features li { padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); display: flex; align-items: center; gap: 10px; }
     .package-features li:last-child { border-bottom: none; }
     .package-features li i { color: var(--success); font-size: 14px; }
-    .package-cta { margin-top: 20px; }
+
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 10px; border: none; cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.3s ease; width: 100%; text-decoration: none; box-shadow: var(--glow); }
     .btn-primary { background: var(--gradient); color: #04202a; }
-    .btn-primary:hover { background: var(--gradient-dark); transform: translateY(-2px); box-shadow: 0 0 12px #06b6d4, 0 0 24px #7c3aed; }
+    .btn-primary:hover { background: var(--gradient-dark); transform: translateY(-2px); }
 
-    /* Contact Section */
-    .contact-section { background: rgba(255, 255, 255, 0.02); border-radius: 16px; padding: 40px; margin-bottom: 60px; border: 1px solid rgba(255, 255, 255, 0.05); }
-    .contact-header { text-align: center; margin-bottom: 30px; }
-    .contact-header h3 { font-size: 28px; margin-bottom: 10px; color: var(--accent); text-shadow: var(--glow); }
-    .contact-header p { color: var(--text-muted); }
-    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .contact-card { background: rgba(255, 255, 255, 0.03); border-radius: 12px; padding: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease; box-shadow: var(--glow); }
-    .contact-card:hover { transform: translateY(-5px); border-color: rgba(6, 182, 212, 0.3); }
-    .contact-card h4 { margin: 10px 0 5px; color: var(--accent); }
-    .contact-card a { color: #38bdf8; text-decoration: none; font-size: 14px; word-break: break-all; transition: color 0.3s ease; }
-    .contact-card a:hover { color: var(--accent); }
-    .contact-icon { width: 50px; height: 50px; background: rgba(6, 182, 212, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: var(--glow); }
-    .contact-icon i { color: var(--accent); font-size: 20px; }
-
-    /* Floating Button */
-    .order-float { position: fixed; bottom: 20px; right: 20px; z-index: 999; }
-    .order-float button { background: var(--gradient); color: #04202a; padding: 16px 24px; border: none; border-radius: 50px; font-weight: 700; cursor: pointer; box-shadow: 0 0 12px #06b6d4, 0 0 24px #7c3aed; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease; }
-    .order-float button:hover { transform: translateY(-3px); box-shadow: 0 0 16px #06b6d4, 0 0 32px #7c3aed; }
-
-    /* Footer */
     footer { text-align: center; padding: 30px 0; color: var(--text-muted); font-size: 14px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .hero h2 { font-size: 32px; }
       .packages-grid { grid-template-columns: 1fr; }
-      .contact-section { padding: 24px; }
       .header-content { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
   <div class="container">
+
     <!-- Header -->
     <header>
       <div class="header-content">
@@ -115,33 +85,88 @@
             <p>Paket kuota siap pakai — sudah + config</p>
           </div>
         </div>
-        <div class="header-badges">
-          <div class="badge"><i class="fas fa-check-circle"></i> Ready & Config</div>
-          <div class="badge"><i class="fas fa-map-marker-alt"></i> Support Semua Daerah</div>
-        </div>
       </div>
     </header>
 
     <!-- Hero -->
     <section class="hero">
       <h2>Kuota Premium Siap Pakai</h2>
-      <p>Dapatkan akses internet cepat dengan paket kuota premium yang sudah termasuk konfigurasi. Langsung aktif setelah pembayaran!</p>
-      <div class="hero-badges">
-        <div class="hero-badge"><i class="fas fa-shield-alt"></i> Terjamin & Terpercaya</div>
-        <div class="hero-badge"><i class="fas fa-bolt"></i> Langsung Aktif</div>
-        <div class="hero-badge"><i class="fas fa-headset"></i> Support 24/7</div>
-      </div>
+      <p>Paket kuota premium & unlimited dengan konfigurasi lengkap. Langsung aktif setelah pembayaran!</p>
     </section>
 
-    <!-- Packages -->
+    <!-- Semua Paket -->
     <section class="packages-section">
       <div class="section-title">
         <h2>Pilihan Paket Kuota</h2>
-        <p>Berbagai pilihan paket kuota premium dengan harga terjangkau dan kualitas terbaik</p>
+        <p>Pilih sesuai kebutuhanmu — semua sudah siap pakai dan support semua daerah</p>
       </div>
+
       <div class="packages-grid">
 
         <!-- Paket 1 -->
+        <div class="package-card popular">
+          <div class="package-header">
+            <div>
+              <div class="package-name">XL Bizz Lite</div>
+              <div class="package-provider">Unlimited - 30 Hari</div>
+            </div>
+            <div class="package-price">Rp50.000</div>
+          </div>
+          <span class="package-tag">Unlimited Favorit</span>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> Support semua daerah</li>
+            <li><i class="fas fa-check"></i> Kuota siap pakai ( sudah + config )</li>
+            <li><i class="fas fa-check"></i> Masa aktif 1 bulan</li>
+            <li><i class="fas fa-check"></i> Saran: jangan pakai nomor utama</li>
+          </ul>
+          <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103?text=Order%20Rp50.000%20XL%20Bizz%20Lite'">
+            <i class="fab fa-whatsapp"></i> Order Sekarang
+          </button>
+        </div>
+
+        <!-- Paket 2 -->
+        <div class="package-card">
+          <div class="package-header">
+            <div>
+              <div class="package-name">XL Bizz Tayo</div>
+              <div class="package-provider">Unlimited - 30 Hari</div>
+            </div>
+            <div class="package-price">Rp65.000</div>
+          </div>
+          <span class="package-tag">Full Unlimited</span>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> Support semua daerah</li>
+            <li><i class="fas fa-check"></i> Kuota siap pakai ( sudah + config )</li>
+            <li><i class="fas fa-check"></i> Masa aktif 1 bulan</li>
+            <li><i class="fas fa-check"></i> Saran: jangan pakai nomor utama</li>
+          </ul>
+          <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103?text=Order%20Rp65.000%20XL%20Bizz%20Tayo'">
+            <i class="fab fa-whatsapp"></i> Order Sekarang
+          </button>
+        </div>
+
+        <!-- Paket 3 -->
+        <div class="package-card">
+          <div class="package-header">
+            <div>
+              <div class="package-name">XL Double YouTube</div>
+              <div class="package-provider">Unlimited - 30 Hari</div>
+            </div>
+            <div class="package-price">Rp75.000</div>
+          </div>
+          <span class="package-tag">Streaming Tanpa Batas</span>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> Support semua daerah</li>
+            <li><i class="fas fa-check"></i> Kuota siap pakai ( sudah + config )</li>
+            <li><i class="fas fa-check"></i> Masa aktif 1 bulan</li>
+            <li><i class="fas fa-check"></i> Unlimited full speed</li>
+          </ul>
+          <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103?text=Order%20Rp75.000%20XL%20Double%20YouTube'">
+            <i class="fab fa-whatsapp"></i> Order Sekarang
+          </button>
+        </div>
+
+        <!-- Paket 4 -->
         <div class="package-card">
           <div class="package-header">
             <div>
@@ -161,7 +186,7 @@
           </button>
         </div>
 
-        <!-- Paket 2 -->
+        <!-- Paket 5 -->
         <div class="package-card">
           <div class="package-header">
             <div>
@@ -181,7 +206,7 @@
           </button>
         </div>
 
-        <!-- Paket 3 -->
+        <!-- Paket 6 -->
         <div class="package-card">
           <div class="package-header">
             <div>
@@ -201,21 +226,13 @@
           </button>
         </div>
 
-        <!-- Paket 4 -->
-        <div class="package-card popular">
-          <div class="package-header">
-            <div>
-              <div class="package-name">XL Bizz Lite</div>
-              <div class="package-provider">Unlimited - 30 Hari</div>
-            </div>
-            <div class="package-price">Rp50.000</div>
-          </div>
-          <span class="package-tag">Unlimited Favorit</span>
-          <ul class="package-features">
-            <li><i class="fas fa-check"></i> Support semua daerah</li>
-            <li><i class="fas fa-check"></i> Kuota unlimited + config</li>
-            <li><i class="fas fa-check"></i> Saran: jangan pakai nomor utama</li>
-          </ul>
-          <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103?text=Order%20Rp50.000%20XL%20Bizz%20Lite'">
-            <i class="fab fa-whatsapp"></i> Order Sekarang
-          </button
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 KUOTA KITA — Semua hak dilindungi</p>
+    </footer>
+  </div>
+</body>
+                  </html>
