@@ -1,296 +1,331 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>New Project — Pembayaran Kuota</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --neon: #00ffcc;
-    --bg1: #000814;
-    --bg2: #000;
-    --text: #e6f7f5;
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KUOTA KITA — Paket & Pembayaran QRIS</title>
+  <meta name="description" content="Kuota premium siap pakai — Pembayaran mudah via QRIS" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{
+      --bg-1:#020617;
+      --bg-2:#07112a;
+      --muted:#9fb0c4;
+      --neon-1:#06b6d4;
+      --neon-2:#7c3aed;
+      --glass: rgba(255,255,255,0.03);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial;color:#e6eef6;background:#020617; -webkit-font-smoothing:antialiased}
+    /* rotating neon background */
+    body::before{
+      content:"";
+      position:fixed;inset:-30% -30% auto auto; width:160vw;height:160vh;
+      background: radial-gradient(600px 400px at 10% 20%, rgba(6,182,212,0.12), transparent 10%),
+                  radial-gradient(600px 400px at 80% 80%, rgba(124,58,237,0.12), transparent 10%);
+      filter: blur(40px) saturate(120%);
+      transform: rotate(0deg);
+      z-index:0;
+      animation: spinBg 24s linear infinite;
+      pointer-events:none;
+    }
+    @keyframes spinBg {
+      from { transform: rotate(0deg) translateZ(0); }
+      to   { transform: rotate(360deg) translateZ(0); }
+    }
 
-  body {
-    font-family: "Poppins", sans-serif;
-    background: radial-gradient(circle at 10% 10%, rgba(0,255,200,0.05), transparent 10%), linear-gradient(180deg,var(--bg1),var(--bg2));
-    color: var(--text);
-    margin: 0;
-    padding: 0;
-    text-align: center;
-  }
-
-  header {
-    padding: 25px;
-    background: rgba(0,255,200,0.05);
-    box-shadow: 0 0 10px rgba(0,255,200,0.3);
-  }
-
-  header h1 {
-    color: var(--neon);
-    text-shadow: 0 0 15px var(--neon);
-    font-size: 1.9em;
-  }
-
-  .container {
-    max-width: 650px;
-    margin: 40px auto;
-    padding: 20px;
-  }
-
-  .input-nama {
-    margin-bottom: 25px;
-  }
-
-  .input-nama label {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--neon);
-    font-weight: 600;
-  }
-
-  .input-nama input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid rgba(0,255,200,0.3);
-    background: rgba(255,255,255,0.05);
-    color: var(--text);
-    font-size: 15px;
-    text-align: center;
-  }
-
-  .kuota-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(0,255,200,0.3);
-    border-radius: 16px;
-    padding: 18px;
-    margin-bottom: 20px;
-    text-align: left;
-    box-shadow: 0 0 25px rgba(0,255,200,0.05);
-    transition: 0.3s;
-  }
-
-  .kuota-card:hover {
-    box-shadow: 0 0 20px rgba(0,255,200,0.25);
-    transform: scale(1.02);
-  }
-
-  .kuota-card h2 {
-    color: var(--neon);
-    font-size: 1.2em;
-    margin-bottom: 8px;
-  }
-
-  .price {
-    color: var(--neon);
-    font-weight: bold;
-    font-size: 1.1em;
-    margin-bottom: 5px;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 8px 0;
-  }
-
-  ul li {
-    font-size: 0.95em;
-    padding: 3px 0;
-  }
-
-  .btn {
-    display: inline-block;
-    text-align: center;
-    background: var(--neon);
-    color: #001414;
-    padding: 10px 18px;
-    border-radius: 30px;
-    font-weight: 600;
-    text-decoration: none;
-    margin-top: 10px;
-    transition: 0.3s;
-    cursor: pointer;
-  }
-
-  .btn:hover {
-    background: #00e6b8;
-    box-shadow: 0 0 15px var(--neon);
-  }
-
-  /* Modal QRIS */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85);
-    justify-content: center;
-    align-items: center;
-  }
-
-  .modal-content {
-    background: rgba(255,255,255,0.05);
-    padding: 20px;
-    border-radius: 16px;
-    border: 1px solid rgba(0,255,200,0.2);
-    box-shadow: 0 0 25px rgba(0,255,200,0.15);
-    max-width: 340px;
-    text-align: center;
-    animation: fadeIn 0.4s ease;
-  }
-
-  @keyframes fadeIn {
-    from {opacity: 0; transform: scale(0.9);}
-    to {opacity: 1; transform: scale(1);}
-  }
-
-  .modal img {
-    width: 240px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0,255,200,0.3);
-    animation: glow 2s infinite alternate;
-  }
-
-  @keyframes glow {
-    from {box-shadow: 0 0 10px rgba(0,255,200,0.2);}
-    to {box-shadow: 0 0 25px rgba(0,255,200,0.5);}
-  }
-
-  .close {
-    color: var(--neon);
-    font-weight: bold;
-    font-size: 20px;
-    float: right;
-    cursor: pointer;
-  }
-
-  footer {
-    margin-top: 40px;
-    font-size: 0.85em;
-    color: #aaa;
-  }
-</style>
+    .container{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo-icon{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--neon-1),var(--neon-2));display:flex;align-items:center;justify-content:center;box-shadow:0 10px 40px rgba(124,58,237,0.12)}
+    .logo-icon i{color:#04191e;font-size:20px}
+    h1{font-size:20px;line-height:1;color:transparent;background:linear-gradient(90deg,var(--neon-1),var(--neon-2));-webkit-background-clip:text;font-weight:800}
+    .tag{font-size:13px;color:var(--muted)}
+    .badges{display:flex;gap:10px;align-items:center}
+    .badge{background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:999px;font-weight:700;color:var(--neon-1);border:1px solid rgba(6,182,212,0.06);backdrop-filter: blur(6px)}
+    /* hero */
+    .hero{padding:40px 0;text-align:center}
+    .hero h2{font-size:38px;margin-bottom:10px;line-height:1.05;background:linear-gradient(90deg,var(--neon-1),var(--neon-2));-webkit-background-clip:text;color:transparent}
+    .hero p{color:var(--muted);max-width:760px;margin:0 auto 18px}
+    .hero-cta{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;font-weight:700;border:none;cursor:pointer;text-decoration:none;box-shadow:0 6px 20px rgba(6,182,212,0.06);transition:transform .18s ease, box-shadow .18s ease}
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{background:linear-gradient(90deg,var(--neon-1),var(--neon-2));color:#04191e}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+    /* grid */
+    .section-title{margin:28px 0 12px;text-align:center}
+    .section-title h3{font-size:28px;background:linear-gradient(90deg,var(--neon-1),var(--neon-2));-webkit-background-clip:text;color:transparent}
+    .packages-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin:20px 0 40px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015));border-radius:14px;padding:18px;border:1px solid rgba(255,255,255,0.04);position:relative;overflow:hidden;box-shadow: 0 6px 30px rgba(2,6,23,0.6);transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s;min-height:200px;}
+    .card:hover{transform:translateY(-8px);box-shadow:0 18px 50px rgba(7,18,36,0.7)}
+    .card.popular::before{content:"POPULAR";position:absolute;top:12px;right:-50px;padding:6px 64px;background:linear-gradient(90deg,var(--neon-1),var(--neon-2));color:#04191e;font-weight:800;font-size:12px;transform:rotate(45deg);box-shadow:0 6px 18px rgba(124,58,237,0.12)}
+    .package-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+    .package-name{font-weight:800;font-size:18px;letter-spacing:.2px}
+    .package-provider{color:var(--muted);font-size:13px;margin-top:6px}
+    .price{font-size:22px;font-weight:900;background:var(--neon-1);-webkit-background-clip:text;color:transparent}
+    .tagline{display:inline-block;margin:14px 0;padding:6px 12px;border-radius:999px;background:rgba(124,58,237,0.08);color:var(--neon-2);font-weight:700;font-size:13px;border:1px solid rgba(124,58,237,0.06)}
+    ul.features{list-style:none;padding-left:0;margin-top:8px}
+    ul.features li{padding:10px 0;border-bottom:1px dashed rgba(255,255,255,0.02);display:flex;align-items:center;gap:12px;color:var(--muted)}
+    ul.features li i{color:var(--neon-1);font-size:14px}
+    .package-cta{margin-top:14px}
+    .highlight{border-radius:12px;padding:18px;background:linear-gradient(90deg, rgba(6,182,212,0.06), rgba(124,58,237,0.04));border:1px solid rgba(6,182,212,0.08);box-shadow:0 8px 30px rgba(6,182,212,0.04)}
+    .highlight h4{font-size:16px;margin-bottom:8px}
+    .highlight p{color:var(--muted);margin-bottom:10px;white-space:pre-line}
+    .price-big{font-size:28px;font-weight:900;background:linear-gradient(90deg,var(--neon-1),var(--neon-2));-webkit-background-clip:text;color:transparent}
+    /* contact */
+    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px}
+    .contact-card{padding:14px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);text-align:center}
+    .contact-card h5{color:var(--neon-1);margin-top:8px}
+    .contact-card a{color:#7dd3fc;text-decoration:none;display:block;margin-top:6px;word-break:break-all}
+    /* floating */
+    .order-float{position:fixed;right:18px;bottom:18px;z-index:1200}
+    .order-float button{padding:14px 16px;border-radius:999px}
+    /* animations */
+    .fade-in{opacity:0;transform:translateY(10px);transition:opacity .6s ease, transform .6s cubic-bezier(.2,.9,.2,1)}
+    .fade-in.show{opacity:1;transform:none}
+    /* modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:flex;align-items:center;justify-content:center;padding:20px;z-index:1500;backdrop-filter: blur(6px);opacity:0;pointer-events:none;transition:opacity .18s ease}
+    .modal-backdrop.open{opacity:1;pointer-events:auto}
+    .modal{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:18px;max-width:520px;width:100%;border:1px solid rgba(255,255,255,0.04);box-shadow:0 12px 50px rgba(2,6,23,0.8)}
+    .modal h4{margin-bottom:12px}
+    .qr-box{display:flex;flex-direction:column;align-items:center;gap:12px}
+    .qr-img{width:260px;height:260px;border-radius:8px;background:linear-gradient(180deg,#ffffff06,#00000010);display:grid;place-items:center;border:1px solid rgba(255,255,255,0.04);overflow:hidden}
+    .modal-meta{font-size:13px;color:var(--muted);text-align:center}
+    .modal-actions{display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+    .payload{font-size:12px;color:var(--muted);background:rgba(255,255,255,0.02);padding:8px;border-radius:8px;border:1px dashed rgba(255,255,255,0.03);word-break:break-all;max-height:120px;overflow:auto}
+    .note-small{font-size:12px;color:var(--muted);text-align:center;margin-top:8px}
+    @media (max-width:720px){.hero h2{font-size:28px}.packages-grid{grid-template-columns:1fr}.qr-img{width:200px;height:200px}}
+  </style>
 </head>
 <body>
+  <div class="container" role="main">
+    <header>
+      <div class="logo">
+        <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+        <div>
+          <h1>KUOTA KITA</h1>
+          <div class="tag">Paket kuota siap pakai — sudah + config</div>
+        </div>
+      </div>
+      <div class="badges">
+        <div class="badge"><i class="fas fa-check-circle"></i>&nbsp;Ready & Config</div>
+        <div class="badge"><i class="fas fa-map-marker-alt"></i>&nbsp;Support Semua Daerah</div>
+      </div>
+    </header>
 
-<header>
-  <h1>💎 Kuota & Config Premium — New Project</h1>
-  <p style="color:#8affdf;font-size:14px;">Isi nama Anda, pilih paket, bayar via QRIS, lalu konfirmasi ke admin.</p>
-</header>
+    <main>
+      <section class="hero fade-in" data-animate>
+        <h2>Kuota Premium — Pembayaran Cepat via QRIS</h2>
+        <p>Dapatkan paket kuota siap pakai yang langsung aktif setelah verifikasi pembayaran. Scan QR, bayar, konfirmasi — beres.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" data-open-qris><i class="fas fa-qrcode"></i> Pembayaran QRIS</a>
+          <a class="btn btn-ghost" href="#paket"><i class="fas fa-list"></i> Lihat Paket</a>
+        </div>
+      </section>
 
-<div class="container">
-  <div class="input-nama">
-    <label>Nama Pembeli</label>
-    <input type="text" id="namaPembeli" placeholder="Masukkan nama untuk config" required>
+      <section id="paket" class="section-title fade-in" data-animate>
+        <h3>Pilihan Paket Kuota</h3>
+        <p style="color:var(--muted);margin-top:8px">Pilih paket yang sesuai — semua ready + sudah terkonfigurasi.</p>
+      </section>
+
+      <section class="packages-grid" aria-label="Daftar paket">
+        <!-- Paket 1 -->
+        <article class="card fade-in" data-animate>
+          <div class="package-header">
+            <div>
+              <div class="package-name">XL Edukasi</div>
+              <div class="package-provider">15GB - 7 Hari</div>
+            </div>
+            <div class="price">Rp12.000</div>
+          </div>
+          <div class="tagline">Hemat & Cepat</div>
+          <ul class="features">
+            <li><i class="fas fa-check"></i> Support semua daerah</li>
+            <li><i class="fas fa-check"></i> Kuota siap pakai + config</li>
+            <li><i class="fas fa-check"></i> Cocok browsing & sosial media</li>
+          </ul>
+          <div class="package-cta">
+            <button class="btn btn-primary" data-open-qris data-qris-note="Rp12.000 - XL Edukasi"> <i class="fas fa-qrcode"></i> Pembayaran QRIS</button>
+          </div>
+        </article>
+
+        <!-- Paket 2 -->
+        <article class="card fade-in" data-animate>
+          <div class="package-header">
+            <div>
+              <div class="package-name">XL Conference</div>
+              <div class="package-provider">15GB - 7 Hari</div>
+            </div>
+            <div class="price">Rp14.000</div>
+          </div>
+          <div class="tagline">Stabil & Lancar</div>
+          <ul class="features">
+            <li><i class="fas fa-check"></i> Support semua daerah</li>
+            <li><i class="fas fa-check"></i> Kuota siap pakai + config</li>
+            <li><i class="fas fa-check"></i> Cocok meeting online</li>
+          </ul>
+          <div class="package-cta">
+            <button class="btn btn-primary" data-open-qris data-qris-note="Rp14.000 - XL Conference"><i class="fas fa-qrcode"></i> Pembayaran QRIS</button>
+          </div>
+        </article>
+
+        <!-- Paket 3 -->
+        <article class="card fade-in" data-animate>
+          <div class="package-header">
+            <div>
+              <div class="package-name">Indosat Apps Fun</div>
+              <div class="package-provider">12GB - 30 Hari</div>
+            </div>
+            <div class="price">Rp30.000</div>
+          </div>
+          <div class="tagline">1 Bulan Penuh</div>
+          <ul class="features">
+            <li><i class="fas fa-check"></i> Support semua daerah</li>
+            <li><i class="fas fa-check"></i> Kuota siap pakai + config</li>
+            <li><i class="fas fa-check"></i> Masa aktif 1 bulan penuh</li>
+          </ul>
+          <div class="package-cta">
+            <button class="btn btn-primary" data-open-qris data-qris-note="Rp30.000 - Indosat Apps Fun"><i class="fas fa-qrcode"></i> Pembayaran QRIS</button>
+          </div>
+        </article>
+
+        <!-- Paket Populer -->
+        <article class="card popular fade-in" data-animate>
+          <div class="package-header">
+            <div>
+              <div class="package-name">XL Bizz Lite</div>
+              <div class="package-provider">Unlimited - 30 Hari</div>
+            </div>
+            <div class="price">Rp50.000</div>
+          </div>
+          <div class="tagline">Unlimited Favorit</div>
+          <ul class="features">
+            <li><i class="fas fa-check"></i> Support semua daerah</li>
+            <li><i class="fas fa-check"></i> Kuota unlimited + config</li>
+            <li><i class="fas fa-check"></i> Saran: jangan pakai nomor utama</li>
+          </ul>
+          <div class="package-cta">
+            <button class="btn btn-primary" data-open-qris data-qris-note="Rp50.000 - XL Bizz Lite"><i class="fas fa-qrcode"></i> Pembayaran QRIS</button>
+          </div>
+        </article>
+
+        <!-- Paket 5 -->
+        <article class="card fade-in" data-animate>
+          <div class="package-header">
+            <div>
+              <div class="package-name">XL Bizz Tayo</div>
+              <div class="package-provider">Unlimited - 30 Hari</div>
+            </div>
+            <div class="price">Rp65.000</div>
+          </div>
+          <div class="tagline">Unlimited Premium</div>
+          <ul class="features">
+            <li><i class="fas fa-check"></i> Support semua daerah</li>
+            <li><i class="fas fa-check"></i> Kuota unlimited + config</li>
+            <li><i class="fas fa-check"></i> Saran: jangan pakai nomor utama</li>
+          </ul>
+          <div class="package-cta">
+            <button class="btn btn-primary" data-open-qris data-qris-note="Rp65.000 - XL Bizz Tayo"><i class="fas fa-qrcode"></i> Pembayaran QRIS</button>
+          </div>
+        </article>
+
+        <!-- Paket 6 (highlight XL Double YouTube) -->
+        <article class="card fade-in" data-animate>
+          <div class="package-header">
+            <div>
+              <div class="package-name">XL Double YouTube</div>
+              <div class="package-provider">Unlimited - 30 Hari</div>
+            </div>
+            <div class="price">Rp75.000</div>
+          </div>
+
+          <div class="highlight">
+            <h4>Rp.75.000 ( XL Double YouTube )</h4>
+            <p>- Unlimited\n- Masa aktif 1 bulan\n- Support semua daerah\n- Kuota siap pakai ( Sudah + config )</p>
+            <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
+              <button class="btn btn-primary" data-open-qris data-qris-note="Rp75.000 - XL Double YouTube"><i class="fas fa-qrcode"></i> Pembayaran QRIS</button>
+              <a class="btn btn-ghost" href="https://wa.me/628565050103?text=Halo,%20saya%20ingin%20order%20Rp75.000%20XL%20Double%20YouTube" style="align-self:center"><i class="fab fa-whatsapp"></i> Konfirmasi via WA</a>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-title fade-in" data-animate>
+        <h3>Kontak & Bantuan</h3>
+        <p style="color:var(--muted)">Tim kami siap bantu verifikasi pembayaran dan aktivasi paket.</p>
+
+        <div class="contact-grid" style="margin-top:14px">
+          <div class="contact-card fade-in" data-animate>
+            <div style="width:56px;height:56px;margin:0 auto;border-radius:12px;background:linear-gradient(135deg,var(--neon-1),var(--neon-2));display:grid;place-items:center;color:#04191e"><i class="fas fa-headset"></i></div>
+            <h5>Customer Service</h5>
+            <a href="https://wa.me/628565050103">+62 856-5050-103</a>
+            <div style="color:var(--muted);font-size:13px;margin-top:6px">Layanan utama & pertanyaan</div>
+          </div>
+
+          <div class="contact-card fade-in" data-animate>
+            <div style="width:56px;height:56px;margin:0 auto;border-radius:12px;background:rgba(255,255,255,0.02);display:grid;place-items:center;color:var(--neon-1)"><i class="fas fa-user-tie"></i></div>
+            <h5>Admin 1</h5>
+            <a href="https://wa.me/6285956485876">+62 859-5648-5876</a>
+            <div style="color:var(--muted);font-size:13px;margin-top:6px">Bantuan order & konfigurasi</div>
+          </div>
+
+          <div class="contact-card fade-in" data-animate>
+            <div style="width:56px;height:56px;margin:0 auto;border-radius:12px;background:rgba(255,255,255,0.02);display:grid;place-items:center;color:var(--neon-1)"><i class="fas fa-user-tie"></i></div>
+            <h5>Admin 2</h5>
+            <a href="https://wa.me/6285129240336">+62 851-2924-0336</a>
+            <div style="color:var(--muted);font-size:13px;margin-top:6px">Bantuan teknis & troubleshooting</div>
+          </div>
+
+          <div class="contact-card fade-in" data-animate>
+            <div style="width:56px;height:56px;margin:0 auto;border-radius:12px;background:rgba(255,255,255,0.02);display:grid;place-items:center;color:var(--neon-1)"><i class="fas fa-user-tie"></i></div>
+            <h5>Admin 3</h5>
+            <a href="https://wa.me/6282302119600">+62 823-0211-9600</a>
+            <div style="color:var(--muted);font-size:13px;margin-top:6px">Bantuan pembayaran & aktivasi</div>
+          </div>
+        </div>
+      </section>
+
+      <footer style="text-align:center;padding:26px 0;color:var(--muted);margin-top:34px">© 2023 - 2025 KUOTA KITA — Layanan Kuota Premium Siap Pakai & Terkonfigurasi</footer>
+    </main>
   </div>
 
-  <!-- Paket Kuota -->
-  <div class="kuota-card">
-    <h2>XL Edukasi</h2>
-    <p class="price">Rp12.000</p>
-    <ul>
-      <li>✅ 15GB Edukasi</li>
-      <li>✅ Aktif 7 hari</li>
-      <li>✅ Ready + Config</li>
-    </ul>
-    <button class="btn" onclick="openPayment('XL Edukasi','12000')">Order & Bayar via QRIS</button>
+  <!-- floating -->
+  <div class="order-float" role="region" aria-label="Pembayaran cepat">
+    <button class="btn btn-primary" data-open-qris style="display:flex;align-items:center;gap:10px"><i class="fas fa-qrcode"></i> Pembayaran QRIS</button>
   </div>
 
-  <div class="kuota-card">
-    <h2>XL Conference</h2>
-    <p class="price">Rp14.000</p>
-    <ul>
-      <li>✅ 15GB Zoom/Meet</li>
-      <li>✅ Aktif 7 hari</li>
-      <li>✅ Support semua daerah</li>
-    </ul>
-    <button class="btn" onclick="openPayment('XL Conference','14000')">Order & Bayar via QRIS</button>
-  </div>
+  <!-- modal -->
+  <div id="qrisModal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal" role="document" aria-labelledby="qrisTitle">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h4 id="qrisTitle">Pembayaran QRIS</h4>
+        <button id="closeModal" class="btn btn-ghost" title="Tutup (Esc)"><i class="fas fa-times"></i></button>
+      </div>
 
-  <div class="kuota-card">
-    <h2>XL Bis Lide</h2>
-    <p class="price">Rp50.000</p>
-    <ul>
-      <li>✅ Unlimited</li>
-      <li>✅ Aktif 30 hari</li>
-      <li>✅ Ping stabil + low latency</li>
-    </ul>
-    <button class="btn" onclick="openPayment('XL Bis Lide','50000')">Order & Bayar via QRIS</button>
-  </div>
+      <div class="qr-box" style="margin-top:8px">
+        <div id="qrImage" class="qr-img" aria-hidden="false" title="Pindai QRIS untuk membayar">
+          <!-- QR image inserted by JS -->
+          <svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QR placeholder">
+            <rect width="160" height="160" rx="8" fill="url(#g)"/>
+            <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#06172a"/><stop offset="1" stop-color="#0b2340"/></linearGradient></defs>
+            <g fill="#d6f7fb">
+              <rect x="14" y="14" width="28" height="28"/><rect x="118" y="14" width="28" height="28"/><rect x="14" y="118" width="28" height="28"/>
+              <rect x="60" y="60" width="10" height="10"/><rect x="76" y="76" width="14" height="6"/><rect x="100" y="100" width="18" height="6"/>
+            </g>
+            <text x="50%" y="88%" fill="#9fdff1" font-size="11" text-anchor="middle" font-family="Inter, sans-serif">QRIS PLACEHOLDER</text>
+          </svg>
+        </div>
 
-  <div class="kuota-card">
-    <h2>XL Bis Scooter</h2>
-    <p class="price">Rp65.000</p>
-    <ul>
-      <li>✅ Unlimited</li>
-      <li>✅ Aktif 30 hari</li>
-      <li>✅ Ready semua daerah</li>
-    </ul>
-    <button class="btn" onclick="openPayment('XL Bis Scooter','65000')">Order & Bayar via QRIS</button>
-  </div>
+        <div class="modal-meta" id="modalNote">Mohon scan kode QR untuk melakukan pembayaran. Setelah bayar, klik "Konfirmasi via WA".</div>
 
-  <div class="kuota-card">
-    <h2>XL Double YouTube (Premium)</h2>
-    <p class="price">Rp75.000</p>
-    <ul>
-      <li>✅ Unlimited</li>
-      <li>✅ Masa aktif 1 bulan</li>
-      <li>✅ Support semua daerah</li>
-      <li>✅ Kuota siap pakai (Sudah + Config)</li>
-    </ul>
-    <button class="btn" onclick="openPayment('XL Double YouTube','75000')">Order & Bayar via QRIS</button>
-  </div>
-</div>
+        <div style="width:100%;margin-top:10px">
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center">
+            <div class="payload" id="payloadText" aria-live="polite" style="min-width:240px;max-width:420px"></div>
+          </div>
+        </div>
 
-<!-- Modal Pembayaran QRIS -->
-<div id="paymentModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h3 style="color:var(--neon)">💳 Pembayaran via QRIS</h3>
-    <p id="paketInfo" style="margin-bottom:8px;"></p>
-    <img src="qris_lampung_store.png" alt="QRIS Lampung Store">
-    <p style="font-size:13px;margin-top:10px;">Silakan scan QRIS untuk membayar.<br>Lalu klik tombol di bawah untuk konfirmasi.</p>
-    <a id="waConfirm" class="btn" target="_blank">Konfirmasi Pembayaran via WhatsApp</a>
-  </div>
-</div>
-
-<footer>
-  © 2025 New Project — Kuota siap pakai.
-</footer>
-
-<script>
-  const modal = document.getElementById("paymentModal");
-  const paketInfo = document.getElementById("paketInfo");
-  const waConfirm = document.getElementById("waConfirm");
-
-  function openPayment(paket, harga){
-    const nama = document.getElementById("namaPembeli").value.trim();
-    if(!nama){
-      alert("Masukkan nama pembeli terlebih dahulu!");
-      return;
-    }
-
-    modal.style.display = "flex";
-    paketInfo.innerHTML = `👤 <b>${nama}</b><br>📦 ${paket}<br>💰 Rp${harga}`;
-    const pesan = encodeURIComponent(`Halo admin, saya sudah melakukan pembayaran via QRIS.\n\n👤 Nama: ${nama}\n📦 Paket: ${paket}\n💰 Nominal: Rp${harga}\n\nMohon dikonfirmasi ya.`);
-    waConfirm.href = `https://wa.me/628565050103?text=${pesan}`;
-  }
-
-  function closeModal(){
-    modal.style.display = "none";
-  }
-
-  window.onclick = function(event){
-    if(event.target == modal){
-      closeModal();
-    }
-  }
-</script>
-
-</body>
-    </html>
+        <div class="modal-actions">
+          <button id="copyBtn" class="btn btn-ghost"><i class="fas fa-copy"></i> Salin</button>
+          <button id="downloadBtn" class="btn btn-ghost"><i class="fas fa-download"></i> Download QR / Simpan Bukti</button>
+          <a id="waConfirmBtn" class="btn btn-primary" href="#" target="_blank" rel="noopener"><
