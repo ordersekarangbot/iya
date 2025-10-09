@@ -24,7 +24,6 @@
 
   header {
     padding: 25px;
-    text-align: center;
     background: rgba(0, 255, 200, 0.05);
     box-shadow: 0 0 10px rgba(0,255,200,0.3);
   }
@@ -179,7 +178,7 @@
 <body>
 
 <header>
-  <h1>💎tersedia layanan kuota - config premium </h1>
+  <h1>💎 Lampung Store – Kuota & Config Premium</h1>
   <p style="color:#8affdf;font-size:14px;">Isi nama Anda, pilih paket, bayar via QRIS, lalu konfirmasi ke admin.</p>
 </header>
 
@@ -189,6 +188,7 @@
     <input type="text" id="namaPembeli" placeholder="Masukkan nama lengkap Anda" required>
   </div>
 
+  <!-- Daftar Paket Kuota -->
   <div class="kuota-card">
     <h2>XL Edukasi</h2>
     <p class="price">Rp12.000</p>
@@ -212,6 +212,28 @@
   </div>
 
   <div class="kuota-card">
+    <h2>XL Sosial Media</h2>
+    <p class="price">Rp15.000</p>
+    <ul>
+      <li>✅ 20GB (FB, IG, WA, TikTok)</li>
+      <li>✅ Masa aktif 7 hari</li>
+      <li>✅ Kuota stabil dan cepat</li>
+    </ul>
+    <a class="btn" onclick="openPayment('XL Sosial Media','15000')">Order & Bayar via QRIS</a>
+  </div>
+
+  <div class="kuota-card">
+    <h2>XL Gaming</h2>
+    <p class="price">Rp25.000</p>
+    <ul>
+      <li>✅ 30GB Gaming (ML, FF, PUBG)</li>
+      <li>✅ Aktif 14 hari</li>
+      <li>✅ Ping rendah, anti lag</li>
+    </ul>
+    <a class="btn" onclick="openPayment('XL Gaming','25000')">Order & Bayar via QRIS</a>
+  </div>
+
+  <div class="kuota-card">
     <h2>XL Double YouTube</h2>
     <p class="price">Rp75.000</p>
     <ul>
@@ -222,6 +244,30 @@
     </ul>
     <a class="btn" onclick="openPayment('XL Double YouTube','75000')">Order & Bayar via QRIS</a>
   </div>
+
+  <div class="kuota-card">
+    <h2>XL Unlimited Combo</h2>
+    <p class="price">Rp100.000</p>
+    <ul>
+      <li>✅ Unlimited Akses Semua Aplikasi</li>
+      <li>✅ Masa aktif 30 hari</li>
+      <li>✅ Full Speed</li>
+    </ul>
+    <a class="btn" onclick="openPayment('XL Unlimited Combo','100000')">Order & Bayar via QRIS</a>
+  </div>
+
+  <div class="kuota-card">
+    <h2>Config Premium VPN</h2>
+    <p class="price">Rp50.000</p>
+    <ul>
+      <li>✅ Config Private</li>
+      <li>✅ Full Speed Stabil</li>
+      <li>✅ Anti Expired Selama Berlangganan</li>
+      <li>✅ Termasuk Support Setup</li>
+    </ul>
+    <a class="btn" onclick="openPayment('Config Premium VPN','50000')">Order & Bayar via QRIS</a>
+  </div>
+
 </div>
 
 <!-- Modal Pembayaran -->
@@ -237,7 +283,7 @@
 </div>
 
 <footer>
-  © 2023 new project — Kuota siap pakai.
+  © 2025 Lampung Store — Kuota siap pakai & config premium.
 </footer>
 
 <script>
@@ -270,4 +316,4 @@
 </script>
 
 </body>
-  </html>
+      </html>
