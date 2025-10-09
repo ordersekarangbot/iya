@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>new project</title>
+<title>New Project — Pembayaran Kuota</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -113,6 +113,7 @@
     text-decoration: none;
     margin-top: 10px;
     transition: 0.3s;
+    cursor: pointer;
   }
 
   .btn:hover {
@@ -120,7 +121,7 @@
     box-shadow: 0 0 15px var(--neon);
   }
 
-  /* Modal */
+  /* Modal QRIS */
   .modal {
     display: none;
     position: fixed;
@@ -185,7 +186,7 @@
 <div class="container">
   <div class="input-nama">
     <label>Nama Pembeli</label>
-    <input type="text" id="namaPembeli" placeholder="Masukkan nama Untuk Config" required>
+    <input type="text" id="namaPembeli" placeholder="Masukkan nama untuk config" required>
   </div>
 
   <!-- Paket Kuota -->
@@ -197,7 +198,7 @@
       <li>✅ Aktif 7 hari</li>
       <li>✅ Ready + Config</li>
     </ul>
-    <a class="btn" onclick="openPayment('XL Edukasi','12000')">Order & Bayar via QRIS</a>
+    <button class="btn" onclick="openPayment('XL Edukasi','12000')">Order & Bayar via QRIS</button>
   </div>
 
   <div class="kuota-card">
@@ -208,29 +209,29 @@
       <li>✅ Aktif 7 hari</li>
       <li>✅ Support semua daerah</li>
     </ul>
-    <a class="btn" onclick="openPayment('XL Conference','14000')">Order & Bayar via QRIS</a>
+    <button class="btn" onclick="openPayment('XL Conference','14000')">Order & Bayar via QRIS</button>
   </div>
 
   <div class="kuota-card">
-    <h2>XL bis lide</h2>
+    <h2>XL Bis Lide</h2>
     <p class="price">Rp50.000</p>
     <ul>
-      <li>✅ unlimited</li>
+      <li>✅ Unlimited</li>
       <li>✅ Aktif 30 hari</li>
       <li>✅ Ping stabil + low latency</li>
     </ul>
-    <a class="btn" onclick="openPayment('XL Gaming','16000')">Order & Bayar via QRIS</a>
+    <button class="btn" onclick="openPayment('XL Bis Lide','50000')">Order & Bayar via QRIS</button>
   </div>
 
   <div class="kuota-card">
-    <h2>XL bis scooter</h2>
+    <h2>XL Bis Scooter</h2>
     <p class="price">Rp65.000</p>
     <ul>
-      <li>✅ unlimited</li>
+      <li>✅ Unlimited</li>
       <li>✅ Aktif 30 hari</li>
       <li>✅ Ready semua daerah</li>
     </ul>
-    <a class="btn" onclick="openPayment('XL Sosmed','17000')">Order & Bayar via QRIS</a>
+    <button class="btn" onclick="openPayment('XL Bis Scooter','65000')">Order & Bayar via QRIS</button>
   </div>
 
   <div class="kuota-card">
@@ -242,24 +243,24 @@
       <li>✅ Support semua daerah</li>
       <li>✅ Kuota siap pakai (Sudah + Config)</li>
     </ul>
-    <a class="btn" onclick="openPayment('XL Double YouTube','75000')">Order & Bayar via QRIS</a>
+    <button class="btn" onclick="openPayment('XL Double YouTube','75000')">Order & Bayar via QRIS</button>
   </div>
 </div>
 
-<!-- Modal Pembayaran -->
+<!-- Modal Pembayaran QRIS -->
 <div id="paymentModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
     <h3 style="color:var(--neon)">💳 Pembayaran via QRIS</h3>
     <p id="paketInfo" style="margin-bottom:8px;"></p>
-    <img src="qris_lampung_store.png" alt="QRIS Lampung Store OK">
-    <p style="font-size:13px;margin-top:10px;">Scan QRIS untuk melakukan pembayaran.<br>Lalu klik tombol di bawah untuk konfirmasi.</p>
+    <img src="qris_lampung_store.png" alt="QRIS Lampung Store">
+    <p style="font-size:13px;margin-top:10px;">Silakan scan QRIS untuk membayar.<br>Lalu klik tombol di bawah untuk konfirmasi.</p>
     <a id="waConfirm" class="btn" target="_blank">Konfirmasi Pembayaran via WhatsApp</a>
   </div>
 </div>
 
 <footer>
-  © 2023 New Project — Kuota siap pakai.
+  © 2025 New Project — Kuota siap pakai.
 </footer>
 
 <script>
@@ -292,4 +293,4 @@
 </script>
 
 </body>
-  </html>
+    </html>
