@@ -41,6 +41,28 @@
     padding: 20px;
   }
 
+  .input-nama {
+    margin-bottom: 25px;
+  }
+
+  .input-nama label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--neon);
+    font-weight: 600;
+  }
+
+  .input-nama input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,255,200,0.3);
+    background: rgba(255,255,255,0.05);
+    color: var(--text);
+    font-size: 15px;
+    text-align: center;
+  }
+
   .kuota-card {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(0,255,200,0.3);
@@ -119,12 +141,24 @@
     box-shadow: 0 0 25px rgba(0,255,200,0.15);
     max-width: 340px;
     text-align: center;
+    animation: fadeIn 0.4s ease;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
   }
 
   .modal img {
     width: 240px;
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0,255,200,0.3);
+    animation: glow 2s infinite alternate;
+  }
+
+  @keyframes glow {
+    from {box-shadow: 0 0 10px rgba(0,255,200,0.2);}
+    to {box-shadow: 0 0 25px rgba(0,255,200,0.5);}
   }
 
   .close {
@@ -145,11 +179,15 @@
 <body>
 
 <header>
-  <h1>ready config premium - kuota</h1>
-  <p style="color:#8affdf;font-size:14px;">Pilih paket, bayar via QRIS, lalu konfirmasi ke admin.</p>
+  <h1>💎tersedia layanan kuota - config premium </h1>
+  <p style="color:#8affdf;font-size:14px;">Isi nama Anda, pilih paket, bayar via QRIS, lalu konfirmasi ke admin.</p>
 </header>
 
 <div class="container">
+  <div class="input-nama">
+    <label>Nama Pembeli</label>
+    <input type="text" id="namaPembeli" placeholder="Masukkan nama lengkap Anda" required>
+  </div>
 
   <div class="kuota-card">
     <h2>XL Edukasi</h2>
@@ -174,28 +212,6 @@
   </div>
 
   <div class="kuota-card">
-    <h2>XL Combo bus tahyo</h2>
-    <p class="price">Rp65.000</p>
-    <ul>
-      <li>✅ Unlimited</li>
-      <li>✅ Aktif 30 hari</li>
-      <li>✅ Ready + Config</li>
-    </ul>
-    <a class="btn" onclick="openPayment('XL Combo Lite','25000')">Order & Bayar via QRIS</a>
-  </div>
-
-  <div class="kuota-card">
-    <h2>XL Unlimited bus lide</h2>
-    <p class="price">Rp50.000</p>
-    <ul>
-      <li>✅ Unlimited WhatsApp, IG, TikTok</li>
-      <li>✅ Masa aktif 30 hari</li>
-      <li>✅ Ready + Config</li>
-    </ul>
-    <a class="btn" onclick="openPayment('XL Unlimited Sosmed','50000')">Order & Bayar via QRIS</a>
-  </div>
-
-  <div class="kuota-card">
     <h2>XL Double YouTube</h2>
     <p class="price">Rp75.000</p>
     <ul>
@@ -206,7 +222,6 @@
     </ul>
     <a class="btn" onclick="openPayment('XL Double YouTube','75000')">Order & Bayar via QRIS</a>
   </div>
-
 </div>
 
 <!-- Modal Pembayaran -->
@@ -222,7 +237,7 @@
 </div>
 
 <footer>
-  © 2025 Lampung Store — Kuota siap pakai.
+  © 2023 new project — Kuota siap pakai.
 </footer>
 
 <script>
@@ -231,9 +246,15 @@
   const waConfirm = document.getElementById("waConfirm");
 
   function openPayment(paket, harga){
+    const nama = document.getElementById("namaPembeli").value.trim();
+    if(!nama){
+      alert("Masukkan nama pembeli terlebih dahulu!");
+      return;
+    }
+
     modal.style.display = "flex";
-    paketInfo.innerHTML = `Paket: <b>${paket}</b><br>Nominal: <b>Rp${harga}</b>`;
-    const pesan = encodeURIComponent(`Halo admin, saya sudah melakukan pembayaran via QRIS.\n\n📦 Paket: ${paket}\n💰 Nominal: Rp${harga}\n\nMohon dikonfirmasi ya.`);
+    paketInfo.innerHTML = `👤 <b>${nama}</b><br>📦 ${paket}<br>💰 Rp${harga}`;
+    const pesan = encodeURIComponent(`Halo admin, saya sudah melakukan pembayaran via QRIS.\n\n👤 Nama: ${nama}\n📦 Paket: ${paket}\n💰 Nominal: Rp${harga}\n\nMohon dikonfirmasi ya.`);
     waConfirm.href = `https://wa.me/628565050103?text=${pesan}`;
   }
 
@@ -249,4 +270,4 @@
 </script>
 
 </body>
-      </html>
+  </html>
