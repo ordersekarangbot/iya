@@ -24,7 +24,7 @@
 
   header {
     padding: 25px;
-    background: rgba(0, 255, 200, 0.05);
+    background: rgba(0,255,200,0.05);
     box-shadow: 0 0 10px rgba(0,255,200,0.3);
   }
 
@@ -178,7 +178,7 @@
 <body>
 
 <header>
-  <h1>💎 Lampung Store – Kuota & Config Premium</h1>
+  <h1>💎 Kuota & Config Premium — Lampung Store</h1>
   <p style="color:#8affdf;font-size:14px;">Isi nama Anda, pilih paket, bayar via QRIS, lalu konfirmasi ke admin.</p>
 </header>
 
@@ -188,7 +188,7 @@
     <input type="text" id="namaPembeli" placeholder="Masukkan nama lengkap Anda" required>
   </div>
 
-  <!-- Daftar Paket Kuota -->
+  <!-- Paket Kuota -->
   <div class="kuota-card">
     <h2>XL Edukasi</h2>
     <p class="price">Rp12.000</p>
@@ -212,29 +212,40 @@
   </div>
 
   <div class="kuota-card">
-    <h2>XL Sosial Media</h2>
-    <p class="price">Rp15.000</p>
-    <ul>
-      <li>✅ 20GB (FB, IG, WA, TikTok)</li>
-      <li>✅ Masa aktif 7 hari</li>
-      <li>✅ Kuota stabil dan cepat</li>
-    </ul>
-    <a class="btn" onclick="openPayment('XL Sosial Media','15000')">Order & Bayar via QRIS</a>
-  </div>
-
-  <div class="kuota-card">
     <h2>XL Gaming</h2>
-    <p class="price">Rp25.000</p>
+    <p class="price">Rp16.000</p>
     <ul>
-      <li>✅ 30GB Gaming (ML, FF, PUBG)</li>
-      <li>✅ Aktif 14 hari</li>
-      <li>✅ Ping rendah, anti lag</li>
+      <li>✅ 20GB Game Online</li>
+      <li>✅ Aktif 7 hari</li>
+      <li>✅ Ping stabil + low latency</li>
     </ul>
-    <a class="btn" onclick="openPayment('XL Gaming','25000')">Order & Bayar via QRIS</a>
+    <a class="btn" onclick="openPayment('XL Gaming','16000')">Order & Bayar via QRIS</a>
   </div>
 
   <div class="kuota-card">
-    <h2>XL Double YouTube</h2>
+    <h2>XL Sosmed</h2>
+    <p class="price">Rp17.000</p>
+    <ul>
+      <li>✅ 20GB Instagram / TikTok</li>
+      <li>✅ Aktif 7 hari</li>
+      <li>✅ Ready semua daerah</li>
+    </ul>
+    <a class="btn" onclick="openPayment('XL Sosmed','17000')">Order & Bayar via QRIS</a>
+  </div>
+
+  <div class="kuota-card">
+    <h2>XL Combo+</h2>
+    <p class="price">Rp35.000</p>
+    <ul>
+      <li>✅ 35GB All App</li>
+      <li>✅ Aktif 30 hari</li>
+      <li>✅ Ready + Config Premium</li>
+    </ul>
+    <a class="btn" onclick="openPayment('XL Combo+','35000')">Order & Bayar via QRIS</a>
+  </div>
+
+  <div class="kuota-card">
+    <h2>XL Double YouTube (Premium)</h2>
     <p class="price">Rp75.000</p>
     <ul>
       <li>✅ Unlimited</li>
@@ -244,30 +255,6 @@
     </ul>
     <a class="btn" onclick="openPayment('XL Double YouTube','75000')">Order & Bayar via QRIS</a>
   </div>
-
-  <div class="kuota-card">
-    <h2>XL Unlimited Combo</h2>
-    <p class="price">Rp100.000</p>
-    <ul>
-      <li>✅ Unlimited Akses Semua Aplikasi</li>
-      <li>✅ Masa aktif 30 hari</li>
-      <li>✅ Full Speed</li>
-    </ul>
-    <a class="btn" onclick="openPayment('XL Unlimited Combo','100000')">Order & Bayar via QRIS</a>
-  </div>
-
-  <div class="kuota-card">
-    <h2>Config Premium VPN</h2>
-    <p class="price">Rp50.000</p>
-    <ul>
-      <li>✅ Config Private</li>
-      <li>✅ Full Speed Stabil</li>
-      <li>✅ Anti Expired Selama Berlangganan</li>
-      <li>✅ Termasuk Support Setup</li>
-    </ul>
-    <a class="btn" onclick="openPayment('Config Premium VPN','50000')">Order & Bayar via QRIS</a>
-  </div>
-
 </div>
 
 <!-- Modal Pembayaran -->
@@ -283,7 +270,7 @@
 </div>
 
 <footer>
-  © 2025 Lampung Store — Kuota siap pakai & config premium.
+  © 2025 Lampung Store — Kuota siap pakai.
 </footer>
 
 <script>
@@ -316,4 +303,4 @@
 </script>
 
 </body>
-      </html>
+  </html>
