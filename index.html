@@ -3,151 +3,175 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Pembayaran via QRIS — NEW PROJECT</title>
-  <meta name="description" content="Bayar paket kuota NEW PROJECT via QRIS — cepat, aman, dan otomatis konfirmasi lewat WhatsApp.">
+  <title>NEW PROJECT — Kuota & VPN Premium</title>
+  <meta name="description" content="NEW PROJECT — Paket kuota & VPN premium siap pakai, konfigurasi lengkap. Bayar cepat via QRIS Lampung Store.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root{
       --bg1:#000814;
       --bg2:#000000;
       --neon:#39ff14;
-      --neon-soft: rgba(57,255,20,0.08);
-      --card: rgba(255,255,255,0.02);
-      --text:#e6f7e6;
+      --neon-soft:rgba(57,255,20,0.1);
+      --card:rgba(255,255,255,0.02);
+      --text:#e6ffe6;
       --muted:rgba(230,247,230,0.55);
-      --glass-border: rgba(57,255,20,0.12);
-      --accent-gradient: linear-gradient(90deg, rgba(57,255,20,0.95), rgba(10,200,80,0.85));
+      --glass-border:rgba(57,255,20,0.12);
+      --accent-gradient:linear-gradient(90deg,rgba(57,255,20,0.95),rgba(10,200,80,0.85));
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{
-      height:100%;
+    body{
       font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:radial-gradient(circle at 10% 10%, rgba(57,255,20,0.03), transparent 10%), linear-gradient(180deg,var(--bg1),var(--bg2));
       color:var(--text);
-      background:radial-gradient(circle at 10% 10%, rgba(57,255,20,0.02), transparent 10%), linear-gradient(180deg,var(--bg1),var(--bg2));
       -webkit-font-smoothing:antialiased;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
     }
 
+    header{
+      text-align:center;
+      padding:28px 12px;
+      border-bottom:1px solid rgba(255,255,255,0.04);
+      box-shadow:0 0 20px var(--neon-soft);
+    }
+    header h1{
+      font-size:28px;
+      color:var(--neon);
+      text-shadow:0 0 15px rgba(57,255,20,0.3);
+      margin-bottom:4px;
+    }
+    header p{color:var(--muted);font-size:14px;}
+
     .container{
-      max-width:600px;
+      flex:1;
+      max-width:900px;
       margin:0 auto;
       padding:24px;
     }
 
-    header{text-align:center;margin-top:20px}
-    header h1{font-size:26px;color:var(--neon);text-shadow:0 0 12px rgba(57,255,20,0.25)}
-    header p{color:var(--muted);margin-top:8px;font-size:14px}
-
-    .qris-card{
+    .packages{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:18px;
       margin-top:26px;
+    }
+
+    .card{
       background:var(--card);
       border:1px solid var(--glass-border);
       border-radius:14px;
-      padding:20px;
-      text-align:center;
-      box-shadow:0 0 30px var(--neon-soft);
+      padding:18px;
+      box-shadow:0 0 25px var(--neon-soft);
+      transition:0.3s;
     }
 
-    .qris-card img{
-      width:100%;
-      border-radius:12px;
-      margin:12px 0;
+    .card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 0 40px rgba(57,255,20,0.25);
     }
 
-    label{display:block;margin-top:14px;margin-bottom:6px;font-weight:600;font-size:14px;color:var(--neon)}
-    input, select{
-      width:100%;
-      padding:10px;
-      border-radius:10px;
-      border:1px solid var(--glass-border);
-      background:rgba(255,255,255,0.03);
-      color:var(--text);
-      font-size:14px;
-    }
-    input:focus,select:focus{outline:none;border-color:var(--neon)}
+    .price{color:var(--neon);font-weight:700;font-size:18px;margin-bottom:6px;}
+    .title{font-weight:600;color:#fff;margin-bottom:8px;}
+    .desc{color:var(--muted);font-size:13px;margin-bottom:12px;}
 
     .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      justify-content:center;
-      width:100%;
-      padding:12px;
-      border:none;
-      border-radius:12px;
-      font-weight:700;
+      display:inline-block;
       background:var(--accent-gradient);
       color:#001104;
-      cursor:pointer;
-      margin-top:18px;
-      box-shadow:0 8px 30px rgba(57,255,20,0.2);
       text-decoration:none;
+      padding:10px 16px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:14px;
+      transition:0.3s;
+      box-shadow:0 0 18px rgba(57,255,20,0.2);
+    }
+    .btn:hover{box-shadow:0 0 28px rgba(57,255,20,0.4);transform:scale(1.05);}
+
+    .highlight{
+      text-align:center;
+      margin-top:40px;
+      background:rgba(57,255,20,0.03);
+      border-radius:12px;
+      padding:20px;
+      border:1px solid var(--glass-border);
+      box-shadow:0 0 25px var(--neon-soft);
     }
 
-    footer{text-align:center;color:var(--muted);margin-top:30px;font-size:13px}
+    .highlight h2{
+      color:var(--neon);
+      margin-bottom:6px;
+    }
+    .highlight p{
+      color:var(--muted);
+      font-size:14px;
+      margin-bottom:12px;
+    }
 
-    .back{color:var(--muted);text-decoration:none;font-size:13px;display:inline-block;margin-bottom:12px}
-    .back:hover{color:var(--neon)}
+    footer{
+      text-align:center;
+      padding:20px;
+      color:var(--muted);
+      font-size:13px;
+      border-top:1px solid rgba(255,255,255,0.03);
+      margin-top:40px;
+    }
   </style>
 </head>
 <body>
+
+  <header>
+    <h1>🚀 NEW PROJECT</h1>
+    <p>Kuota & VPN Premium — Ready + Config Lengkap</p>
+  </header>
+
   <div class="container">
-    <a href="index.html" class="back">← Kembali ke Beranda</a>
-    <header>
-      <h1>Pembayaran via QRIS</h1>
-      <p>Scan QRIS di bawah dengan aplikasi pembayaran Anda (bank, DANA, OVO, GOPAY, dll). Setelah pembayaran, konfirmasi ke admin via WhatsApp.</p>
-    </header>
 
-    <div class="qris-card">
-      <img src="qris_lampung_store.png" alt="QRIS Lampung Store">
+    <section class="packages">
+      <div class="card">
+        <div class="price">Rp12.000</div>
+        <div class="title">XL Edukasi — 15GB / 7 Hari</div>
+        <p class="desc">Support semua daerah • Kuota siap pakai</p>
+        <a href="https://wa.me/628565050103?text=Halo,%20saya%20ingin%20order%20XL%20Edukasi%2015GB" class="btn">Order Sekarang</a>
+      </div>
 
-      <form id="paymentForm">
-        <label>Nama Lengkap</label>
-        <input type="text" id="nama" placeholder="Masukkan nama lengkap" required>
+      <div class="card">
+        <div class="price">Rp14.000</div>
+        <div class="title">XL Conference — 15GB / 7 Hari</div>
+        <p class="desc">Full speed • Siap + Config</p>
+        <a href="https://wa.me/628565050103?text=Halo,%20saya%20ingin%20order%20XL%20Conference%2015GB" class="btn">Order Sekarang</a>
+      </div>
 
-        <label>Paket</label>
-        <select id="paket" required>
-          <option value="">-- Pilih Paket --</option>
-          <option>XL Buss Lide (Unlimited 30 Hari) - Rp50.000</option>
-          <option>XL Buz Tahyo (Unlimited 30 Hari) - Rp65.000</option>
-          <option>XNXXCVIP DB Yohube (Unlimited 30 Hari) - Rp75.000</option>
-          <option>XL Edukasi (15GB / 7 Hari) - Rp12.000</option>
-          <option>XL Conference (15GB / 7 Hari) - Rp14.000</option>
-          <option>Indosat Apps Senang (12GB / 30 Hari) - Rp30.000</option>
-        </select>
+      <div class="card">
+        <div class="price">Rp30.000</div>
+        <div class="title">Indosat Apps Senang — 12GB / 30 Hari</div>
+        <p class="desc">Stabil • Aman • Ready 24 Jam</p>
+        <a href="https://wa.me/628565050103?text=Halo,%20saya%20ingin%20order%20Indosat%20Apps%20Senang" class="btn">Order Sekarang</a>
+      </div>
 
-        <label>Nominal (Rp)</label>
-        <input type="number" id="nominal" placeholder="Contoh: 50000" required>
+      <div class="card">
+        <div class="price">Rp75.000</div>
+        <div class="title">XL Double YouTube — Unlimited / 30 Hari</div>
+        <p class="desc">Unlimited + Config Siap Pakai</p>
+        <a href="https://wa.me/628565050103?text=Halo,%20saya%20ingin%20order%20XL%20Double%20YouTube%20Unlimited" class="btn">Order Sekarang</a>
+      </div>
+    </section>
 
-        <a id="waLink" class="btn" href="#" target="_blank">
-          <i class="fab fa-whatsapp"></i> Konfirmasi Pembayaran via WhatsApp
-        </a>
-      </form>
-    </div>
+    <section class="highlight">
+      <h2>💳 Pembayaran via QRIS</h2>
+      <p>Pembayaran mudah dan aman melalui QRIS Lampung Store.  
+      Klik tombol di bawah untuk membuka halaman pembayaran resmi.</p>
+      <a href="payment.html" class="btn">Buka Halaman Pembayaran</a>
+    </section>
 
-    <footer>
-      Admin konfirmasi: <b>+62 856-5050-103</b><br>
-      © 2025 NEW PROJECT — Kuota siap pakai
-    </footer>
   </div>
 
-  <script>
-    const form = document.getElementById('paymentForm');
-    const waLink = document.getElementById('waLink');
+  <footer>
+    © 2023 NEW PROJECT — Kepercayaan Anda adalah prioritas kami.
+  </footer>
 
-    form.addEventListener('input', () => {
-      const nama = encodeURIComponent(document.getElementById('nama').value);
-      const paket = encodeURIComponent(document.getElementById('paket').value);
-      const nominal = encodeURIComponent(document.getElementById('nominal').value);
-
-      const pesan = `Halo admin, saya ingin konfirmasi pembayaran via QRIS.%0A%0A` +
-                    `👤 Nama: ${nama}%0A📦 Paket: ${paket}%0A💰 Nominal: Rp${nominal}%0A%0A` +
-                    `Sudah saya bayar via QRIS Lampung Store. Mohon dicek ya.`;
-
-      waLink.href = `https://wa.me/628565050103?text=${pesan}`;
-    });
-  </script>
 </body>
 </html>
