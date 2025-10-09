@@ -3,69 +3,137 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pembayaran — NEW PROJECT</title>
-  <meta name="description" content="Halaman pembayaran QRIS untuk NEW PROJECT" />
+  <title>Pembayaran via QRIS — NEW PROJECT</title>
+  <meta name="description" content="Bayar paket NEW PROJECT via QRIS dengan mudah, cepat, dan aman.">
   <style>
-    :root { --bg:#000; --neon:#39ff14; --text:#e6ffe6; --muted:#9bdc9b; --card:#081009; }
-    body { margin:0; font-family: Arial, Helvetica, sans-serif; background:var(--bg); color:var(--text); }
-    .container { max-width:760px; margin:28px auto; padding:18px; }
-    .card { background:var(--card); padding:18px; border-radius:10px; border:1px solid rgba(57,255,20,0.06); }
-    h1 { color:var(--neon); margin:0 0 8px 0; }
-    p.lead { color:var(--muted); margin:6px 0 12px; }
-    .qris { display:block; max-width:320px; margin:12px auto; border-radius:6px; border:6px solid #fff; background:#fff; }
-    label { display:block; margin-top:10px; color:var(--muted); }
-    input, select, textarea { width:100%; padding:10px; margin-top:6px; border-radius:6px; border:1px solid rgba(255,255,255,0.06); background:#030705; color:var(--text); }
-    .actions { display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; justify-content:center; }
-    .btn { background:var(--neon); color:#001100; padding:10px 14px; border-radius:999px; text-decoration:none; font-weight:700; display:inline-block; }
-    .link-back { color:var(--muted); text-decoration:none; font-size:14px; display:block; text-align:center; margin-top:10px; }
+    :root {
+      --bg: #000;
+      --card: #081009;
+      --neon: #39ff14;
+      --text: #e6ffe6;
+      --muted: #9bdc9b;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .container {
+      max-width: 480px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(57,255,20,0.2);
+      box-shadow: 0 0 12px rgba(57,255,20,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: var(--neon);
+      margin-bottom: 16px;
+    }
+    p {
+      color: var(--muted);
+      line-height: 1.5;
+      text-align: justify;
+    }
+    img.qris {
+      display: block;
+      width: 240px;
+      margin: 16px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(57,255,20,0.4);
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #020702;
+      color: var(--text);
+      font-size: 15px;
+      margin-top: 4px;
+      box-shadow: inset 0 0 5px rgba(57,255,20,0.2);
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--neon);
+      color: #001100;
+      border-radius: 999px;
+      padding: 12px;
+      font-weight: 700;
+      margin-top: 18px;
+      text-decoration: none;
+      box-shadow: 0 0 10px rgba(57,255,20,0.5);
+      transition: 0.2s;
+    }
+    .btn:hover {
+      background: #62ff45;
+      box-shadow: 0 0 20px rgba(57,255,20,0.7);
+    }
+    .back {
+      text-align: center;
+      margin-top: 14px;
+    }
+    .back a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <a href="index.html" class="link-back">&larr; Kembali ke Beranda</a>
     <div class="card">
       <h1>Pembayaran via QRIS</h1>
-      <p class="lead">Scan QRIS di bawah dengan aplikasi pembayaran Anda (bank, DANA, OVO, GOPAY, dll). Setelah melakukan pembayaran, tekan tombol Konfirmasi untuk mengirim bukti ke WhatsApp admin.</p>
+      <p>Scan QRIS di bawah menggunakan aplikasi pembayaran Anda (DANA, OVO, GOPAY, bank, dll). Setelah membayar, tekan tombol konfirmasi untuk mengirim bukti ke WhatsApp admin.</p>
 
-      <!-- QRIS image - replace with your real QR or keep as is -->
-      <img src="qris.svg" alt="QRIS Lampung Store" class="qris" />
+      <img src="qris_lampung_store.png" alt="QRIS Lampung Store" class="qris">
 
-      <form id="confirmForm">
-        <label>Nama</label>
-        <input type="text" id="name" placeholder="Nama lengkap" required />
+      <label>Nama</label>
+      <input type="text" id="nama" placeholder="Nama lengkap" required>
 
-        <label>Paket</label>
-        <input type="text" id="paket" placeholder="Contoh: XL Edukasi" value="" />
+      <label>Paket</label>
+      <input type="text" id="paket" readonly>
 
-        <label>Nominal (Rp)</label>
-        <input type="text" id="nominal" placeholder="Contoh: 12000" />
+      <label>Nominal (Rp)</label>
+      <input type="number" id="harga" readonly>
 
-        <div class="actions">
-          <button type="button" class="btn" id="confirmBtn">Konfirmasi Pembayaran via WhatsApp</button>
-        </div>
-      </form>
-
-      <p style="margin-top:12px; color:var(--muted); font-size:14px;">Admin konfirmasi: +62 856-5050-103</p>
+      <a href="#" id="konfirmasi" class="btn">Konfirmasi Pembayaran via WhatsApp</a>
+      <div class="back"><a href="index.html">← Kembali ke Beranda</a></div>
     </div>
   </div>
 
   <script>
-    // Pre-fill paket & harga from URL params if present
-    function getParam(name){ const params = new URLSearchParams(window.location.search); return params.get(name) || ''; }
-    document.getElementById('paket').value = decodeURIComponent(getParam('paket'));
-    document.getElementById('nominal').value = decodeURIComponent(getParam('harga'));
+    // Ambil query dari URL (paket & harga)
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById('paket').value = params.get('paket') || '';
+    document.getElementById('harga').value = params.get('harga') || '';
 
-    document.getElementById('confirmBtn').addEventListener('click', function(){
-      var name = document.getElementById('name').value.trim();
-      var paket = document.getElementById('paket').value.trim();
-      var nominal = document.getElementById('nominal').value.trim();
+    // Tombol WhatsApp
+    document.getElementById('konfirmasi').addEventListener('click', function(e) {
+      e.preventDefault();
+      const nama = document.getElementById('nama').value.trim();
+      const paket = document.getElementById('paket').value;
+      const harga = document.getElementById('harga').value;
 
-      if(!name){ alert('Isi nama terlebih dahulu.'); return; }
-      if(!paket){ if(!confirm('Paket kosong. Lanjutkan?')) return; }
+      if (!nama) return alert("Isi nama lengkap terlebih dahulu!");
 
-      var text = 'Halo Admin, saya sudah bayar via QRIS.%0ANama: ' + encodeURIComponent(name) + '%0APaket: ' + encodeURIComponent(paket) + '%0ANominal: ' + encodeURIComponent(nominal);
-      var wa = 'https://wa.me/628565050103?text=' + text;
-      window.open(wa, '_blank');
+      const pesan = `Halo admin, saya sudah melakukan pembayaran QRIS.%0A%0A*Nama:* ${nama}%0A*Paket:* ${paket}%0A*Nominal:* Rp${harga}%0A%0AMohon dicek ya 🙏`;
+      const url = `https://wa.me/628565050103?text=${pesan}`;
+      window.open(url, '_blank');
     });
   </script>
 </body>
