@@ -19,42 +19,8 @@ body {
   margin: 0;
   color: var(--text);
   text-align: center;
-  overflow-x: hidden;
-  position: relative;
-  height: 100%;
-}
-
-/* Background senja bergerak */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
   background: linear-gradient(180deg, var(--bg1), var(--bg2));
-  z-index: -2;
-  animation: skyMove 10s infinite alternate ease-in-out;
-}
-
-@keyframes skyMove {
-  0% { filter: brightness(1) hue-rotate(0deg); }
-  100% { filter: brightness(0.9) hue-rotate(30deg); }
-}
-
-/* Awan bergerak */
-body::after {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 200%; height: 100%;
-  background: url('https://i.ibb.co/fnLdgN5/clouds.png') repeat-x;
-  background-size: cover;
-  animation: clouds 60s linear infinite;
-  opacity: 0.15;
-  z-index: -1;
-}
-@keyframes clouds {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  min-height: 100vh;
 }
 
 /* Header */
@@ -170,11 +136,6 @@ ul li {
   width: 240px;
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(255,180,70,0.3);
-  animation: glow 2s infinite alternate;
-}
-@keyframes glow {
-  from {box-shadow: 0 0 10px rgba(255,180,70,0.2);}
-  to {box-shadow: 0 0 25px rgba(255,180,70,0.5);}
 }
 
 .close {
@@ -278,7 +239,7 @@ footer {
     <h3 style="color:var(--neon)">💳 Pembayaran via QRIS</h3>
     <p id="paketInfo"></p>
     <input type="text" id="namaPembeli" placeholder="Masukkan nama Anda">
-    <input type="number" id="nomorPelanggan" placeholder="Masukkan nomor pelanggan (contoh: 087xxxx)">
+    <input type="number" id="nomorPelanggan" placeholder="nomor yang mau diisi kuota (contoh: 087xxxx)">
     <img src="qris_lampung_store.png" alt="QRIS Lampung Store OK">
     <p style="font-size:13px;margin-top:10px;">Scan QRIS untuk melakukan pembayaran.<br>Lalu klik tombol di bawah untuk konfirmasi.</p>
     <a id="waConfirm" class="btn" target="_blank">Konfirmasi via WhatsApp</a>
@@ -287,7 +248,7 @@ footer {
 
 <footer>
   © 2025 New Project — Kuota siap pakai.<br>
-  ☎️ <a href="https://wa.me/628565050102" target="_blank" style="color:#ffdf9f;text-decoration:none;">Customer Service: nomor kedua admin</a>
+  ☎️ <a href="https://wa.me/628565050102" target="_blank" style="color:#ffdf9f;text-decoration:none;">Customer Service: +62 856-5050-102</a>
 </footer>
 
 <script>
@@ -325,4 +286,4 @@ document.querySelectorAll("#namaPembeli,#nomorPelanggan").forEach(el=>{
 </script>
 
 </body>
-    </html>
+  </html>
