@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>new project</title>
+<title>Order & Pembayaran Kuota | Lampung Store</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -24,7 +24,8 @@
 
   header {
     padding: 25px;
-    background: rgba(0,255,200,0.05);
+    text-align: center;
+    background: rgba(0, 255, 200, 0.05);
     box-shadow: 0 0 10px rgba(0,255,200,0.3);
   }
 
@@ -38,28 +39,6 @@
     max-width: 650px;
     margin: 40px auto;
     padding: 20px;
-  }
-
-  .input-nama {
-    margin-bottom: 25px;
-  }
-
-  .input-nama label {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--neon);
-    font-weight: 600;
-  }
-
-  .input-nama input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid rgba(0,255,200,0.3);
-    background: rgba(255,255,255,0.05);
-    color: var(--text);
-    font-size: 15px;
-    text-align: center;
   }
 
   .kuota-card {
@@ -140,24 +119,12 @@
     box-shadow: 0 0 25px rgba(0,255,200,0.15);
     max-width: 340px;
     text-align: center;
-    animation: fadeIn 0.4s ease;
-  }
-
-  @keyframes fadeIn {
-    from {opacity: 0; transform: scale(0.9);}
-    to {opacity: 1; transform: scale(1);}
   }
 
   .modal img {
     width: 240px;
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0,255,200,0.3);
-    animation: glow 2s infinite alternate;
-  }
-
-  @keyframes glow {
-    from {box-shadow: 0 0 10px rgba(0,255,200,0.2);}
-    to {box-shadow: 0 0 25px rgba(0,255,200,0.5);}
   }
 
   .close {
@@ -178,17 +145,12 @@
 <body>
 
 <header>
-  <h1>💎 Kuota & Config Premium — New Project</h1>
-  <p style="color:#8affdf;font-size:14px;">Isi nama Anda, pilih paket, bayar via QRIS, lalu konfirmasi ke admin.</p>
+  <h1>💎 Order & Pembayaran Kuota - Lampung Store</h1>
+  <p style="color:#8affdf;font-size:14px;">Pilih paket, bayar via QRIS, lalu konfirmasi ke admin.</p>
 </header>
 
 <div class="container">
-  <div class="input-nama">
-    <label>Nama Pembeli</label>
-    <input type="text" id="namaPembeli" placeholder="Masukkan nama Untuk Config" required>
-  </div>
 
-  <!-- Paket Kuota -->
   <div class="kuota-card">
     <h2>XL Edukasi</h2>
     <p class="price">Rp12.000</p>
@@ -212,29 +174,29 @@
   </div>
 
   <div class="kuota-card">
-    <h2>XL bis lide</h2>
+    <h2>XL Combo Lite</h2>
+    <p class="price">Rp25.000</p>
+    <ul>
+      <li>✅ 25GB Kuota utama</li>
+      <li>✅ Aktif 15 hari</li>
+      <li>✅ Ready + Config</li>
+    </ul>
+    <a class="btn" onclick="openPayment('XL Combo Lite','25000')">Order & Bayar via QRIS</a>
+  </div>
+
+  <div class="kuota-card">
+    <h2>XL Unlimited Sosmed</h2>
     <p class="price">Rp50.000</p>
     <ul>
-      <li>✅ unlimited</li>
-      <li>✅ Aktif 30 hari</li>
-      <li>✅ Ping stabil + low latency</li>
+      <li>✅ Unlimited WhatsApp, IG, TikTok</li>
+      <li>✅ Masa aktif 30 hari</li>
+      <li>✅ Ready + Config</li>
     </ul>
-    <a class="btn" onclick="openPayment('XL Gaming','16000')">Order & Bayar via QRIS</a>
+    <a class="btn" onclick="openPayment('XL Unlimited Sosmed','50000')">Order & Bayar via QRIS</a>
   </div>
 
   <div class="kuota-card">
-    <h2>XL bis scooter</h2>
-    <p class="price">Rp65.000</p>
-    <ul>
-      <li>✅ unlimited</li>
-      <li>✅ Aktif 30 hari</li>
-      <li>✅ Ready semua daerah</li>
-    </ul>
-    <a class="btn" onclick="openPayment('XL Sosmed','17000')">Order & Bayar via QRIS</a>
-  </div>
-
-  <div class="kuota-card">
-    <h2>XL Double YouTube (Premium)</h2>
+    <h2>XL Double YouTube</h2>
     <p class="price">Rp75.000</p>
     <ul>
       <li>✅ Unlimited</li>
@@ -244,6 +206,7 @@
     </ul>
     <a class="btn" onclick="openPayment('XL Double YouTube','75000')">Order & Bayar via QRIS</a>
   </div>
+
 </div>
 
 <!-- Modal Pembayaran -->
@@ -252,14 +215,14 @@
     <span class="close" onclick="closeModal()">&times;</span>
     <h3 style="color:var(--neon)">💳 Pembayaran via QRIS</h3>
     <p id="paketInfo" style="margin-bottom:8px;"></p>
-    <img src="qris_lampung_store.png" alt="QRIS Lampung Store OK">
+    <img src="qris_lampung_store.png" alt="QRIS Lampung Store">
     <p style="font-size:13px;margin-top:10px;">Scan QRIS untuk melakukan pembayaran.<br>Lalu klik tombol di bawah untuk konfirmasi.</p>
     <a id="waConfirm" class="btn" target="_blank">Konfirmasi Pembayaran via WhatsApp</a>
   </div>
 </div>
 
 <footer>
-  © 2023 New Project — Kuota siap pakai.
+  © 2025 Lampung Store — Kuota siap pakai.
 </footer>
 
 <script>
@@ -268,15 +231,9 @@
   const waConfirm = document.getElementById("waConfirm");
 
   function openPayment(paket, harga){
-    const nama = document.getElementById("namaPembeli").value.trim();
-    if(!nama){
-      alert("Masukkan nama pembeli terlebih dahulu!");
-      return;
-    }
-
     modal.style.display = "flex";
-    paketInfo.innerHTML = `👤 <b>${nama}</b><br>📦 ${paket}<br>💰 Rp${harga}`;
-    const pesan = encodeURIComponent(`Halo admin, saya sudah melakukan pembayaran via QRIS.\n\n👤 Nama: ${nama}\n📦 Paket: ${paket}\n💰 Nominal: Rp${harga}\n\nMohon dikonfirmasi ya.`);
+    paketInfo.innerHTML = `Paket: <b>${paket}</b><br>Nominal: <b>Rp${harga}</b>`;
+    const pesan = encodeURIComponent(`Halo admin, saya sudah melakukan pembayaran via QRIS.\n\n📦 Paket: ${paket}\n💰 Nominal: Rp${harga}\n\nMohon dikonfirmasi ya.`);
     waConfirm.href = `https://wa.me/628565050103?text=${pesan}`;
   }
 
@@ -292,4 +249,4 @@
 </script>
 
 </body>
-                                                                                          </html>
+      </html>
