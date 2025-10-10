@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>new project</title>
+<title>New Project - Kuota Premium</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --neon: #00ffcc;
-    --bg1: #000814;
+    --bg1: #0a0014;
     --bg2: #000;
     --text: #e6f7f5;
   }
@@ -20,18 +20,70 @@
     margin: 0;
     padding: 0;
     text-align: center;
+    overflow-x: hidden;
+  }
+
+  /* 🌇 Background senja bergerak */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(180deg, #ff9d6c, #ff5f6d, #2b1055);
+    background-size: 400% 400%;
+    animation: senjaSky 14s ease-in-out infinite;
+    z-index: -3;
+  }
+  @keyframes senjaSky {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* 💫 Partikel Neon bergerak */
+  .particles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+  }
+
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--neon);
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: float 15s linear infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-10vh) scale(1); opacity: 0; }
   }
 
   header {
     padding: 25px;
-    background: rgba(0,255,200,0.05);
+    background: rgba(0,255,200,0.07);
     box-shadow: 0 0 10px rgba(0,255,200,0.3);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 5;
   }
 
   header h1 {
     color: var(--neon);
-    text-shadow: 0 0 15px var(--neon);
+    text-shadow: 0 0 20px var(--neon), 0 0 40px var(--neon);
     font-size: 1.9em;
+    animation: glowPulse 2s infinite alternate;
+  }
+
+  @keyframes glowPulse {
+    from { text-shadow: 0 0 15px var(--neon); }
+    to { text-shadow: 0 0 35px var(--neon); }
   }
 
   .container {
@@ -41,19 +93,20 @@
   }
 
   .kuota-card {
-    background: rgba(255,255,255,0.03);
+    background: rgba(255,255,255,0.05);
     border: 1px solid rgba(0,255,200,0.3);
     border-radius: 16px;
     padding: 18px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     text-align: left;
     box-shadow: 0 0 25px rgba(0,255,200,0.05);
-    transition: 0.3s;
+    transition: 0.4s;
+    animation: fadeUp 1s ease-in-out;
   }
 
   .kuota-card:hover {
-    box-shadow: 0 0 20px rgba(0,255,200,0.25);
-    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(0,255,200,0.4);
+    transform: scale(1.03);
   }
 
   .kuota-card h2 {
@@ -69,20 +122,11 @@
     margin-bottom: 5px;
   }
 
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 8px 0;
-  }
-
-  ul li {
-    font-size: 0.95em;
-    padding: 3px 0;
-  }
+  ul { list-style: none; padding: 0; margin: 8px 0; }
+  ul li { font-size: 0.95em; padding: 3px 0; }
 
   .btn {
     display: inline-block;
-    text-align: center;
     background: var(--neon);
     color: #001414;
     padding: 10px 18px;
@@ -95,10 +139,11 @@
 
   .btn:hover {
     background: #00e6b8;
-    box-shadow: 0 0 15px var(--neon);
+    box-shadow: 0 0 20px var(--neon);
+    transform: scale(1.05);
   }
 
-  /* Modal */
+  /* 💳 Modal */
   .modal {
     display: none;
     position: fixed;
@@ -115,33 +160,28 @@
     padding: 20px;
     border-radius: 16px;
     border: 1px solid rgba(0,255,200,0.2);
-    box-shadow: 0 0 25px rgba(0,255,200,0.15);
+    box-shadow: 0 0 25px rgba(0,255,200,0.25);
     max-width: 340px;
     text-align: center;
-    animation: fadeIn 0.4s ease;
-  }
-
-  @keyframes fadeIn {
-    from {opacity: 0; transform: scale(0.9);}
-    to {opacity: 1; transform: scale(1);}
+    animation: fadeIn 0.5s ease;
   }
 
   .modal img {
     width: 240px;
     border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0,255,200,0.3);
-    animation: glow 2s infinite alternate;
+    box-shadow: 0 0 25px rgba(0,255,200,0.4);
+    animation: glowQR 2s infinite alternate;
   }
 
-  @keyframes glow {
-    from {box-shadow: 0 0 10px rgba(0,255,200,0.2);}
-    to {box-shadow: 0 0 25px rgba(0,255,200,0.5);}
+  @keyframes glowQR {
+    from { box-shadow: 0 0 15px rgba(0,255,200,0.2); }
+    to { box-shadow: 0 0 30px rgba(0,255,200,0.6); }
   }
 
   .close {
     color: var(--neon);
     font-weight: bold;
-    font-size: 20px;
+    font-size: 22px;
     float: right;
     cursor: pointer;
   }
@@ -161,14 +201,50 @@
   footer {
     margin-top: 40px;
     font-size: 0.85em;
-    color: #aaa;
+    color: #9dd;
+    padding-bottom: 20px;
+  }
+
+  .cs-box {
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(0,255,200,0.3);
+    display: inline-block;
+    box-shadow: 0 0 20px rgba(0,255,200,0.2);
+    background: rgba(0,255,200,0.05);
+  }
+
+  .cs-box a {
+    color: var(--neon);
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 </style>
 </head>
 <body>
 
+<!-- 🌌 Partikel Neon -->
+<div class="particles">
+  <script>
+    for(let i=0;i<25;i++){
+      const s=document.createElement("div");
+      s.className="particle";
+      s.style.left=Math.random()*100+"%";
+      s.style.animationDelay=Math.random()*15+"s";
+      s.style.width=s.style.height=Math.random()*4+2+"px";
+      document.body.querySelector(".particles").appendChild(s);
+    }
+  </script>
+</div>
+
 <header>
-  <h1>💎 Kuota & Config Premium — New Project</h1>
+  <h1>Kuota & Config Premium — New Project</h1>
   <p style="color:#8affdf;font-size:14px;">Pilih paket, isi nama, bayar via QRIS, lalu konfirmasi ke admin.</p>
 </header>
 
@@ -230,9 +306,16 @@
     </ul>
     <a class="btn" onclick="openPayment('XL Double YouTube','75000')">Order & Bayar via QRIS</a>
   </div>
+
+  <!-- Customer Service -->
+  <div class="cs-box">
+    ☎️ Customer Service:<br>
+    <a href="https://wa.me/628565050102" target="_blank">+62 856-5050-102 (Klik untuk chat)</a>
+  </div>
+
 </div>
 
-<!-- Modal Pembayaran -->
+<!-- Modal QRIS -->
 <div id="paymentModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
@@ -269,16 +352,9 @@
     waConfirm.href = `https://wa.me/628565050103?text=${pesan}`;
   });
 
-  function closeModal(){
-    modal.style.display = "none";
-  }
-
-  window.onclick = function(event){
-    if(event.target == modal){
-      closeModal();
-    }
-  }
+  function closeModal(){ modal.style.display = "none"; }
+  window.onclick = e => { if(e.target == modal){ closeModal(); } }
 </script>
 
 </body>
-      </html>
+  </html>
