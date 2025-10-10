@@ -2,251 +2,143 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Order & Pembayaran Kuota | Lampung Store</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>order sekarang juga</title>
 <style>
-  :root {
-    --neon: #00ffcc;
-    --bg1: #000814;
-    --bg2: #000;
-    --text: #e6f7f5;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  background: linear-gradient(-45deg, #1a1a1a, #292929, #181818, #202020);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+}
+@keyframes gradientMove {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+.container {
+  text-align: center;
+  padding: 40px 20px;
+}
+h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88;
+  animation: fadeIn 2s ease-in-out;
+}
+.section {
+  margin: 40px auto;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0,255,136,0.2);
+  animation: fadeInUp 1.5s ease;
+}
+.section h2 {
+  color: #00ffa1;
+  border-bottom: 2px solid #00ffa1;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+.item {
+  margin: 15px 0;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.item:last-child { border-bottom: none; }
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  background: #00ff88;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  animation: pulse 2s infinite;
+}
+.btn:hover {
+  background: #00ffaa;
+  transform: scale(1.05);
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 5px #00ff88; }
+  50% { box-shadow: 0 0 20px #00ff88; }
+  100% { box-shadow: 0 0 5px #00ff88; }
+}
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+@keyframes fadeInUp { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
 
-  body {
-    font-family: "Poppins", sans-serif;
-    background: radial-gradient(circle at 10% 10%, rgba(0,255,200,0.05), transparent 10%), linear-gradient(180deg,var(--bg1),var(--bg2));
-    color: var(--text);
-    margin: 0;
-    padding: 0;
-    text-align: center;
-  }
-
-  header {
-    padding: 25px;
-    text-align: center;
-    background: rgba(0, 255, 200, 0.05);
-    box-shadow: 0 0 10px rgba(0,255,200,0.3);
-  }
-
-  header h1 {
-    color: var(--neon);
-    text-shadow: 0 0 15px var(--neon);
-    font-size: 1.9em;
-  }
-
-  .container {
-    max-width: 650px;
-    margin: 40px auto;
-    padding: 20px;
-  }
-
-  .kuota-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(0,255,200,0.3);
-    border-radius: 16px;
-    padding: 18px;
-    margin-bottom: 20px;
-    text-align: left;
-    box-shadow: 0 0 25px rgba(0,255,200,0.05);
-    transition: 0.3s;
-  }
-
-  .kuota-card:hover {
-    box-shadow: 0 0 20px rgba(0,255,200,0.25);
-    transform: scale(1.02);
-  }
-
-  .kuota-card h2 {
-    color: var(--neon);
-    font-size: 1.2em;
-    margin-bottom: 8px;
-  }
-
-  .price {
-    color: var(--neon);
-    font-weight: bold;
-    font-size: 1.1em;
-    margin-bottom: 5px;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 8px 0;
-  }
-
-  ul li {
-    font-size: 0.95em;
-    padding: 3px 0;
-  }
-
-  .btn {
-    display: inline-block;
-    text-align: center;
-    background: var(--neon);
-    color: #001414;
-    padding: 10px 18px;
-    border-radius: 30px;
-    font-weight: 600;
-    text-decoration: none;
-    margin-top: 10px;
-    transition: 0.3s;
-  }
-
-  .btn:hover {
-    background: #00e6b8;
-    box-shadow: 0 0 15px var(--neon);
-  }
-
-  /* Modal */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85);
-    justify-content: center;
-    align-items: center;
-  }
-
-  .modal-content {
-    background: rgba(255,255,255,0.05);
-    padding: 20px;
-    border-radius: 16px;
-    border: 1px solid rgba(0,255,200,0.2);
-    box-shadow: 0 0 25px rgba(0,255,200,0.15);
-    max-width: 340px;
-    text-align: center;
-  }
-
-  .modal img {
-    width: 240px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0,255,200,0.3);
-  }
-
-  .close {
-    color: var(--neon);
-    font-weight: bold;
-    font-size: 20px;
-    float: right;
-    cursor: pointer;
-  }
-
-  footer {
-    margin-top: 40px;
-    font-size: 0.85em;
-    color: #aaa;
-  }
+/* Efek glow untuk gambar QRIS */
+img.qris-glow {
+  border-radius: 20px;
+  box-shadow: 0 0 25px #00ff88;
+  transition: 0.3s;
+  width: 260px;
+}
+img.qris-glow:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px #00ffaa;
+}
 </style>
 </head>
 <body>
+  <div class="container">
+    <h1>💥 paket hemat - new project 🔥</h1>
 
-<header>
-  <h1>💎 Order & Pembayaran Kuota - Lampung Store</h1>
-  <p style="color:#8affdf;font-size:14px;">Pilih paket, bayar via QRIS, lalu konfirmasi ke admin.</p>
-</header>
+    <div class="section">
+      <h2>🔖 KUOTA UNLIMITED</h2>
+      <div class="item">
+        <p><strong>Rp.50.000</strong> — XL Bizz Lite<br>Unlimited | 1 Bulan | Support semua daerah</p>
+        <a href="https://wa.me/message/JTNDDV7LXQYDD1?text=Halo%20saya%20mau%20order%20XL%20Bizz%20Lite%20Rp50.000" target="_blank" class="btn">💬 Order Sekarang</a>
+      </div>
+      <div class="item">
+        <p><strong>Rp.65.000</strong> — XL Bizz Tayo<br>Unlimited | 1 Bulan | Support semua daerah</p>
+        <a href="https://wa.me/message/JTNDDV7LXQYDD1?text=Halo%20saya%20mau%20order%20XL%20Bizz%20Tayo%20Rp65.000" target="_blank" class="btn">💬 Order Sekarang</a>
+      </div>
+      <div class="item">
+        <p><strong>Rp.75.000</strong> — XL Double YouTube<br>Unlimited | 1 Bulan | Support semua daerah</p>
+        <a href="https://wa.me/message/JTNDDV7LXQYDD1?text=Halo%20saya%20mau%20order%20XL%20Double%20YouTube%20Rp75.000" target="_blank" class="btn">💬 Order Sekarang</a>
+      </div>
+    </div>
 
-<div class="container">
+    <div class="section">
+      <h2>🔖 KUOTA MURAH & TAHAN LAMA</h2>
+      <div class="item">
+        <p><strong>Rp.30.000</strong> — Indosat Apps Fun<br>12GB | 1 Bulan | Support semua daerah</p>
+        <a href="https://wa.me/message/JTNDDV7LXQYDD1?text=Halo%20saya%20mau%20order%20Indosat%20Apps%20Fun%20Rp30.000" target="_blank" class="btn">💬 Order Sekarang</a>
+      </div>
+    </div>
 
-  <div class="kuota-card">
-    <h2>XL Edukasi</h2>
-    <p class="price">Rp12.000</p>
-    <ul>
-      <li>✅ 15GB Edukasi</li>
-      <li>✅ Aktif 7 hari</li>
-      <li>✅ Ready + Config</li>
-    </ul>
-    <a class="btn" onclick="openPayment('XL Edukasi','12000')">Order & Bayar via QRIS</a>
+    <div class="section">
+      <h2>🔖 KUOTA KETENGAN</h2>
+      <div class="item">
+        <p><strong>Rp.12.000</strong> — XL Edukasi<br>15GB | 7 Hari | Support semua daerah</p>
+        <a href="https://wa.me/message/JTNDDV7LXQYDD1?text=Halo%20saya%20mau%20order%20XL%20Edukasi%20Rp12.000" target="_blank" class="btn">💬 Order Sekarang</a>
+      </div>
+      <div class="item">
+        <p><strong>Rp.14.000</strong> — XL Conference<br>15GB | 7 Hari | Support semua daerah</p>
+        <a href="https://wa.me/message/JTNDDV7LXQYDD1?text=Halo%20saya%20mau%20order%20XL%20Conference%20Rp14.000" target="_blank" class="btn">💬 Order Sekarang</a>
+      </div>
+    </div>
+
+    <!-- BAGIAN PEMBAYARAN QRIS -->
+    <div class="section">
+      <h2>💳 PEMBAYARAN VIA QRIS</h2>
+      <p>Scan QRIS berikut untuk melakukan pembayaran ke toko kami.</p>
+      <img src="https://i.ibb.co/rGHDW6M/qris-lampung-store.png" alt="QRIS Lampung Store" class="qris-glow">
+      <p><strong>Nama Merchant:</strong> Lampung Store OK2305334<br>
+      <strong>NMID:</strong> ID2025389288593<br>
+      <strong>Keterangan:</strong> Sertakan nama & paket saat kirim bukti pembayaran.</p>
+      <a href="https://wa.me/message/JTNDDV7LXQYDD1?text=Halo%20saya%20sudah%20bayar%20via%20QRIS%2C%20mohon%20konfirmasi%20ya" target="_blank" class="btn">📤 Konfirmasi Pembayaran</a>
+    </div>
+
   </div>
-
-  <div class="kuota-card">
-    <h2>XL Conference</h2>
-    <p class="price">Rp14.000</p>
-    <ul>
-      <li>✅ 15GB Zoom/Meet</li>
-      <li>✅ Aktif 7 hari</li>
-      <li>✅ Support semua daerah</li>
-    </ul>
-    <a class="btn" onclick="openPayment('XL Conference','14000')">Order & Bayar via QRIS</a>
-  </div>
-
-  <div class="kuota-card">
-    <h2>XL Combo Lite</h2>
-    <p class="price">Rp25.000</p>
-    <ul>
-      <li>✅ 25GB Kuota utama</li>
-      <li>✅ Aktif 15 hari</li>
-      <li>✅ Ready + Config</li>
-    </ul>
-    <a class="btn" onclick="openPayment('XL Combo Lite','25000')">Order & Bayar via QRIS</a>
-  </div>
-
-  <div class="kuota-card">
-    <h2>XL Unlimited Sosmed</h2>
-    <p class="price">Rp50.000</p>
-    <ul>
-      <li>✅ Unlimited WhatsApp, IG, TikTok</li>
-      <li>✅ Masa aktif 30 hari</li>
-      <li>✅ Ready + Config</li>
-    </ul>
-    <a class="btn" onclick="openPayment('XL Unlimited Sosmed','50000')">Order & Bayar via QRIS</a>
-  </div>
-
-  <div class="kuota-card">
-    <h2>XL Double YouTube</h2>
-    <p class="price">Rp75.000</p>
-    <ul>
-      <li>✅ Unlimited</li>
-      <li>✅ Masa aktif 1 bulan</li>
-      <li>✅ Support semua daerah</li>
-      <li>✅ Kuota siap pakai (Sudah + Config)</li>
-    </ul>
-    <a class="btn" onclick="openPayment('XL Double YouTube','75000')">Order & Bayar via QRIS</a>
-  </div>
-
-</div>
-
-<!-- Modal Pembayaran -->
-<div id="paymentModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h3 style="color:var(--neon)">💳 Pembayaran via QRIS</h3>
-    <p id="paketInfo" style="margin-bottom:8px;"></p>
-    <img src="qris_lampung_store.png" alt="QRIS Lampung Store">
-    <p style="font-size:13px;margin-top:10px;">Scan QRIS untuk melakukan pembayaran.<br>Lalu klik tombol di bawah untuk konfirmasi.</p>
-    <a id="waConfirm" class="btn" target="_blank">Konfirmasi Pembayaran via WhatsApp</a>
-  </div>
-</div>
-
-<footer>
-  © 2025 Lampung Store — Kuota siap pakai.
-</footer>
-
-<script>
-  const modal = document.getElementById("paymentModal");
-  const paketInfo = document.getElementById("paketInfo");
-  const waConfirm = document.getElementById("waConfirm");
-
-  function openPayment(paket, harga){
-    modal.style.display = "flex";
-    paketInfo.innerHTML = `Paket: <b>${paket}</b><br>Nominal: <b>Rp${harga}</b>`;
-    const pesan = encodeURIComponent(`Halo admin, saya sudah melakukan pembayaran via QRIS.\n\n📦 Paket: ${paket}\n💰 Nominal: Rp${harga}\n\nMohon dikonfirmasi ya.`);
-    waConfirm.href = `https://wa.me/628565050103?text=${pesan}`;
-  }
-
-  function closeModal(){
-    modal.style.display = "none";
-  }
-
-  window.onclick = function(event){
-    if(event.target == modal){
-      closeModal();
-    }
-  }
-</script>
-
 </body>
-      </html>
+          </html>
