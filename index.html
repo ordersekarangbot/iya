@@ -7,669 +7,156 @@
   <meta name="description" content="Daftar paket kuota siap pakai, harga, dan fitur. Cocok untuk jualan via WA/IG/Toko online." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
     :root {
       --primary: #0f1724;
-      --secondary: #0b1220;
       --accent: #06b6d4;
       --accent-secondary: #7c3aed;
       --text: #e6eef6;
       --text-muted: #94a3b8;
       --card-bg: rgba(255, 255, 255, 0.03);
       --card-border: rgba(255, 255, 255, 0.08);
-      --success: #10b981;
       --gradient: linear-gradient(135deg, #06b6d4 0%, #7c3aed 100%);
-      --gradient-dark: linear-gradient(135deg, #0891b2 0%, #6d28d9 100%);
     }
-    
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
-    html, body {
-      height: 100%;
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial;
-      color: var(--text);
-      background: linear-gradient(135deg, #071023 0%, #0f1724 100%);
-      line-height: 1.6;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
-    /* Header Styles */
-    header {
-      padding: 40px 0 20px;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--gradient);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .logo-icon i {
-      font-size: 20px;
-      color: #04202a;
-    }
-    
-    .logo-text h1 {
-      font-size: 24px;
-      font-weight: 700;
-      margin: 0;
-      background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .logo-text p {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin: 0;
-    }
-    
-    .header-badges {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    
-    .badge {
-      background: rgba(6, 182, 212, 0.1);
-      color: var(--accent);
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-      border: 1px solid rgba(6, 182, 212, 0.2);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    
-    .badge i {
-      font-size: 10px;
-    }
-    
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      padding: 40px 0 60px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .hero h2 {
-      font-size: 40px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-    
-    .hero p {
-      font-size: 18px;
-      color: var(--text-muted);
-      margin-bottom: 30px;
-    }
-    
-    .hero-badges {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-    
-    .hero-badge {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 10px 16px;
-      border-radius: 10px;
-      font-size: 14px;
-    }
-    
-    .hero-badge i {
-      color: var(--accent);
-    }
-    
-    /* Package Grid */
-    .section-title {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    
-    .section-title h2 {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    
-    .section-title p {
-      color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    
-    .packages-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 24px;
-      margin-bottom: 60px;
-    }
-    
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { font-family: 'Inter', sans-serif; background: #0b1220; color: var(--text); }
+    .container { max-width: 1200px; margin: auto; padding: 20px; }
+    h1, h2, h3 { color: var(--text); }
+
     .package-card {
       background: var(--card-bg);
-      border-radius: 16px;
-      padding: 24px;
       border: 1px solid var(--card-border);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .package-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      border-color: rgba(6, 182, 212, 0.3);
-    }
-    
-    .package-card.popular::before {
-      content: "POPULAR";
-      position: absolute;
-      top: 20px;
-      right: -30px;
-      background: var(--gradient);
-      color: #04202a;
-      padding: 5px 35px;
-      font-size: 12px;
-      font-weight: 700;
-      transform: rotate(45deg);
-    }
-    
-    .package-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 16px;
-    }
-    
-    .package-name {
-      font-size: 18px;
-      font-weight: 600;
-    }
-    
-    .package-provider {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-    
-    .package-price {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--accent);
-    }
-    
-    .package-details {
-      margin: 20px 0;
-    }
-    
-    .package-tag {
-      display: inline-block;
-      background: rgba(6, 182, 212, 0.1);
-      color: var(--accent);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-    
-    .package-features {
-      list-style: none;
-    }
-    
-    .package-features li {
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .package-features li:last-child {
-      border-bottom: none;
-    }
-    
-    .package-features li i {
-      color: var(--success);
-      font-size: 14px;
-    }
-    
-    .package-cta {
-      margin-top: 20px;
-    }
-    
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 14px;
-      transition: all 0.3s ease;
-      width: 100%;
-      text-decoration: none;
-    }
-    
-    .btn-primary {
-      background: var(--gradient);
-      color: #04202a;
-    }
-    
-    .btn-primary:hover {
-      background: var(--gradient-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(6, 182, 212, 0.4);
-    }
-    
-    /* Contact Section */
-    .contact-section {
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 16px;
-      padding: 40px;
-      margin-bottom: 60px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    
-    .contact-header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    
-    .contact-header h3 {
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-    
-    .contact-header p {
-      color: var(--text-muted);
-    }
-    
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    
-    .contact-card {
-      background: rgba(255, 255, 255, 0.03);
       border-radius: 12px;
       padding: 20px;
-      text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: all 0.3s ease;
+      margin-bottom: 24px;
     }
-    
-    .contact-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(6, 182, 212, 0.3);
+
+    .btn-primary {
+      background: var(--gradient);
+      border: none;
+      border-radius: 10px;
+      color: #04202a;
+      padding: 12px;
+      width: 100%;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
     }
-    
-    .contact-card h4 {
-      margin: 10px 0 5px;
-      color: var(--accent);
-    }
-    
-    .contact-card a {
-      color: #38bdf8;
-      text-decoration: none;
-      font-size: 14px;
-      word-break: break-all;
-      transition: color 0.3s ease;
-    }
-    
-    .contact-card a:hover {
-      color: var(--accent);
-    }
-    
-    .contact-icon {
-      width: 50px;
-      height: 50px;
-      background: rgba(6, 182, 212, 0.1);
-      border-radius: 50%;
-      display: flex;
+
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    /* --- QRIS MODAL --- */
+    .qris-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
       align-items: center;
       justify-content: center;
-      margin: 0 auto;
     }
-    
-    .contact-icon i {
+    .qris-content {
+      background: #111827;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      border: 1px solid var(--card-border);
+    }
+    .qris-content img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .qris-content h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
       color: var(--accent);
-      font-size: 20px;
     }
-    
-    /* Floating Button */
-    .order-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 999;
-    }
-    
-    .order-float button {
+    .btn-qris {
+      display: inline-block;
       background: var(--gradient);
       color: #04202a;
-      padding: 16px 24px;
-      border: none;
-      border-radius: 50px;
-      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 5px 20px rgba(6, 182, 212, 0.5);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.3s ease;
+      margin-top: 10px;
     }
-    
-    .order-float button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.6);
-    }
-    
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 30px 0;
+    .btn-close {
+      margin-top: 15px;
+      background: transparent;
       color: var(--text-muted);
+      border: none;
+      cursor: pointer;
       font-size: 14px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero h2 {
-        font-size: 32px;
-      }
-      
-      .packages-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .contact-section {
-        padding: 24px;
-      }
-      
-      .header-content {
-        flex-direction: column;
-        text-align: center;
-      }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
-    <header>
-      <div class="header-content">
-        <div class="logo">
-          <div class="logo-icon">
-            <i class="fas fa-bolt"></i>
-          </div>
-          <div class="logo-text">
-            <h1>PAKET HEMAT</h1>
-            <p>kuota siap pakai — sudah + config</p>
-          </div>
-        </div>
-        <div class="header-badges">
-          <div class="badge">
-            <i class="fas fa-check-circle"></i> Ready & Config
-          </div>
-          <div class="badge">
-            <i class="fas fa-map-marker-alt"></i> Support Semua Daerah
-          </div>
-        </div>
-      </div>
-    </header>
+    <h1>💎 Paket Kuota Premium</h1>
+    <p>Pilih paketmu, bayar via QRIS, lalu konfirmasi otomatis via WhatsApp!</p>
 
-    <section class="hero">
-      <h2>Kuota Premium Siap Pakai</h2>
-      <p>Dapatkan akses internet cepat dengan paket kuota premium yang sudah termasuk konfigurasi. Langsung aktif setelah pembayaran!</p>
-      
-      <div class="hero-badges">
-        <div class="hero-badge">
-          <i class="fas fa-shield-alt"></i> Terjamin & Terpercaya
-        </div>
-        <div class="hero-badge">
-          <i class="fas fa-bolt"></i> Langsung Aktif
-        </div>
-        <div class="hero-badge">
-          <i class="fas fa-headset"></i> Support 24/7
-        </div>
-      </div>
-    </section>
+    <!-- Paket 1 -->
+    <div class="package-card">
+      <h3>Rp12.000 — XL Edukasi (7 Hari)</h3>
+      <ul>
+        <li>15GB — Siap Pakai + Config</li>
+        <li>Support semua daerah</li>
+      </ul>
+      <button class="btn-primary" onclick="bukaQRIS('Rp12.000 XL Edukasi','https://wa.me/628565050103?text=Order%20Rp12.000%20XL%20Edukasi')">Order Sekarang</button>
+    </div>
 
-    <section class="packages-section">
-      <div class="section-title">
-        <h2>Pilihan Paket Kuota</h2>
-        <p>Berbagai pilihan paket kuota premium dengan harga terjangkau dan kualitas terbaik</p>
-      </div>
-
-      <div class="packages-grid">
-        <!-- Paket 1 -->
-        <div class="package-card">
-          <div class="package-header">
-            <div>
-              <div class="package-name">XL Edukasi</div>
-              <div class="package-provider">15GB - 7 Hari</div>
-            </div>
-            <div class="package-price">Rp12.000</div>
-          </div>
-          
-          <div class="package-details">
-            <span class="package-tag">Hemat & Cepat</span>
-            <ul class="package-features">
-              <li><i class="fas fa-check"></i> Support semua daerah</li>
-              <li><i class="fas fa-check"></i> Kuota siap pakai + config</li>
-              <li><i class="fas fa-check"></i> Cocok untuk browsing & sosial media</li>
-            </ul>
-          </div>
-          
-          <div class="package-cta">
-            <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103?text=Order%20Rp12.000%20XL%20Edukasi'">
-              <i class="fab fa-whatsapp"></i> Order Sekarang
-            </button>
-          </div>
-        </div>
-
-        <!-- Paket 2 -->
-        <div class="package-card">
-          <div class="package-header">
-            <div>
-              <div class="package-name">XL Conference</div>
-              <div class="package-provider">15GB - 7 Hari</div>
-            </div>
-            <div class="package-price">Rp14.000</div>
-          </div>
-          
-          <div class="package-details">
-            <span class="package-tag">Stabil & Lancar</span>
-            <ul class="package-features">
-              <li><i class="fas fa-check"></i> Support semua daerah</li>
-              <li><i class="fas fa-check"></i> Kuota siap pakai + config</li>
-              <li><i class="fas fa-check"></i> Cocok untuk meeting online</li>
-            </ul>
-          </div>
-          
-          <div class="package-cta">
-            <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103?text=Order%20Rp14.000%20XL%20Conference'">
-              <i class="fab fa-whatsapp"></i> Order Sekarang
-            </button>
-          </div>
-        </div>
-
-        <!-- Paket 3 -->
-        <div class="package-card">
-          <div class="package-header">
-            <div>
-              <div class="package-name">Indosat Apps Fun</div>
-              <div class="package-provider">12GB - 30 Hari</div>
-            </div>
-            <div class="package-price">Rp30.000</div>
-          </div>
-          
-          <div class="package-details">
-            <span class="package-tag">1 Bulan Penuh</span>
-            <ul class="package-features">
-              <li><i class="fas fa-check"></i> Support semua daerah</li>
-              <li><i class="fas fa-check"></i> Kuota siap pakai + config</li>
-              <li><i class="fas fa-check"></i> Masa aktif 1 bulan penuh</li>
-            </ul>
-          </div>
-          
-          <div class="package-cta">
-            <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103?text=Order%20Rp30.000%20Indosat%20Apps%20Fun'">
-              <i class="fab fa-whatsapp"></i> Order Sekarang
-            </button>
-          </div>
-        </div>
-
-        <!-- Paket 4 -->
-        <div class="package-card popular">
-          <div class="package-header">
-            <div>
-              <div class="package-name">XL Bizz Lite</div>
-              <div class="package-provider">Unlimited - 30 Hari</div>
-            </div>
-            <div class="package-price">Rp50.000</div>
-          </div>
-          
-          <div class="package-details">
-            <span class="package-tag">Unlimited Favorit</span>
-            <ul class="package-features">
-              <li><i class="fas fa-check"></i> Support semua daerah</li>
-              <li><i class="fas fa-check"></i> Kuota unlimited + config</li>
-              <li><i class="fas fa-check"></i> Saran: jangan pakai nomor utama</li>
-            </ul>
-          </div>
-          
-          <div class="package-cta">
-            <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103?text=Order%20Rp50.000%20XL%20Bizz%20Lite'">
-              <i class="fab fa-whatsapp"></i> Order Sekarang
-            </button>
-          </div>
-        </div>
-
-        <!-- Paket 5 -->
-        <div class="package-card">
-          <div class="package-header">
-            <div>
-              <div class="package-name">XL Bizz Tayo</div>
-              <div class="package-provider">Unlimited - 30 Hari</div>
-            </div>
-            <div class="package-price">Rp65.000</div>
-          </div>
-          
-          <div class="package-details">
-            <span class="package-tag">Unlimited Premium</span>
-            <ul class="package-features">
-              <li><i class="fas fa-check"></i> Support semua daerah</li>
-              <li><i class="fas fa-check"></i> Kuota unlimited + config</li>
-              <li><i class="fas fa-check"></i> Saran: jangan pakai nomor utama</li>
-            </ul>
-          </div>
-          
-          <div class="package-cta">
-            <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103?text=Order%20Rp65.000%20XL%20Bizz%20Tayo'">
-              <i class="fab fa-whatsapp"></i> Order Sekarang
-            </button>
-          </div>
-        </div>
-
-        <!-- Paket 6 -->
-        <div class="package-card">
-          <div class="package-header">
-            <div>
-              <div class="package-name">XL Double YouTube</div>
-              <div class="package-provider">Unlimited - 30 Hari</div>
-            </div>
-            <div class="package-price">Rp75.000</div>
-          </div>
-          
-          <div class="package-details">
-            <span class="package-tag">Streaming Expert</span>
-            <ul class="package-features">
-              <li><i class="fas fa-check"></i> Support semua daerah</li>
-              <li><i class="fas fa-check"></i> Kuota unlimited + config</li>
-              <li><i class="fas fa-check"></i> Optimal untuk streaming video</li>
-            </ul>
-          </div>
-          
-          <div class="package-cta">
-            <button class="btn btn-primary" onclick="location.href='https://wa.me/628565050103?text=Order%20Rp75.000%20XL%20Double%20YouTube'">
-              <i class="fab fa-whatsapp"></i> Order Sekarang
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact-section">
-      <div class="contact-header">
-        <h3>Butuh Bantuan?</h3>
-        <p>Tim customer service kami siap membantu Anda 24/7</p>
-      </div>
-      
-      <div class="contact-grid">
-        <div class="contact-card">
-          <div class="contact-icon">
-            <i class="fas fa-headset"></i>
-          </div>
-          <h4>Customer Service</h4>
-          <a href="https://wa.me/628565050103">+62 856-5050-103</a>
-          <p>layanan utama & pertanyaan</p>
-        </div>
-    </section>
-
-    <footer>
-      <p>© 2023 - 2025 paket hemat — Layanan Kuota Premium Siap Pakai & Terkonfigurasi</p>
-    </footer>
+    <!-- Paket 2 -->
+    <div class="package-card">
+      <h3>Rp75.000 — XL Double YouTube (1 Bulan)</h3>
+      <ul>
+        <li>Unlimited + Config</li>
+        <li>Streaming lancar — Support semua daerah</li>
+      </ul>
+      <button class="btn-primary" onclick="bukaQRIS('Rp75.000 XL Double YouTube','https://wa.me/628565050103?text=Order%20Rp75.000%20XL%20Double%20YouTube')">Order Sekarang</button>
+    </div>
   </div>
 
-  <div class="order-float">
-    <button onclick="location.href='https://wa.me/628565050103?text=Halo,%20saya%20ingin%20order%20paket%20kuota'">
-      <i class="fab fa-whatsapp"></i> Order Sekarang
-    </button>
+  <!-- POPUP QRIS -->
+  <div id="qrisModal" class="qris-modal">
+    <div class="qris-content">
+      <h3>Bayar via QRIS Lampung Store</h3>
+      <img src="https://i.postimg.cc/Yqy1BXtN/qr-ID1025402450544-16-05-25-174736250-1747362502346.jpg" alt="QRIS Lampung Store" />
+      <p>Scan QR ini menggunakan aplikasi e-wallet / mobile banking Anda.</p>
+      <div id="btnLanjutContainer"></div>
+      <button class="btn-close" onclick="tutupQRIS()">Tutup</button>
+    </div>
   </div>
+
+  <script>
+    function bukaQRIS(paket, linkWA) {
+      document.getElementById("qrisModal").style.display = "flex";
+      document.getElementById("btnLanjutContainer").innerHTML = `
+        <button class="btn-qris" onclick="lanjutWA('${linkWA}')">
+          ✅ Saya Sudah Bayar — Lanjut ke WhatsApp
+        </button>`;
+    }
+
+    function tutupQRIS() {
+      document.getElementById("qrisModal").style.display = "none";
+    }
+
+    function lanjutWA(link) {
+      window.location.href = link;
+    }
+
+    // Tutup modal dengan klik di luar
+    window.onclick = function(e) {
+      if (e.target == document.getElementById("qrisModal")) {
+        tutupQRIS();
+      }
+    }
+  </script>
 </body>
-          </html>
+                                        </html>
