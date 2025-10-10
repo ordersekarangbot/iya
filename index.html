@@ -3,214 +3,217 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>New Project | Kuota & Config Premium</title>
+<title>New Project — Kuota & Config Premium</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-  :root {
-    --neon: #ff9f43;
-    --text: #fff7e6;
-    --bg1: #160b28;
-    --bg2: #2d0a44;
-  }
+:root {
+  --neon: #ffb347;
+  --bg1: #ff7e5f;
+  --bg2: #2b1055;
+  --text: #fff8f0;
+}
 
-  body {
-    font-family: "Poppins", sans-serif;
-    margin: 0; padding: 0;
-    color: var(--text);
-    background: linear-gradient(180deg, var(--bg1), var(--bg2));
-    overflow-x: hidden;
-    position: relative;
-  }
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  color: var(--text);
+  text-align: center;
+  overflow-x: hidden;
+  position: relative;
+  height: 100%;
+}
 
-  /* Background senja */
-  .sunset-bg {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(180deg, #ff512f, #dd2476);
-    animation: moveSky 8s ease-in-out infinite alternate;
-    z-index: -3;
-  }
+/* Background senja bergerak */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(180deg, var(--bg1), var(--bg2));
+  z-index: -2;
+  animation: skyMove 10s infinite alternate ease-in-out;
+}
 
-  @keyframes moveSky {
-    from { filter: brightness(0.8) saturate(1.1); }
-    to { filter: brightness(1.1) saturate(1.4); }
-  }
+@keyframes skyMove {
+  0% { filter: brightness(1) hue-rotate(0deg); }
+  100% { filter: brightness(0.9) hue-rotate(30deg); }
+}
 
-  /* Partikel cahaya bergerak */
-  .particle {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    animation: float 8s infinite ease-in-out;
-  }
+/* Awan bergerak */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 200%; height: 100%;
+  background: url('https://i.ibb.co/fnLdgN5/clouds.png') repeat-x;
+  background-size: cover;
+  animation: clouds 60s linear infinite;
+  opacity: 0.15;
+  z-index: -1;
+}
+@keyframes clouds {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
-  @keyframes float {
-    0% { transform: translateY(0) scale(1); opacity: 0.8; }
-    50% { transform: translateY(-30px) scale(1.3); opacity: 1; }
-    100% { transform: translateY(0) scale(1); opacity: 0.8; }
-  }
+/* Header */
+header {
+  padding: 25px;
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 0 15px rgba(255,180,70,0.3);
+  backdrop-filter: blur(10px);
+}
 
-  header {
-    padding: 25px;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 0 20px rgba(255,255,255,0.1);
-  }
+header h1 {
+  color: var(--neon);
+  text-shadow: 0 0 20px var(--neon);
+  font-size: 2em;
+  margin-bottom: 5px;
+}
 
-  header h1 {
-    color: var(--neon);
-    text-shadow: 0 0 20px var(--neon);
-    font-size: 2em;
-    margin: 0;
-  }
+header p {
+  color: #ffe9d6;
+  font-size: 14px;
+}
 
-  .container {
-    max-width: 650px;
-    margin: 40px auto;
-    padding: 20px;
-    text-align: center;
-  }
+/* Container */
+.container {
+  max-width: 650px;
+  margin: 40px auto;
+  padding: 20px;
+}
 
-  .kuota-card {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 16px;
-    padding: 18px;
-    margin-bottom: 20px;
-    text-align: left;
-    backdrop-filter: blur(6px);
-    transition: 0.4s;
-  }
+/* Kartu Paket */
+.kuota-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,180,70,0.4);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 20px;
+  text-align: left;
+  box-shadow: 0 0 25px rgba(255,180,70,0.15);
+  transition: 0.3s;
+}
+.kuota-card:hover {
+  box-shadow: 0 0 25px rgba(255,180,70,0.4);
+  transform: scale(1.02);
+}
 
-  .kuota-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 25px rgba(255,255,255,0.15);
-  }
+.kuota-card h2 {
+  color: var(--neon);
+  font-size: 1.3em;
+  margin-bottom: 8px;
+}
 
-  .kuota-card h2 {
-    color: var(--neon);
-    font-size: 1.3em;
-    margin-bottom: 6px;
-  }
+.price {
+  color: var(--neon);
+  font-weight: bold;
+  font-size: 1.1em;
+}
 
-  .price {
-    color: var(--neon);
-    font-weight: bold;
-    font-size: 1.1em;
-    margin-bottom: 5px;
-  }
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+}
 
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 8px 0;
-  }
+ul li {
+  font-size: 0.95em;
+  padding: 3px 0;
+}
 
-  ul li {
-    font-size: 0.95em;
-    padding: 3px 0;
-  }
+/* Tombol */
+.btn {
+  display: inline-block;
+  background: var(--neon);
+  color: #2b1055;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: #ffc371;
+  box-shadow: 0 0 15px var(--neon);
+}
 
-  .btn {
-    display: inline-block;
-    text-align: center;
-    background: var(--neon);
-    color: #2d0a44;
-    padding: 10px 18px;
-    border-radius: 30px;
-    font-weight: 600;
-    text-decoration: none;
-    margin-top: 10px;
-    transition: 0.3s;
-  }
+/* Modal Pembayaran */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: rgba(255,255,255,0.08);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,180,70,0.3);
+  box-shadow: 0 0 25px rgba(255,180,70,0.2);
+  max-width: 360px;
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.9);}
+  to {opacity: 1; transform: scale(1);}
+}
 
-  .btn:hover {
-    background: #ffb266;
-    box-shadow: 0 0 15px var(--neon);
-  }
+.modal img {
+  width: 240px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255,180,70,0.3);
+  animation: glow 2s infinite alternate;
+}
+@keyframes glow {
+  from {box-shadow: 0 0 10px rgba(255,180,70,0.2);}
+  to {box-shadow: 0 0 25px rgba(255,180,70,0.5);}
+}
 
-  /* Modal */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85);
-    justify-content: center;
-    align-items: center;
-  }
+.close {
+  color: var(--neon);
+  font-weight: bold;
+  font-size: 22px;
+  float: right;
+  cursor: pointer;
+}
 
-  .modal-content {
-    background: rgba(255,255,255,0.05);
-    padding: 20px;
-    border-radius: 16px;
-    border: 1px solid rgba(255,255,255,0.2);
-    box-shadow: 0 0 25px rgba(255,255,255,0.1);
-    max-width: 340px;
-    text-align: center;
-    animation: fadeIn 0.4s ease;
-  }
+/* Input */
+input[type="text"], input[type="number"] {
+  width: 90%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,180,70,0.4);
+  background: rgba(255,255,255,0.1);
+  color: var(--text);
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
 
-  @keyframes fadeIn {
-    from {opacity: 0; transform: scale(0.9);}
-    to {opacity: 1; transform: scale(1);}
-  }
-
-  .modal img {
-    width: 240px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(255,255,255,0.3);
-    animation: glow 2s infinite alternate;
-  }
-
-  @keyframes glow {
-    from {box-shadow: 0 0 10px rgba(255,255,255,0.2);}
-    to {box-shadow: 0 0 25px rgba(255,200,100,0.6);}
-  }
-
-  input[type="text"] {
-    width: 90%;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.3);
-    background: rgba(255,255,255,0.1);
-    color: var(--text);
-    font-size: 14px;
-    margin-top: 10px;
-    text-align: center;
-  }
-
-  footer {
-    margin: 40px 0;
-    font-size: 0.9em;
-    color: #ddd;
-  }
-
-  .contact {
-    font-size: 0.9em;
-    color: #fff5cc;
-  }
+footer {
+  margin-top: 50px;
+  font-size: 0.9em;
+  color: #fbe0c4;
+}
 </style>
 </head>
 <body>
 
-<div class="sunset-bg"></div>
-
-<!-- Partikel cahaya -->
-<div class="particle" style="width:12px; height:12px; left:10%; top:40%; animation-delay:0s;"></div>
-<div class="particle" style="width:8px; height:8px; left:70%; top:60%; animation-delay:2s;"></div>
-<div class="particle" style="width:10px; height:10px; left:50%; top:30%; animation-delay:4s;"></div>
-
 <header>
-  <h1>🌇 Kuota Premium — New Project</h1>
-  <p style="color:#ffdab3;font-size:14px;">Pilih paket, isi data, bayar via QRIS, dan konfirmasi ke admin.</p>
+  <h1>🌇 Kuota & Config Premium</h1>
+  <p>Pilih paket, isi nama & nomor pelanggan, bayar via QRIS, lalu konfirmasi ke admin.</p>
 </header>
 
 <div class="container">
 
-  <!-- Semua paket -->
   <div class="kuota-card">
     <h2>XL Edukasi</h2>
     <p class="price">Rp12.000</p>
@@ -264,68 +267,62 @@
       <li>✅ Support semua daerah</li>
       <li>✅ Kuota siap pakai (Sudah + Config)</li>
     </ul>
-    <a class="btn" onclick="openPayment('XL Double YouTube (Premium)','75000')">Order & Bayar via QRIS</a>
+    <a class="btn" onclick="openPayment('XL Double YouTube','75000')">Order & Bayar via QRIS</a>
   </div>
-
 </div>
 
-<!-- Modal Pembayaran -->
+<!-- Modal -->
 <div id="paymentModal" class="modal">
   <div class="modal-content">
-    <span style="float:right;color:#ffcc99;font-size:20px;cursor:pointer;" onclick="closeModal()">&times;</span>
+    <span class="close" onclick="closeModal()">&times;</span>
     <h3 style="color:var(--neon)">💳 Pembayaran via QRIS</h3>
     <p id="paketInfo"></p>
-    <input type="text" id="namaPembeli" placeholder="Nama Pembeli">
-    <input type="text" id="nomorPelanggan" placeholder="Nomor yang akan diisi kuota">
+    <input type="text" id="namaPembeli" placeholder="Masukkan nama Anda">
+    <input type="number" id="nomorPelanggan" placeholder="Masukkan nomor pelanggan (contoh: 087xxxx)">
     <img src="qris_lampung_store.png" alt="QRIS Lampung Store OK">
-    <p style="font-size:13px;margin-top:10px;">Setelah bayar, klik konfirmasi di bawah ⬇️</p>
+    <p style="font-size:13px;margin-top:10px;">Scan QRIS untuk melakukan pembayaran.<br>Lalu klik tombol di bawah untuk konfirmasi.</p>
     <a id="waConfirm" class="btn" target="_blank">Konfirmasi via WhatsApp</a>
   </div>
 </div>
 
 <footer>
-  <p>© 2025 New Project — Kuota siap pakai 🌇</p>
-  <p class="contact">
-    📞 Customer Service: 
-    <a href="https://wa.me/628565050102" style="color:#ff9f43;text-decoration:none;">+62 856-5050-102</a>
-  </p>
+  © 2025 New Project — Kuota siap pakai.<br>
+  ☎️ <a href="https://wa.me/628565050102" target="_blank" style="color:#ffdf9f;text-decoration:none;">Customer Service: nomor kedua admin</a>
 </footer>
 
 <script>
-  const modal = document.getElementById("paymentModal");
-  const paketInfo = document.getElementById("paketInfo");
-  const waConfirm = document.getElementById("waConfirm");
-  const inputNama = document.getElementById("namaPembeli");
-  const inputNomor = document.getElementById("nomorPelanggan");
-  let paketDipilih = "", hargaDipilih = "";
+const modal = document.getElementById("paymentModal");
+const paketInfo = document.getElementById("paketInfo");
+const waConfirm = document.getElementById("waConfirm");
+let paketDipilih = "";
+let hargaDipilih = "";
 
-  function openPayment(paket, harga){
-    paketDipilih = paket;
-    hargaDipilih = harga;
-    modal.style.display = "flex";
-    paketInfo.innerHTML = `📦 <b>${paket}</b><br>💰 Rp${harga}`;
-  }
+function openPayment(paket, harga){
+  paketDipilih = paket;
+  hargaDipilih = harga;
+  modal.style.display = "flex";
+  paketInfo.innerHTML = `📦 <b>${paket}</b><br>💰 Rp${harga}`;
+}
 
-  function updateWhatsAppLink(){
-    const nama = inputNama.value.trim();
-    const nomor = inputNomor.value.trim();
+function closeModal(){
+  modal.style.display = "none";
+}
+
+window.onclick = function(event){
+  if(event.target == modal){ closeModal(); }
+}
+
+document.querySelectorAll("#namaPembeli,#nomorPelanggan").forEach(el=>{
+  el.addEventListener("input",()=>{
+    const nama = document.getElementById("namaPembeli").value.trim();
+    const nomor = document.getElementById("nomorPelanggan").value.trim();
     const pesan = encodeURIComponent(
-      `Halo admin, saya sudah melakukan pembayaran via QRIS.\n\n👤 Nama: ${nama}\n📱 Nomor Yang Diisi kuota: ${nomor}\n📦 Paket: ${paketDipilih}\n💰 Nominal: Rp${hargaDipilih}\n\nMohon dikonfirmasi ya.`
+      `Halo admin, saya sudah melakukan pembayaran via QRIS.\n\n👤 Nama: ${nama}\n📞 Nomor Pelanggan: ${nomor}\n📦 Paket: ${paketDipilih}\n💰 Nominal: Rp${hargaDipilih}\n\nMohon dikonfirmasi ya.`
     );
     waConfirm.href = `https://wa.me/628565050103?text=${pesan}`;
-  }
-
-  inputNama.addEventListener("input", updateWhatsAppLink);
-  inputNomor.addEventListener("input", updateWhatsAppLink);
-
-  function closeModal(){
-    modal.style.display = "none";
-  }
-
-  window.onclick = function(e){
-    if(e.target == modal) closeModal();
-  }
+  });
+});
 </script>
 
 </body>
-      </html>
+    </html>
