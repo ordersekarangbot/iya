@@ -10,47 +10,72 @@
 :root {
   --neon: #ffb347;
   --bg1: #2b1055;
-  --bg2: #7597de;
+  --bg2: #6c63ff;
   --text: #fff8f0;
 }
 
-/* ===== Background Neon Animasi ===== */
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
   color: var(--text);
   text-align: center;
-  background: linear-gradient(45deg, var(--bg1), var(--bg2), #ff7e5f);
+  overflow-x: hidden;
+  background: linear-gradient(45deg, var(--bg1), var(--bg2), #ff7e5f, #ffb347);
   background-size: 400% 400%;
-  animation: bgMove 12s ease infinite;
+  animation: bgMove 4s linear infinite; /* animasi cepat */
   min-height: 100vh;
+  position: relative;
 }
+
 @keyframes bgMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* Partikel Neon */
+#particles {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--neon);
+  opacity: 0.8;
+  animation: flicker 1.5s infinite alternate ease-in-out;
+}
+@keyframes flicker {
+  from { opacity: 0.2; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.8); }
 }
 
 /* Header */
 header {
   padding: 15px;
   background: rgba(255,255,255,0.05);
-  box-shadow: 0 0 20px rgba(255,180,70,0.3);
+  box-shadow: 0 0 25px rgba(255,180,70,0.5);
   backdrop-filter: blur(12px);
-  animation: glowPulse 3s infinite alternate;
+  animation: glowPulse 2s infinite alternate;
+  position: relative;
+  z-index: 2;
 }
 @keyframes glowPulse {
-  0% { box-shadow: 0 0 10px rgba(255,180,70,0.2); }
-  100% { box-shadow: 0 0 25px rgba(255,180,70,0.6); }
+  0% { box-shadow: 0 0 10px rgba(255,180,70,0.3); }
+  100% { box-shadow: 0 0 30px rgba(255,180,70,0.8); }
 }
-
 header h1 {
   color: var(--neon);
-  text-shadow: 0 0 12px var(--neon);
-  font-size: 1.5em;
+  text-shadow: 0 0 18px var(--neon);
+  font-size: 1.6em;
   margin-bottom: 3px;
 }
-
 header p {
   color: #ffe9d6;
   font-size: 12px;
@@ -62,47 +87,45 @@ header p {
   max-width: 480px;
   margin: 25px auto;
   padding: 10px;
+  position: relative;
+  z-index: 2;
 }
 
-/* Kartu Paket */
+/* Kartu Kuota */
 .kuota-card {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,180,70,0.3);
   border-radius: 14px;
   padding: 14px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   text-align: left;
-  box-shadow: 0 0 15px rgba(255,180,70,0.15);
+  box-shadow: 0 0 15px rgba(255,180,70,0.25);
   transition: 0.3s;
-  animation: floatCard 5s ease-in-out infinite;
+  animation: floatCard 4s ease-in-out infinite;
 }
 @keyframes floatCard {
   0%,100% { transform: translateY(0px); }
   50% { transform: translateY(-6px); }
 }
 .kuota-card:hover {
-  box-shadow: 0 0 20px rgba(255,180,70,0.4);
+  box-shadow: 0 0 25px rgba(255,180,70,0.7);
   transform: scale(1.03);
 }
-
 .kuota-card h2 {
   color: var(--neon);
   font-size: 1.1em;
   margin-bottom: 6px;
 }
-
 .price {
   color: var(--neon);
   font-weight: bold;
   font-size: 0.95em;
 }
-
 ul {
   list-style: none;
   padding: 0;
   margin: 6px 0;
 }
-
 ul li {
   font-size: 0.85em;
   padding: 2px 0;
@@ -120,13 +143,14 @@ ul li {
   text-decoration: none;
   margin-top: 6px;
   transition: 0.3s;
+  box-shadow: 0 0 10px rgba(255,180,70,0.6);
 }
 .btn:hover {
-  background: #ffc371;
-  box-shadow: 0 0 10px var(--neon);
+  background: #ffe6a7;
+  box-shadow: 0 0 20px var(--neon);
 }
 
-/* Modal Pembayaran */
+/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -142,7 +166,7 @@ ul li {
   padding: 15px;
   border-radius: 12px;
   border: 1px solid rgba(255,180,70,0.3);
-  box-shadow: 0 0 15px rgba(255,180,70,0.3);
+  box-shadow: 0 0 20px rgba(255,180,70,0.4);
   max-width: 300px;
   text-align: center;
   animation: fadeIn 0.4s ease;
@@ -151,14 +175,12 @@ ul li {
   from {opacity: 0; transform: scale(0.9);}
   to {opacity: 1; transform: scale(1);}
 }
-
 .modal img {
   width: 180px;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(255,180,70,0.3);
+  box-shadow: 0 0 15px rgba(255,180,70,0.4);
   margin-top: 10px;
 }
-
 .close {
   color: var(--neon);
   font-weight: bold;
@@ -185,18 +207,22 @@ footer {
   font-size: 0.75em;
   color: #fbe0c4;
   line-height: 1.4em;
+  position: relative;
+  z-index: 2;
 }
 </style>
 </head>
 <body>
 
+<!-- Partikel Neon -->
+<div id="particles"></div>
+
 <header>
   <h1>Kuota & Config Premium</h1>
-  <p>Pilih paket, isi nama & nomor pelanggan, bayar via QRIS jangan lupa kirim bukti transaksi, lalu konfirmasi ke admin.</p>
+  <p>Pilih paket, isi nama & nomor pelanggan, bayar via QRIS lalu kirim bukti transaksi ke admin.</p>
 </header>
 
 <div class="container">
-
   <div class="kuota-card">
     <h2>XL Edukasi</h2>
     <p class="price">Rp12.000</p>
@@ -225,7 +251,7 @@ footer {
     <ul>
       <li>✅ Unlimited</li>
       <li>✅ Aktif 30 hari</li>
-      <li>✅ Ping stabil + low latency</li>
+      <li>✅ Ping stabil</li>
     </ul>
     <a class="btn" onclick="openPayment('XL Bizz Lite','50000')">Order & Bayar via QRIS</a>
   </div>
@@ -265,7 +291,7 @@ footer {
     <img id="qrisImage" src="" alt="QRIS Lampung Store OK">
     <br>
     <a class="btn" id="downloadQR" download="QRIS_Lampung_Store.png">Download QR / Simpan Bukti</a>
-    <p style="font-size:11px;margin-top:8px;">Scan QRIS lalu klik konfirmasi di bawah, jangan lupa kirim bukti transaksi.</p>
+    <p style="font-size:11px;margin-top:8px;">Scan QRIS lalu kirim bukti ke admin.</p>
     <a id="waConfirm" class="btn" target="_blank" style="margin-top:5px;">Konfirmasi via WhatsApp</a>
   </div>
 </div>
@@ -275,9 +301,21 @@ footer {
   ☎️ <a href="https://wa.me/628565050102" target="_blank" style="color:#ffdf9f;text-decoration:none;">CS: +62 856-5050-102</a>
 </footer>
 
-<!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 <script>
+/* === Partikel Neon === */
+const particleContainer = document.getElementById("particles");
+for(let i=0; i<50; i++){
+  const p = document.createElement("div");
+  p.className = "particle";
+  p.style.left = Math.random()*100 + "%";
+  p.style.top = Math.random()*100 + "%";
+  p.style.animationDelay = (Math.random()*2)+"s";
+  p.style.animationDuration = (1 + Math.random()*2)+"s";
+  particleContainer.appendChild(p);
+}
+
+/* === Modal & QR === */
 const modal = document.getElementById("paymentModal");
 const paketInfo = document.getElementById("paketInfo");
 const waConfirm = document.getElementById("waConfirm");
@@ -294,32 +332,24 @@ function openPayment(paket, harga){
   hargaDipilih = harga;
   modal.style.display = "flex";
   paketInfo.innerHTML = `📦 <b>${paket}</b><br>💰 Rp${harga}`;
-
-  // Generate QR dari kode QRIS
   QRCode.toDataURL(qrisCode, {width: 180}, function (err, url) {
     qrisImage.src = url;
     downloadQR.href = url;
   });
 }
-
-function closeModal(){
-  modal.style.display = "none";
-}
-
-window.onclick = function(event){
-  if(event.target == modal){ closeModal(); }
-}
+function closeModal(){ modal.style.display = "none"; }
+window.onclick = e => { if(e.target==modal) closeModal(); }
 
 document.querySelectorAll("#namaPembeli,#nomorPelanggan").forEach(el=>{
   el.addEventListener("input",()=>{
     const nama = document.getElementById("namaPembeli").value.trim();
     const nomor = document.getElementById("nomorPelanggan").value.trim();
     const pesan = encodeURIComponent(
-      `Halo admin, saya sudah melakukan pembayaran via QRIS.\n\n👤 Nama: ${nama}\n📞 Nomor Pelanggan: ${nomor}\n📦 Paket: ${paketDipilih}\n💰 Nominal: Rp${hargaDipilih}\n\nMohon dikonfirmasi ya.`
+      `Halo admin, saya sudah bayar via QRIS.\n\n👤 Nama: ${nama}\n📞 Nomor: ${nomor}\n📦 Paket: ${paketDipilih}\n💰 Rp${hargaDipilih}\n\nMohon dikonfirmasi ya.`
     );
     waConfirm.href = `https://wa.me/628565050103?text=${pesan}`;
   });
 });
 </script>
 </body>
-      </html>
+  </html>
