@@ -9,32 +9,45 @@
 <style>
 :root {
   --neon: #ffb347;
-  --bg1: #ff7e5f;
-  --bg2: #2b1055;
+  --bg1: #2b1055;
+  --bg2: #7597de;
   --text: #fff8f0;
 }
 
+/* ===== Background Neon Animasi ===== */
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
   color: var(--text);
   text-align: center;
-  background: linear-gradient(180deg, var(--bg1), var(--bg2));
+  background: linear-gradient(45deg, var(--bg1), var(--bg2), #ff7e5f);
+  background-size: 400% 400%;
+  animation: bgMove 12s ease infinite;
   min-height: 100vh;
+}
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Header */
 header {
   padding: 15px;
-  background: rgba(255,255,255,0.08);
-  box-shadow: 0 0 10px rgba(255,180,70,0.3);
-  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 0 20px rgba(255,180,70,0.3);
+  backdrop-filter: blur(12px);
+  animation: glowPulse 3s infinite alternate;
+}
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 10px rgba(255,180,70,0.2); }
+  100% { box-shadow: 0 0 25px rgba(255,180,70,0.6); }
 }
 
 header h1 {
   color: var(--neon);
-  text-shadow: 0 0 10px var(--neon);
-  font-size: 1.4em;
+  text-shadow: 0 0 12px var(--neon);
+  font-size: 1.5em;
   margin-bottom: 3px;
 }
 
@@ -55,16 +68,21 @@ header p {
 .kuota-card {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,180,70,0.3);
-  border-radius: 12px;
-  padding: 12px;
-  margin-bottom: 14px;
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 16px;
   text-align: left;
-  box-shadow: 0 0 15px rgba(255,180,70,0.1);
+  box-shadow: 0 0 15px rgba(255,180,70,0.15);
   transition: 0.3s;
+  animation: floatCard 5s ease-in-out infinite;
+}
+@keyframes floatCard {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
 }
 .kuota-card:hover {
-  box-shadow: 0 0 15px rgba(255,180,70,0.3);
-  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(255,180,70,0.4);
+  transform: scale(1.03);
 }
 
 .kuota-card h2 {
@@ -124,7 +142,7 @@ ul li {
   padding: 15px;
   border-radius: 12px;
   border: 1px solid rgba(255,180,70,0.3);
-  box-shadow: 0 0 15px rgba(255,180,70,0.2);
+  box-shadow: 0 0 15px rgba(255,180,70,0.3);
   max-width: 300px;
   text-align: center;
   animation: fadeIn 0.4s ease;
@@ -138,6 +156,7 @@ ul li {
   width: 180px;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(255,180,70,0.3);
+  margin-top: 10px;
 }
 
 .close {
@@ -201,25 +220,25 @@ footer {
   </div>
 
   <div class="kuota-card">
-    <h2>XL Bis Lide</h2>
+    <h2>XL Bizz Lite</h2>
     <p class="price">Rp50.000</p>
     <ul>
       <li>✅ Unlimited</li>
       <li>✅ Aktif 30 hari</li>
       <li>✅ Ping stabil + low latency</li>
     </ul>
-    <a class="btn" onclick="openPayment('XL Bis Lide','50000')">Order & Bayar via QRIS</a>
+    <a class="btn" onclick="openPayment('XL Bizz Lite','50000')">Order & Bayar via QRIS</a>
   </div>
 
   <div class="kuota-card">
-    <h2>XL Bis Scooter</h2>
+    <h2>XL Bizz Tayo</h2>
     <p class="price">Rp65.000</p>
     <ul>
       <li>✅ Unlimited</li>
       <li>✅ Aktif 30 hari</li>
       <li>✅ Ready semua daerah</li>
     </ul>
-    <a class="btn" onclick="openPayment('XL Bis Scooter','65000')">Order & Bayar via QRIS</a>
+    <a class="btn" onclick="openPayment('XL Bizz Tayo','65000')">Order & Bayar via QRIS</a>
   </div>
 
   <div class="kuota-card">
@@ -241,9 +260,11 @@ footer {
     <span class="close" onclick="closeModal()">&times;</span>
     <h3 style="color:var(--neon)">💳 Pembayaran via QRIS</h3>
     <p id="paketInfo" style="font-size:0.85em;"></p>
-    <input type="text" id="namaPembeli" placeholder="Masukkan Username Vpn">
+    <input type="text" id="namaPembeli" placeholder="Masukkan Username VPN">
     <input type="number" id="nomorPelanggan" placeholder="Nomor Yang Diisi Kuota (contoh: 087xxxx)">
-    <img src="qris_lampung_store.png" alt="QRIS Lampung Store OK">
+    <img id="qrisImage" src="" alt="QRIS Lampung Store OK">
+    <br>
+    <a class="btn" id="downloadQR" download="QRIS_Lampung_Store.png">Download QR / Simpan Bukti</a>
     <p style="font-size:11px;margin-top:8px;">Scan QRIS lalu klik konfirmasi di bawah.</p>
     <a id="waConfirm" class="btn" target="_blank" style="margin-top:5px;">Konfirmasi via WhatsApp</a>
   </div>
@@ -254,10 +275,17 @@ footer {
   ☎️ <a href="https://wa.me/628565050102" target="_blank" style="color:#ffdf9f;text-decoration:none;">CS: +62 856-5050-102</a>
 </footer>
 
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 <script>
 const modal = document.getElementById("paymentModal");
 const paketInfo = document.getElementById("paketInfo");
 const waConfirm = document.getElementById("waConfirm");
+const qrisImage = document.getElementById("qrisImage");
+const downloadQR = document.getElementById("downloadQR");
+
+const qrisCode = "00020101021126670016COM.NOBUBANK.WWW01189360050300000879140214338591332891790303UMI51440014ID.CO.QRIS.WWW0215ID20253892885930303UMI5204541153033605802ID5923LAMPUNG STORE OK23053346009PESAWARAN61053535362070703A01630448C0";
+
 let paketDipilih = "";
 let hargaDipilih = "";
 
@@ -266,6 +294,12 @@ function openPayment(paket, harga){
   hargaDipilih = harga;
   modal.style.display = "flex";
   paketInfo.innerHTML = `📦 <b>${paket}</b><br>💰 Rp${harga}`;
+
+  // Generate QR dari kode QRIS
+  QRCode.toDataURL(qrisCode, {width: 180}, function (err, url) {
+    qrisImage.src = url;
+    downloadQR.href = url;
+  });
 }
 
 function closeModal(){
@@ -287,6 +321,5 @@ document.querySelectorAll("#namaPembeli,#nomorPelanggan").forEach(el=>{
   });
 });
 </script>
-
 </body>
       </html>
