@@ -1,324 +1,403 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>New Project — Kuota & Config Premium</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>paket hemat </title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root {
+:root{
   --neon: #ffb347;
-  --bg1: #1a093c;
-  --bg2: #3a2b75;
+  --accent-1: #ffffff;
+  --accent-2: #6c63ff;
+  --bg-a: #0b0420;
+  --bg-b: #241040;
   --text: #fff8f0;
 }
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:"Poppins",sans-serif;color:var(--text);background:linear-gradient(180deg,var(--bg-a),var(--bg-b));overflow-x:hidden}
+.container{max-width:980px;margin:24px auto;padding:18px;position:relative;z-index:3}
 
-/* ===== Background dengan Bintang ===== */
-body {
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-  color: var(--text);
-  background: radial-gradient(circle at top, var(--bg2), var(--bg1) 70%);
-  overflow-x: hidden;
-  min-height: 100vh;
-}
+/* header */
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--neon),var(--accent-2));display:grid;place-items:center;color:#051018;font-weight:800}
+h1{font-size:18px;margin:0;background:linear-gradient(90deg,var(--neon),var(--accent-2));-webkit-background-clip:text;color:transparent}
+.header-meta{color:#bfcfe0;font-size:13px}
 
-canvas#stars {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: -1;
-  background: transparent;
-}
+/* layout */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-top:18px}
+.card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);padding:16px;border-radius:12px;box-shadow:0 6px 30px rgba(0,0,0,0.6)}
+.card h2{margin:0 0 8px;color:var(--neon)}
+.price{font-weight:800;color:var(--neon)}
+.ul{margin:8px 0;padding-left:16px;color:#c8d8ea}
 
-/* ===== Header ===== */
-header {
-  padding: 15px;
-  background: rgba(255,255,255,0.05);
-  box-shadow: 0 0 12px rgba(255,180,70,0.3);
-  backdrop-filter: blur(8px);
-  text-align: center;
-}
+/* button */
+.btn{display:inline-block;padding:10px 14px;border-radius:999px;font-weight:700;text-decoration:none;border:none;cursor:pointer}
+.btn-primary{background:linear-gradient(90deg,var(--neon),var(--accent-2));color:#051018;box-shadow:0 8px 30px rgba(108,99,255,0.08)}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:#cfe7ff}
 
-header h1 {
-  color: var(--neon);
-  text-shadow: 0 0 10px var(--neon);
-  font-size: 1.5em;
-  margin-bottom: 3px;
-}
+/* footer */
+footer{text-align:center;color:#aebecd;margin-top:26px;font-size:13px}
 
-header p {
-  color: #ffe9d6;
-  font-size: 12px;
-  line-height: 1.3em;
+/* modal */
+.modal{display:none;position:fixed;inset:0;background:rgba(3,6,12,0.72);backdrop-filter:blur(4px);align-items:center;justify-content:center;z-index:40}
+.modal.open{display:flex}
+.modal-box{background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);max-width:420px;width:92%;text-align:center}
+.modal-box h3{margin:0 0 6px;color:var(--neon)}
+.modal-box p{color:#c7d7ea;font-size:14px}
+.input{width:92%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);margin:8px auto;background:rgba(255,255,255,0.02);color:var(--text);display:block}
+
+/* responsive */
+@media (max-width:480px){
+  header{flex-direction:column;align-items:flex-start;gap:8px}
 }
 
-/* ===== Container ===== */
-.container {
-  max-width: 480px;
-  margin: 25px auto;
-  padding: 10px;
-}
-
-/* ===== Kartu Paket ===== */
-.kuota-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,180,70,0.3);
-  border-radius: 14px;
-  padding: 14px;
-  margin-bottom: 16px;
-  text-align: left;
-  box-shadow: 0 0 12px rgba(255,180,70,0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.kuota-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 20px rgba(255,180,70,0.3);
-}
-
-.kuota-card h2 {
-  color: var(--neon);
-  font-size: 1.1em;
-  margin-bottom: 6px;
-}
-
-.price {
-  color: var(--neon);
-  font-weight: bold;
-  font-size: 0.95em;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 6px 0;
-}
-ul li {
-  font-size: 0.85em;
-  padding: 2px 0;
-}
-
-/* ===== Tombol ===== */
-.btn {
-  display: inline-block;
-  background: var(--neon);
-  color: #2b1055;
-  padding: 8px 14px;
-  border-radius: 25px;
-  font-weight: 600;
-  font-size: 0.85em;
-  text-decoration: none;
-  margin-top: 6px;
-  transition: 0.3s;
-}
-.btn:hover {
-  background: #ffc371;
-  box-shadow: 0 0 10px var(--neon);
-}
-
-/* ===== Modal Pembayaran ===== */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.85);
-  justify-content: center;
-  align-items: center;
-}
-.modal-content {
-  background: rgba(255,255,255,0.08);
-  padding: 15px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,180,70,0.3);
-  box-shadow: 0 0 15px rgba(255,180,70,0.3);
-  max-width: 300px;
-  text-align: center;
-  animation: fadeIn 0.3s ease;
-}
-@keyframes fadeIn {
-  from {opacity: 0; transform: scale(0.9);}
-  to {opacity: 1; transform: scale(1);}
-}
-
-.modal img {
-  width: 180px;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(255,180,70,0.3);
-  margin-top: 10px;
-}
-
-.close {
-  color: var(--neon);
-  font-weight: bold;
-  font-size: 20px;
-  float: right;
-  cursor: pointer;
-}
-
-/* Input */
-input[type="text"], input[type="number"] {
-  width: 90%;
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid rgba(255,180,70,0.4);
-  background: rgba(255,255,255,0.1);
-  color: var(--text);
-  font-size: 12px;
-  margin-top: 8px;
-  text-align: center;
-}
-
-/* Footer */
-footer {
-  margin-top: 30px;
-  font-size: 0.75em;
-  color: #fbe0c4;
-  line-height: 1.4em;
-}
+/* canvas layer */
+#bgCanvas{position:fixed;inset:0;z-index:0;pointer-events:none}
 </style>
 </head>
 <body>
+<canvas id="bgCanvas" aria-hidden="true"></canvas>
 
-<canvas id="stars"></canvas>
+<div class="container" role="main">
+  <header>
+    <div class="brand">
+      <div class="logo">ph</div>
+      <div>
+        <h1>paket hemat</h1>
+        <div class="header-meta">Kuota premium — siap pakai & terkonfigurasi</div>
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-primary" id="openQrisBtn">Pembayaran QRIS</button>
+    </div>
+  </header>
 
-<header>
-  <h1>Kuota & Config Premium</h1>
-  <p>Pilih paket, isi nama & nomor pelanggan, bayar via QRIS, lalu konfirmasi ke admin.</p>
-</header>
+  <section class="grid" aria-label="Paket Kuota">
+    <article class="card">
+      <h2>XL Edukasi</h2>
+      <div class="price">Rp12.000</div>
+      <ul class="ul"><li>15GB - 7 Hari</li><li>Ready + Config</li></ul>
+      <button class="btn btn-primary" onclick="openPayment('XL Edukasi','12000')">Bayar via QRIS</button>
+    </article>
 
-<div class="container">
+    <article class="card">
+      <h2>XL Conference</h2>
+      <div class="price">Rp14.000</div>
+      <ul class="ul"><li>15GB - 7 Hari</li><li>Cocok meeting online</li></ul>
+      <button class="btn btn-primary" onclick="openPayment('XL Conference','14000')">Bayar via QRIS</button>
+    </article>
 
-  <div class="kuota-card">
-    <h2>XL Edukasi</h2>
-    <p class="price">Rp12.000</p>
-    <ul><li>✅ 15GB Edukasi</li><li>✅ Aktif 7 hari</li><li>✅ Ready + Config</li></ul>
-    <a class="btn" onclick="openPayment('XL Edukasi','12000')">Order & Bayar via QRIS</a>
-  </div>
+    <article class="card">
+      <h2>Indosat Apps Fun</h2>
+      <div class="price">Rp30.000</div>
+      <ul class="ul"><li>12GB - 30 Hari</li><li>Ready + Config</li></ul>
+      <button class="btn btn-primary" onclick="openPayment('Indosat Apps Fun','30000')">Bayar via QRIS</button>
+    </article>
 
-  <div class="kuota-card">
-    <h2>XL Conference</h2>
-    <p class="price">Rp14.000</p>
-    <ul><li>✅ 15GB Zoom/Meet</li><li>✅ Aktif 7 hari</li><li>✅ Support semua daerah</li></ul>
-    <a class="btn" onclick="openPayment('XL Conference','14000')">Order & Bayar via QRIS</a>
-  </div>
+    <article class="card">
+      <h2>XL Bizz Lite</h2>
+      <div class="price">Rp50.000</div>
+      <ul class="ul"><li>Unlimited - 30 Hari</li><li>Saran: jangan pakai nomor utama</li></ul>
+      <button class="btn btn-primary" onclick="openPayment('XL Bizz Lite','50000')">Bayar via QRIS</button>
+    </article>
 
-  <div class="kuota-card">
-    <h2>XL Bizz Lite</h2>
-    <p class="price">Rp50.000</p>
-    <ul><li>✅ Unlimited</li><li>✅ Aktif 30 hari</li><li>✅ Ping stabil + low latency</li></ul>
-    <a class="btn" onclick="openPayment('XL Bizz Lite','50000')">Order & Bayar via QRIS</a>
-  </div>
+    <article class="card">
+      <h2>XL Bizz Tayo</h2>
+      <div class="price">Rp65.000</div>
+      <ul class="ul"><li>Unlimited - 30 Hari</li><li>Unlimited Premium</li></ul>
+      <button class="btn btn-primary" onclick="openPayment('XL Bizz Tayo','65000')">Bayar via QRIS</button>
+    </article>
 
-  <div class="kuota-card">
-    <h2>XL Bizz Tayo</h2>
-    <p class="price">Rp65.000</p>
-    <ul><li>✅ Unlimited</li><li>✅ Aktif 30 hari</li><li>✅ Ready semua daerah</li></ul>
-    <a class="btn" onclick="openPayment('XL Bizz Tayo','65000')">Order & Bayar via QRIS</a>
-  </div>
+    <article class="card">
+      <h2>XL Double YouTube (Premium)</h2>
+      <div class="price">Rp75.000</div>
+      <ul class="ul"><li>Unlimited - 30 Hari</li><li>Kuota siap pakai (Sudah + Config)</li></ul>
+      <button class="btn btn-primary" onclick="openPayment('XL Double YouTube','75000')">Bayar via QRIS</button>
+    </article>
+  </section>
 
-  <div class="kuota-card">
-    <h2>XL Double YouTube (Premium)</h2>
-    <p class="price">Rp75.000</p>
-    <ul><li>✅ Unlimited</li><li>✅ Masa aktif 1 bulan</li><li>✅ Support semua daerah</li><li>✅ Kuota siap pakai (Sudah + Config)</li></ul>
-    <a class="btn" onclick="openPayment('XL Double YouTube','75000')">Order & Bayar via QRIS</a>
+  <footer>
+    © 2023 new project · CS: <a href="https://wa.me/628565050103" target="_blank" style="color:inherit">+62 856-5050-103</a>
+  </footer>
+</div>
+
+<!-- Modal QRIS -->
+<div id="qrisModal" class="modal" role="dialog" aria-modal="true">
+  <div class="modal-box" role="document">
+    <button id="closeModal" style="float:right;background:transparent;border:0;color:var(--neon);font-size:18px;cursor:pointer">✕</button>
+    <h3>Pembayaran QRIS</h3>
+    <p id="modalNote">Scan QR untuk bayar — setelah bayar, kirim bukti lalu konfirmasi WA.</p>
+
+    <img id="qrImg" alt="QRIS" style="width:240px;height:240px;border-radius:8px;margin:8px 0;display:block;margin-left:auto;margin-right:auto;background:#fff">
+
+    <div style="margin-top:8px">
+      <textarea id="payloadText" readonly style="width:94%;height:72px;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:rgba(0,0,0,0.25);color:var(--text);resize:none"></textarea>
+    </div>
+
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:10px;flex-wrap:wrap">
+      <button id="copyBtn" class="btn btn-ghost">Salin Payload</button>
+      <button id="downloadBtn" class="btn btn-primary">Download QR / Simpan Bukti</button>
+      <a id="waBtn" class="btn btn-primary" target="_blank" rel="noopener">Konfirmasi via WA</a>
+    </div>
   </div>
 </div>
 
-<!-- Modal -->
-<div id="paymentModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h3 style="color:var(--neon)">💳 Pembayaran via QRIS</h3>
-    <p id="paketInfo" style="font-size:0.85em;"></p>
-    <input type="text" id="namaPembeli" placeholder="Masukkan Username VPN">
-    <input type="number" id="nomorPelanggan" placeholder="Nomor Yang Diisi Kuota (contoh: 087xxxx)">
-    <img id="qrisImage" src="" alt="QRIS Lampung Store OK">
-    <br>
-    <a class="btn" id="downloadQR" download="QRIS_Lampung_Store.png">Download QR / Simpan Bukti</a>
-    <p style="font-size:11px;margin-top:8px;">Scan QRIS lalu klik konfirmasi di bawah.</p>
-    <a id="waConfirm" class="btn" target="_blank" style="margin-top:5px;">Konfirmasi via WhatsApp</a>
-  </div>
-</div>
-
-<footer>
-  © 2025 New Project — Kuota siap pakai.<br>
-  ☎️ <a href="https://wa.me/628565050102" target="_blank" style="color:#ffdf9f;text-decoration:none;">CS: +62 856-5050-102</a>
-</footer>
+<!-- hidden canvas for download fallback -->
+<canvas id="hiddenCanvas" style="display:none;"></canvas>
 
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 <script>
-/* === STAR BACKGROUND CANVAS === */
-const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("2d");
-let w, h;
+/* ========= Configuration ========= */
+const qrisPayload = "00020101021126670016COM.NOBUBANK.WWW01189360050300000879140214338591332891790303UMI51440014ID.CO.QRIS.WWW0215ID20253892885930303UMI5204541153033605802ID5923LAMPUNG STORE OK23053346009PESAWARAN61053535362070703A01630448C0";
+const waBase = "https://wa.me/628565050103?text=";
+/* ================================= */
+
+/* ==== Canvas: stars + meteors (light & smooth) ==== */
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let DPR = Math.max(1, Math.min(2, window.devicePixelRatio || 1)); // cap DPR for perf
+let W = canvas.width = innerWidth * DPR;
+let H = canvas.height = innerHeight * DPR;
+canvas.style.width = innerWidth + 'px';
+canvas.style.height = innerHeight + 'px';
+
+window.addEventListener('resize', () => {
+  DPR = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+  W = canvas.width = innerWidth * DPR;
+  H = canvas.height = innerHeight * DPR;
+  canvas.style.width = innerWidth + 'px';
+  canvas.style.height = innerHeight + 'px';
+  initStars();
+});
+
 let stars = [];
+const STAR_COUNT = 25; // lightweight
 
-function resize(){
-  w = canvas.width = innerWidth;
-  h = canvas.height = innerHeight;
-}
-window.addEventListener("resize", resize);
-resize();
-
-for(let i=0; i<25; i++){
-  stars.push({
-    x: Math.random()*w,
-    y: Math.random()*h,
-    r: Math.random()*1.2 + 0.3,
-    alpha: Math.random(),
-    speed: Math.random()*0.015 + 0.005
-  });
-}
-
-function drawStars(){
-  ctx.clearRect(0,0,w,h);
-  for(let s of stars){
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
-    ctx.fillStyle = `rgba(255, 200, 120, ${s.alpha})`;
-    ctx.fill();
-    s.alpha += s.speed * (Math.random() < 0.5 ? -1 : 1);
-    if(s.alpha <= 0 || s.alpha >= 1) s.speed *= -1;
+function initStars(){
+  stars = [];
+  for(let i=0;i<STAR_COUNT;i++){
+    stars.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: (Math.random() * 1.2 + 0.6) * DPR,
+      baseA: 0.3 + Math.random()*0.7,
+      a: 0,
+      speed: 0.002 + Math.random()*0.006 // flicker speed
+    });
   }
 }
-setInterval(drawStars, 30);
+initStars();
 
-/* === QRIS Logic === */
-const modal = document.getElementById("paymentModal");
-const paketInfo = document.getElementById("paketInfo");
-const waConfirm = document.getElementById("waConfirm");
-const qrisImage = document.getElementById("qrisImage");
-const downloadQR = document.getElementById("downloadQR");
+let meteors = []; // active meteors
 
-const qrisCode = "00020101021126670016COM.NOBUBANK.WWW01189360050300000879140214338591332891790303UMI51440014ID.CO.QRIS.WWW0215ID20253892885930303UMI5204541153033605802ID5923LAMPUNG STORE OK23053346009PESAWARAN61053535362070703A01630448C0";
-
-let paketDipilih = "", hargaDipilih = "";
-
-function openPayment(paket, harga){
-  paketDipilih = paket;
-  hargaDipilih = harga;
-  modal.style.display = "flex";
-  paketInfo.innerHTML = `📦 <b>${paket}</b><br>💰 Rp${harga}`;
-  QRCode.toDataURL(qrisCode,{width:180},(err,url)=>{
-    qrisImage.src=url;
-    downloadQR.href=url;
+function spawnMeteor(){
+  // spawn from right-top quadrant toward lower-left
+  const startX = W * (0.8 + Math.random()*0.2);
+  const startY = H * (0.05 + Math.random()*0.25);
+  const ang = -0.9 - Math.random()*0.3; // angle in radians (approx -51 to -72 deg) toward bottom-left
+  const speed = (0.8 + Math.random()*0.8) * DPR; // pixels/frame-ish (scaled with DPR)
+  const length = 80 + Math.random()*120;
+  // color gradient: gold -> white -> blue -> purple
+  meteors.push({
+    x: startX,
+    y: startY,
+    vx: Math.cos(ang) * speed,
+    vy: Math.sin(ang) * speed,
+    life: 0,
+    ttl: 80 + Math.random()*30,
+    length,
+    lineWidth: 2 * DPR
   });
 }
 
-function closeModal(){ modal.style.display="none"; }
-window.onclick = e => { if(e.target==modal) closeModal(); }
+// spawn rarer + smooth: every ~5s average
+let meteorTimer = 0;
+const METEOR_INTERVAL = 5000; // ms
 
-document.querySelectorAll("#namaPembeli,#nomorPelanggan").forEach(el=>{
-  el.addEventListener("input",()=>{
-    const nama=document.getElementById("namaPembeli").value.trim();
-    const nomor=document.getElementById("nomorPelanggan").value.trim();
-    const pesan=encodeURIComponent(`Halo admin, saya sudah melakukan pembayaran via QRIS.\n\n👤 Nama: ${nama}\n📞 Nomor Pelanggan: ${nomor}\n📦 Paket: ${paketDipilih}\n💰 Nominal: Rp${hargaDipilih}\n\nMohon dikonfirmasi ya.`);
-    waConfirm.href=`https://wa.me/628565050103?text=${pesan}`;
+// animation loop
+let last = performance.now();
+function loop(now){
+  const dt = now - last;
+  last = now;
+
+  // clear with subtle gradient
+  ctx.clearRect(0,0,W,H);
+
+  // draw subtle radial glow center
+  const g = ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0, 'rgba(255,255,255,0.02)');
+  g.addColorStop(1, 'rgba(0,0,0,0.12)');
+  ctx.fillStyle = g;
+  ctx.fillRect(0,0,W,H);
+
+  // stars
+  for(let s of stars){
+    // flicker
+    s.a += s.speed * dt * (Math.random()*0.6 + 0.7);
+    // normalize alpha
+    const alpha = s.baseA * (0.6 + 0.4 * Math.sin(s.a));
+    ctx.beginPath();
+    ctx.fillStyle = `rgba(255,220,160,${alpha})`; // warm star color
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+    ctx.fill();
+  }
+
+  // spawn meteor occasionally (timed)
+  meteorTimer += dt;
+  if(meteorTimer >= METEOR_INTERVAL){
+    meteorTimer = 0;
+    // small chance to spawn multiple? keep 1 for perf
+    if(Math.random() < 0.95) spawnMeteor();
+  }
+
+  // draw meteors
+  for(let i = meteors.length - 1; i >= 0; i--){
+    const m = meteors[i];
+    // head position
+    m.x += m.vx * (dt/16.66);
+    m.y += m.vy * (dt/16.66);
+    m.life += 1;
+
+    // compute tail end
+    const tx = m.x - (m.vx * (m.length / (m.vx === 0 ? 1 : Math.abs(m.vx))));
+    const ty = m.y - (m.vy * (m.length / (m.vy === 0 ? 1 : Math.abs(m.vy))));
+
+    // draw gradient stroke from head to tail
+    const grad = ctx.createLinearGradient(tx, ty, m.x, m.y);
+    grad.addColorStop(0, 'rgba(255,179,71,0)');      // tail transparent gold
+    grad.addColorStop(0.2, 'rgba(255,179,71,0.25)'); // gold faint
+    grad.addColorStop(0.45, 'rgba(255,255,255,0.6)'); // white mid
+    grad.addColorStop(0.75, 'rgba(104, 92, 255,0.8)'); // blue-purple
+    grad.addColorStop(1, 'rgba(108,99,255,1)');      // bright purple head
+
+    ctx.lineWidth = m.lineWidth;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = grad;
+    ctx.beginPath();
+    ctx.moveTo(tx, ty);
+    ctx.lineTo(m.x, m.y);
+    ctx.stroke();
+
+    // small bright head
+    ctx.beginPath();
+    ctx.fillStyle = 'rgba(255,255,255,0.95)';
+    ctx.arc(m.x, m.y, 2.5 * DPR, 0, Math.PI*2);
+    ctx.fill();
+
+    // fade out and remove when life exceeded
+    if(m.life > m.ttl || m.x < -100 || m.y > H + 100) {
+      meteors.splice(i,1);
+    }
+  }
+
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+/* ==== Lightweight meteor scheduler using setInterval (keeps timing reliable) ==== */
+setInterval(()=>{
+  // small randomize to avoid strict rhythm
+  if(Math.random() < 0.85) spawnMeteor();
+}, METEOR_INTERVAL);
+
+/* ==== QRIS modal and QR generation + download ==== */
+const qrisModal = document.getElementById('qrisModal');
+const qrImg = document.getElementById('qrImg');
+const payloadText = document.getElementById('payloadText');
+const copyBtn = document.getElementById('copyBtn');
+const downloadBtn = document.getElementById('downloadBtn');
+const waBtn = document.getElementById('waBtn');
+const openQrisBtn = document.getElementById('openQrisBtn');
+const closeModal = document.getElementById('closeModal');
+
+function openModal(note){
+  payloadText.value = qrisPayload;
+  document.getElementById('modalNote').textContent = note || 'Scan QR untuk bayar — setelah bayar, download bukti lalu konfirmasi WA.';
+  qrisModal.classList.add('open');
+  // generate QR (bigger for better download)
+  QRCode.toDataURL(qrisPayload, {width: 1024}, (err, url) => {
+    if(err){
+      // fallback to small
+      QRCode.toDataURL(qrisPayload, {width: 360}, (e, u)=> { qrImg.src = u; downloadBtn.dataset.url = u; });
+    } else {
+      qrImg.src = url;
+      downloadBtn.dataset.url = url;
+    }
   });
+  // wa template
+  const template = encodeURIComponent("Halo, saya sudah melakukan pembayaran QRIS untuk paket kuota. Mohon aktivasi. Payload: " + qrisPayload);
+  waBtn.href = waBase + template;
+}
+
+function closeQris(){
+  qrisModal.classList.remove('open');
+}
+
+openQrisBtn.addEventListener('click', ()=> openModal());
+
+closeModal.addEventListener('click', closeQris);
+qrisModal.addEventListener('click', (e)=> { if(e.target === qrisModal) closeQris(); });
+
+copyBtn.addEventListener('click', async ()=>{
+  try{
+    await navigator.clipboard.writeText(qrisPayload);
+    copyBtn.textContent = "Disalin ✓";
+    setTimeout(()=> copyBtn.textContent = "Salin Payload", 1500);
+  }catch(e){
+    alert("Salin otomatis gagal. Silakan salin manual:\n\n" + qrisPayload);
+  }
 });
+
+// download: try canvas blob (from dataURL), if CORS issues -> open in new tab
+downloadBtn.addEventListener('click', ()=>{
+  const url = downloadBtn.dataset.url;
+  if(!url){
+    alert("QR belum siap, tunggu sebentar lalu coba lagi.");
+    return;
+  }
+  // create image and draw to hidden canvas
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.onload = function(){
+    const can = document.getElementById('hiddenCanvas');
+    const ctx2 = can.getContext('2d');
+    const size = Math.max(img.width, img.height);
+    can.width = size;
+    can.height = size;
+    // white background for readability
+    ctx2.fillStyle = '#ffffff';
+    ctx2.fillRect(0,0,can.width,can.height);
+    ctx2.drawImage(img, 0, 0, can.width, can.height);
+    can.toBlob(function(blob){
+      if(!blob){
+        window.open(url, '_blank', 'noopener');
+        alert('Download otomatis gagal, QR dibuka di tab baru. Simpan manual (klik kanan → Simpan gambar).');
+        return;
+      }
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'KUOTA-KITA-QRIS-' + (new Date()).toISOString().replace(/[:.]/g,'-') + '.png';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(()=> URL.revokeObjectURL(a.href), 15000);
+    }, 'image/png', 0.92);
+  };
+  img.onerror = function(){
+    // fallback: open directly
+    window.open(url, '_blank', 'noopener');
+    alert('Download otomatis gagal (CORS). Gambar QR dibuka di tab baru — simpan manual.');
+  };
+  img.src = url + (url.indexOf('?')===-1 ? '?_t=' + Date.now() : '&_t=' + Date.now());
+});
+
+// payment flow: open modal with specific package
+function openPayment(paket, harga){
+  openModal(`Paket: ${paket} — Nominal: Rp${harga}\nScan & bayar, lalu konfirmasi.`);
+}
+
 </script>
 </body>
   </html>
