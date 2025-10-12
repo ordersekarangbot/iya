@@ -159,6 +159,32 @@ input[type="text"], input[type="number"] {
   text-align: center;
 }
 
+/* Tombol Bantuan WA */
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--neon);
+  color: #2b1055;
+  border-radius: 50px;
+  padding: 14px 22px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 0 20px rgba(255,180,70,0.5);
+  z-index: 1000;
+  transition: 0.3s;
+  animation: pulse 2s infinite;
+}
+.whatsapp-float:hover {
+  background: #ffc371;
+  box-shadow: 0 0 25px var(--neon);
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px rgba(255,180,70,0.4); }
+  50% { box-shadow: 0 0 25px rgba(255,180,70,0.8); }
+  100% { box-shadow: 0 0 10px rgba(255,180,70,0.4); }
+}
+
 footer {
   margin-top: 50px;
   font-size: 0.9em;
@@ -169,7 +195,7 @@ footer {
 <body>
 
 <header>
-  <h1>Kuota & Config Premium</h1>
+  <h1>🌇 Kuota & Config Premium</h1>
   <p>Pilih paket, isi nama & nomor pelanggan, bayar via QRIS, lalu konfirmasi ke admin.</p>
 </header>
 
@@ -238,13 +264,18 @@ footer {
     <span class="close" onclick="closeModal()">&times;</span>
     <h3 style="color:var(--neon)">💳 Pembayaran via QRIS</h3>
     <p id="paketInfo"></p>
-    <input type="text" id="namaPembeli" placeholder="Masukkan Username Vpn">
-    <input type="number" id="nomorPelanggan" placeholder="Nomor Yang Diisi Kuota (contoh: 087xxxx)">
+    <input type="text" id="namaPembeli" placeholder="Masukkan nama Anda">
+    <input type="number" id="nomorPelanggan" placeholder="Masukkan nomor pelanggan (contoh: 087xxxx)">
     <img src="qris_lampung_store.png" alt="QRIS Lampung Store OK">
     <p style="font-size:13px;margin-top:10px;">Scan QRIS untuk melakukan pembayaran.<br>Lalu klik tombol di bawah untuk konfirmasi.</p>
     <a id="waConfirm" class="btn" target="_blank">Konfirmasi via WhatsApp</a>
   </div>
 </div>
+
+<!-- Tombol Bantuan -->
+<a href="https://wa.me/628565050102?text=Halo%20admin,%20saya%20butuh%20bantuan%20terkait%20pembelian%20paket%20kuota." class="whatsapp-float" target="_blank">
+  💬 Butuh Bantuan? Hubungi Sekarang
+</a>
 
 <footer>
   © 2025 New Project — Kuota siap pakai.<br>
@@ -286,4 +317,4 @@ document.querySelectorAll("#namaPembeli,#nomorPelanggan").forEach(el=>{
 </script>
 
 </body>
-  </html>
+    </html>
