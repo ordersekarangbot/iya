@@ -15,7 +15,6 @@
   --text: #f9f9ff;
 }
 
-/* ===== Background + Bintang ===== */
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -31,6 +30,7 @@ body {
   100% { background-position: 100% 70%; }
 }
 
+/* === Bintang === */
 .stars {
   position: fixed;
   top: 0; left: 0;
@@ -52,7 +52,7 @@ body {
   50% { opacity: 1; transform: scale(1.3); }
 }
 
-/* Header */
+/* === Header === */
 header {
   padding: 15px;
   background: rgba(255,255,255,0.05);
@@ -65,7 +65,7 @@ header {
 header h1 {
   color: var(--neon);
   text-shadow: 0 0 10px var(--neon);
-  font-size: 1.6em;
+  font-size: 1.7em;
   margin: 0;
 }
 header p {
@@ -73,29 +73,27 @@ header p {
   color: #e8eaff;
 }
 
-/* Container */
+/* === Container === */
 .container {
-  max-width: 480px;
+  max-width: 500px;
   margin: 25px auto;
   padding: 10px;
   z-index: 2;
   position: relative;
 }
 
-/* Kartu Paket */
+/* === Kartu Kuota === */
 .kuota-card {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(184,241,255,0.3);
-  border-radius: 14px;
-  padding: 14px;
-  margin-bottom: 16px;
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 18px;
   text-align: left;
-  box-shadow: 0 0 10px rgba(184,241,255,0.2);
-  transition: 0.3s;
-}
-.kuota-card:hover {
-  box-shadow: 0 0 20px rgba(184,241,255,0.5);
-  transform: translateY(-3px);
+  box-shadow: 0 0 10px rgba(184,241,255,0.15);
+  transition: 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 .kuota-card h2 {
   color: var(--neon);
@@ -115,6 +113,25 @@ ul {
 ul li {
   font-size: 0.85em;
   padding: 2px 0;
+}
+
+/* Efek Parallax Glow */
+.kuota-card::before {
+  content: "";
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(184,241,255,0.35) 0%, transparent 80%);
+  transition: width 0.2s ease, height 0.2s ease;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.kuota-card:hover::before {
+  width: 350px;
+  height: 350px;
 }
 
 /* Tombol */
@@ -197,71 +214,50 @@ footer {
 
 <header>
   <h1>Kuota & Config Premium</h1>
-  <p>Pilih paket, isi data, bayar via QRIS — lalu kirim bukti ke admin.</p>
+  <p>Pilih paket, isi data, bayar via QRIS — lalu konfirmasi otomatis via WhatsApp.</p>
 </header>
 
 <div class="container">
-  <div class="kuota-card">
+  <div class="kuota-card" data-name="XL Edukasi" data-price="12000">
     <h2>XL Edukasi</h2>
     <p class="price">Rp12.000</p>
-    <ul>
-      <li>✅ 15GB Edukasi</li>
-      <li>✅ Aktif 7 hari</li>
-      <li>✅ Ready + Config</li>
-    </ul>
-    <a class="btn" onclick="openPayment('XL Edukasi','12000')">Order & Bayar via QRIS</a>
+    <ul><li>✅ 15GB Edukasi</li><li>✅ Aktif 7 hari</li><li>✅ Ready + Config</li></ul>
+    <a class="btn">Order & Bayar via QRIS</a>
   </div>
 
-  <div class="kuota-card">
+  <div class="kuota-card" data-name="XL Conference" data-price="14000">
     <h2>XL Conference</h2>
     <p class="price">Rp14.000</p>
-    <ul>
-      <li>✅ 15GB Zoom/Meet</li>
-      <li>✅ Aktif 7 hari</li>
-      <li>✅ Support semua daerah</li>
-    </ul>
-    <a class="btn" onclick="openPayment('XL Conference','14000')">Order & Bayar via QRIS</a>
+    <ul><li>✅ 15GB Zoom/Meet</li><li>✅ Aktif 7 hari</li><li>✅ Support semua daerah</li></ul>
+    <a class="btn">Order & Bayar via QRIS</a>
   </div>
 
-  <div class="kuota-card">
+  <div class="kuota-card" data-name="XL Bizz Lite" data-price="50000">
     <h2>XL Bizz Lite</h2>
     <p class="price">Rp50.000</p>
-    <ul>
-      <li>✅ Unlimited</li>
-      <li>✅ Aktif 30 hari</li>
-      <li>✅ Ping stabil + low latency</li>
-    </ul>
-    <a class="btn" onclick="openPayment('XL Bizz Lite','50000')">Order & Bayar via QRIS</a>
+    <ul><li>✅ Unlimited</li><li>✅ Aktif 30 hari</li><li>✅ Ping stabil + low latency</li></ul>
+    <a class="btn">Order & Bayar via QRIS</a>
   </div>
 
-  <div class="kuota-card">
+  <div class="kuota-card" data-name="XL Bizz Tayo" data-price="65000">
     <h2>XL Bizz Tayo</h2>
     <p class="price">Rp65.000</p>
-    <ul>
-      <li>✅ Unlimited</li>
-      <li>✅ Aktif 30 hari</li>
-      <li>✅ Ready semua daerah</li>
-    </ul>
-    <a class="btn" onclick="openPayment('XL Bizz Tayo','65000')">Order & Bayar via QRIS</a>
+    <ul><li>✅ Unlimited</li><li>✅ Aktif 30 hari</li><li>✅ Ready semua daerah</li></ul>
+    <a class="btn">Order & Bayar via QRIS</a>
   </div>
 
-  <div class="kuota-card">
+  <div class="kuota-card" data-name="XL Double YouTube" data-price="75000">
     <h2>XL Double YouTube (Premium)</h2>
     <p class="price">Rp75.000</p>
-    <ul>
-      <li>✅ Unlimited</li>
-      <li>✅ Masa aktif 1 bulan</li>
-      <li>✅ Support semua daerah</li>
-      <li>✅ Kuota siap pakai (Sudah + Config)</li>
-    </ul>
-    <a class="btn" onclick="openPayment('XL Double YouTube','75000')">Order & Bayar via QRIS</a>
+    <ul><li>✅ Unlimited</li><li>✅ Aktif 30 hari</li><li>✅ Support semua daerah</li><li>✅ Kuota siap pakai (Sudah + Config)</li></ul>
+    <a class="btn">Order & Bayar via QRIS</a>
   </div>
 </div>
 
 <!-- Modal -->
 <div id="paymentModal" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
+    <span class="close">&times;</span>
     <h3 style="color:var(--neon)">💳 Pembayaran via QRIS</h3>
     <p id="paketInfo" style="font-size:0.85em;"></p>
     <input type="text" id="namaPembeli" placeholder="Masukkan Username VPN">
@@ -270,55 +266,71 @@ footer {
     <br>
     <a class="btn" id="downloadQR" download="QRIS_Lampung_Store.png">Download QR / Simpan Bukti</a>
     <p style="font-size:11px;margin-top:8px;">Scan QR lalu kirim bukti ke admin via WhatsApp.</p>
-    <a id="waConfirm" class="btn" target="_blank" style="margin-top:5px;">Konfirmasi via WhatsApp</a>
+    <a id="waConfirm" class="btn" target="_blank">Konfirmasi via WhatsApp</a>
   </div>
 </div>
 
 <footer>
-  © 2025 New Project — Mas Prass<br>
+  © 2025 New Project — Kuota siap pakai.<br>
   <a href="https://wa.me/628565050102" target="_blank" style="color:#b8f1ff;text-decoration:none;">CS: +62 856-5050-102</a>
 </footer>
 
-<!-- Script -->
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 <script>
-const modal = document.getElementById("paymentModal");
-const paketInfo = document.getElementById("paketInfo");
-const waConfirm = document.getElementById("waConfirm");
-const qrisImage = document.getElementById("qrisImage");
-const downloadQR = document.getElementById("downloadQR");
-const qrisCode = "00020101021126670016COM.NOBUBANK.WWW01189360050300000879140214338591332891790303UMI51440014ID.CO.QRIS.WWW0215ID20253892885930303UMI5204541153033605802ID5923LAMPUNG STORE OK23053346009PESAWARAN61053535362070703A01630448C0";
+const modal=document.getElementById("paymentModal");
+const paketInfo=document.getElementById("paketInfo");
+const waConfirm=document.getElementById("waConfirm");
+const qrisImage=document.getElementById("qrisImage");
+const downloadQR=document.getElementById("downloadQR");
+const qrisCode="00020101021126670016COM.NOBUBANK.WWW01189360050300000879140214338591332891790303UMI51440014ID.CO.QRIS.WWW0215ID20253892885930303UMI5204541153033605802ID5923LAMPUNG STORE OK23053346009PESAWARAN61053535362070703A01630448C0";
 
-function openPayment(paket, harga){
-  modal.style.display = "flex";
-  paketInfo.innerHTML = `📦 <b>${paket}</b><br>💰 Rp${harga}`;
-  QRCode.toDataURL(qrisCode, {width: 180}, (err, url) => {
-    qrisImage.src = url;
-    downloadQR.href = url;
+document.querySelectorAll(".btn").forEach(btn=>{
+  btn.onclick=e=>{
+    const card=e.target.closest(".kuota-card");
+    openPayment(card.dataset.name,card.dataset.price);
+  };
+});
+function openPayment(paket,harga){
+  modal.style.display="flex";
+  paketInfo.innerHTML=`📦 <b>${paket}</b><br>💰 Rp${harga}`;
+  QRCode.toDataURL(qrisCode,{width:180},(err,url)=>{
+    qrisImage.src=url;
+    downloadQR.href=url;
   });
   document.querySelectorAll("#namaPembeli,#nomorPelanggan").forEach(el=>{
     el.addEventListener("input",()=>{
-      const nama = document.getElementById("namaPembeli").value.trim();
-      const nomor = document.getElementById("nomorPelanggan").value.trim();
-      const pesan = encodeURIComponent(`Halo admin, saya sudah bayar via QRIS.\n\n👤 Nama: ${nama}\n📞 Nomor: ${nomor}\n📦 Paket: ${paket}\n💰 Rp${harga}`);
-      waConfirm.href = `https://wa.me/628565050103?text=${pesan}`;
+      const nama=document.getElementById("namaPembeli").value.trim();
+      const nomor=document.getElementById("nomorPelanggan").value.trim();
+      const pesan=encodeURIComponent(`Halo admin, saya sudah bayar via QRIS.\n\n👤 Nama: ${nama}\n📞 Nomor: ${nomor}\n📦 Paket: ${paket}\n💰 Rp${harga}`);
+      waConfirm.href=`https://wa.me/628565050103?text=${pesan}`;
     });
   });
 }
-function closeModal(){ modal.style.display = "none"; }
-window.onclick = e => { if(e.target == modal) closeModal(); };
+document.querySelector(".close").onclick=()=>modal.style.display="none";
+window.onclick=e=>{if(e.target==modal)modal.style.display="none";};
 
-/* === Bintang Dinamis === */
-const starsContainer = document.getElementById("stars");
-for(let i=0;i<80;i++){
-  const s = document.createElement("div");
+/* === Bintang === */
+const starsContainer=document.getElementById("stars");
+for(let i=0;i<90;i++){
+  const s=document.createElement("div");
   s.classList.add("star");
-  s.style.top = Math.random()*100+"%";
-  s.style.left = Math.random()*100+"%";
-  s.style.animationDelay = (Math.random()*3)+"s";
-  s.style.width = s.style.height = (Math.random()*2+1)+"px";
+  s.style.top=Math.random()*100+"%";
+  s.style.left=Math.random()*100+"%";
+  s.style.animationDelay=(Math.random()*3)+"s";
+  s.style.width=s.style.height=(Math.random()*2+1)+"px";
   starsContainer.appendChild(s);
 }
+
+/* === Parallax Glow === */
+document.querySelectorAll(".kuota-card").forEach(card=>{
+  card.addEventListener("mousemove",e=>{
+    const rect=card.getBoundingClientRect();
+    const x=e.clientX-rect.left;
+    const y=e.clientY-rect.top;
+    card.style.setProperty("--x",x+"px");
+    card.style.setProperty("--y",y+"px");
+  });
+});
 </script>
 </body>
-                               </html>
+  </html>
