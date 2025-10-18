@@ -197,7 +197,7 @@ footer {
 
 <header>
   <h1>Kuota & Config Premium</h1>
-  <p style="font-size:12px;opacity:0.9;">Pilih paket, bayar QRIS, konfirmasi otomatis WhatsApp</p>
+  <p style="font-size:12px;opacity:0.9;">Pilih paket, bayar QRIS, Kirim Bukti Transaksi konfirmasi WhatsApp</p>
 </header>
 
 <div class="container" id="paketContainer"></div>
@@ -218,7 +218,7 @@ footer {
 </div>
 
 <footer>
-  © 2025 New Project • <a href="https://wa.me/628565050102" style="color:#d5b3ff;text-decoration:none;">CS</a>
+  © 2025 New Project • <a href="https://wa.me/6287889987575" style="color:#d5b3ff;text-decoration:none;">CS Klik Disini</a>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
@@ -261,7 +261,7 @@ function openPayment(paket,harga){
     i.addEventListener("input",()=>{
       const nama=document.getElementById("namaPembeli").value;
       const nomor=document.getElementById("nomorPelanggan").value;
-      const msg=encodeURIComponent(`Halo admin, saya sudah bayar via QRIS.\n\n👤 Username Vpn ${nama}\n📞No Yang Di Isi Kouta ${nomor}\n📦Kuota ${paket}\n💰Harga Rp${harga}`);
+      const msg=encodeURIComponent(`Halo admin, saya sudah bayar via QRIS.\n\n👤 ${nama}\n📞 ${nomor}\n📦 ${paket}\n💰 Rp${harga}`);
       waConfirm.href=`https://wa.me/628565050103?text=${msg}`;
     });
   });
