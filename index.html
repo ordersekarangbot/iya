@@ -209,7 +209,7 @@ footer {
     <h3 style="color:var(--neon)">💳 QRIS Pembayaran</h3>
     <p id="paketInfo" style="font-size:0.85em;"></p>
     <input type="text" id="namaPembeli" placeholder="Username VPN">
-    <input type="number" id="nomorPelanggan" placeholder="Nomor Kuota">
+    <input type="number" id="nomorPelanggan" placeholder="Nomor Yang Di Isi Kuota">
     <img id="qrisImage" src="">
     <a id="downloadQR" class="btn" download="QRIS.png">Download QR</a>
     <p style="font-size:11px;margin-top:8px;">Scan QR lalu kirim bukti ke admin.</p>
@@ -261,7 +261,7 @@ function openPayment(paket,harga){
     i.addEventListener("input",()=>{
       const nama=document.getElementById("namaPembeli").value;
       const nomor=document.getElementById("nomorPelanggan").value;
-      const msg=encodeURIComponent(`Halo admin, saya sudah bayar via QRIS.\n\n👤 ${nama}\n📞 ${nomor}\n📦 ${paket}\n💰 Rp${harga}`);
+      const msg=encodeURIComponent(`Halo admin, saya sudah bayar via QRIS.\n\n👤 Username Vpn ${nama}\n📞No Yang Di Isi Kouta ${nomor}\n📦Kuota ${paket}\n💰Harga Rp${harga}`);
       waConfirm.href=`https://wa.me/628565050103?text=${msg}`;
     });
   });
