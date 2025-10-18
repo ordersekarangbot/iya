@@ -8,11 +8,11 @@
 
 <style>
 :root {
-  --neon: #b8f1ff;
-  --bg1: #12002f;
-  --bg2: #4f00b5;
-  --bg3: #00c6ff;
-  --text: #f9f9ff;
+  --neon: #d5b3ff;
+  --bg1: #15002b;
+  --bg2: #3e007d;
+  --bg3: #7f00ff;
+  --text: #f7ebff;
 }
 
 body {
@@ -20,14 +20,14 @@ body {
   margin: 0;
   color: var(--text);
   text-align: center;
-  background: radial-gradient(circle at 20% 30%, var(--bg3), var(--bg2), var(--bg1));
-  background-size: 300% 300%;
-  animation: bgShift 10s ease-in-out infinite alternate;
+  background: radial-gradient(circle at 30% 40%, var(--bg3), var(--bg2), var(--bg1));
+  background-size: 250% 250%;
+  animation: bgShift 12s ease-in-out infinite alternate;
   overflow-x: hidden;
 }
 @keyframes bgShift {
-  0% { background-position: 0% 30%; }
-  100% { background-position: 100% 70%; }
+  0% { background-position: 0% 40%; }
+  100% { background-position: 100% 60%; }
 }
 
 /* === Bintang === */
@@ -41,11 +41,11 @@ body {
 .star {
   position: absolute;
   width: 2px; height: 2px;
-  background: white;
+  background: #fff;
   border-radius: 50%;
   opacity: 0.8;
   animation: twinkle 2s infinite ease-in-out;
-  box-shadow: 0 0 6px #b8f1ff;
+  box-shadow: 0 0 6px #d5b3ff;
 }
 @keyframes twinkle {
   0%,100% { opacity: 0.2; transform: scale(0.7); }
@@ -56,10 +56,9 @@ body {
 header {
   padding: 15px;
   background: rgba(255,255,255,0.05);
-  box-shadow: 0 0 20px rgba(184,241,255,0.4);
+  box-shadow: 0 0 20px rgba(213,179,255,0.3);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255,255,255,0.2);
-  position: relative;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
   z-index: 2;
 }
 header h1 {
@@ -70,7 +69,7 @@ header h1 {
 }
 header p {
   font-size: 12px;
-  color: #e8eaff;
+  color: #e8dfff;
 }
 
 /* === Container === */
@@ -85,12 +84,12 @@ header p {
 /* === Kartu Kuota === */
 .kuota-card {
   background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(184,241,255,0.3);
+  border: 1px solid rgba(213,179,255,0.25);
   border-radius: 18px;
   padding: 16px;
   margin-bottom: 18px;
   text-align: left;
-  box-shadow: 0 0 10px rgba(184,241,255,0.15);
+  box-shadow: 0 0 10px rgba(213,179,255,0.15);
   transition: 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -124,21 +123,22 @@ ul li {
   transform: translate(-50%, -50%);
   width: 0;
   height: 0;
-  background: radial-gradient(circle, rgba(184,241,255,0.35) 0%, transparent 80%);
+  background: radial-gradient(circle, rgba(213,179,255,0.3) 0%, transparent 80%);
   transition: width 0.2s ease, height 0.2s ease;
   border-radius: 50%;
   pointer-events: none;
 }
 .kuota-card:hover::before {
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
 }
 
 /* Tombol */
 .btn {
   display: inline-block;
-  background: var(--neon);
-  color: #1b0045;
+  background: linear-gradient(90deg, #cda2ff, #b780ff, #a35eff);
+  background-size: 300% 300%;
+  color: #1a0033;
   padding: 8px 14px;
   border-radius: 25px;
   font-weight: 600;
@@ -146,10 +146,16 @@ ul li {
   text-decoration: none;
   margin-top: 6px;
   transition: 0.3s;
+  animation: shineMove 4s ease-in-out infinite;
+}
+@keyframes shineMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 .btn:hover {
-  background: #fff;
-  box-shadow: 0 0 10px var(--neon);
+  color: #fff;
+  box-shadow: 0 0 12px #d5b3ff;
+  transform: scale(1.05);
 }
 
 /* Modal */
@@ -159,7 +165,7 @@ ul li {
   z-index: 999;
   left: 0; top: 0;
   width: 100%; height: 100%;
-  background: rgba(0,0,30,0.85);
+  background: rgba(15,0,30,0.9);
   justify-content: center;
   align-items: center;
 }
@@ -167,8 +173,8 @@ ul li {
   background: rgba(255,255,255,0.08);
   padding: 15px;
   border-radius: 12px;
-  border: 1px solid rgba(184,241,255,0.3);
-  box-shadow: 0 0 15px rgba(184,241,255,0.3);
+  border: 1px solid rgba(213,179,255,0.3);
+  box-shadow: 0 0 15px rgba(213,179,255,0.3);
   max-width: 300px;
   text-align: center;
   animation: fadeIn 0.4s ease;
@@ -180,7 +186,7 @@ ul li {
 .modal img {
   width: 180px;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(184,241,255,0.3);
+  box-shadow: 0 0 15px rgba(213,179,255,0.3);
   margin-top: 10px;
 }
 .close {
@@ -194,7 +200,7 @@ input[type="text"], input[type="number"] {
   width: 90%;
   padding: 8px;
   border-radius: 8px;
-  border: 1px solid rgba(184,241,255,0.4);
+  border: 1px solid rgba(213,179,255,0.4);
   background: rgba(255,255,255,0.1);
   color: var(--text);
   font-size: 12px;
@@ -204,7 +210,7 @@ input[type="text"], input[type="number"] {
 footer {
   margin-top: 25px;
   font-size: 0.75em;
-  color: #dbe8ff;
+  color: #d8c4ff;
 }
 </style>
 </head>
@@ -214,45 +220,10 @@ footer {
 
 <header>
   <h1>Kuota & Config Premium</h1>
-  <p>Pilih paket, isi data, bayar via QRIS — lalu konfirmasi otomatis via WhatsApp.</p>
+  <p>Pilih paket, isi data, bayar via QRIS — konfirmasi otomatis lewat WhatsApp.</p>
 </header>
 
-<div class="container">
-  <div class="kuota-card" data-name="XL Edukasi" data-price="12000">
-    <h2>XL Edukasi</h2>
-    <p class="price">Rp12.000</p>
-    <ul><li>✅ 15GB Edukasi</li><li>✅ Aktif 7 hari</li><li>✅ Ready + Config</li></ul>
-    <a class="btn">Order & Bayar via QRIS</a>
-  </div>
-
-  <div class="kuota-card" data-name="XL Conference" data-price="14000">
-    <h2>XL Conference</h2>
-    <p class="price">Rp14.000</p>
-    <ul><li>✅ 15GB Zoom/Meet</li><li>✅ Aktif 7 hari</li><li>✅ Support semua daerah</li></ul>
-    <a class="btn">Order & Bayar via QRIS</a>
-  </div>
-
-  <div class="kuota-card" data-name="XL Bizz Lite" data-price="50000">
-    <h2>XL Bizz Lite</h2>
-    <p class="price">Rp50.000</p>
-    <ul><li>✅ Unlimited</li><li>✅ Aktif 30 hari</li><li>✅ Ping stabil + low latency</li></ul>
-    <a class="btn">Order & Bayar via QRIS</a>
-  </div>
-
-  <div class="kuota-card" data-name="XL Bizz Tayo" data-price="65000">
-    <h2>XL Bizz Tayo</h2>
-    <p class="price">Rp65.000</p>
-    <ul><li>✅ Unlimited</li><li>✅ Aktif 30 hari</li><li>✅ Ready semua daerah</li></ul>
-    <a class="btn">Order & Bayar via QRIS</a>
-  </div>
-
-  <div class="kuota-card" data-name="XL Double YouTube" data-price="75000">
-    <h2>XL Double YouTube (Premium)</h2>
-    <p class="price">Rp75.000</p>
-    <ul><li>✅ Unlimited</li><li>✅ Aktif 30 hari</li><li>✅ Support semua daerah</li><li>✅ Kuota siap pakai (Sudah + Config)</li></ul>
-    <a class="btn">Order & Bayar via QRIS</a>
-  </div>
-</div>
+<div class="container" id="paketContainer"></div>
 
 <!-- Modal -->
 <div id="paymentModal" class="modal">
@@ -272,24 +243,41 @@ footer {
 
 <footer>
   © 2025 New Project — Kuota siap pakai.<br>
-  <a href="https://wa.me/628565050102" target="_blank" style="color:#b8f1ff;text-decoration:none;">CS: +62 856-5050-102</a>
+  <a href="https://wa.me/628565050102" target="_blank" style="color:#d5b3ff;text-decoration:none;">CS: +62 856-5050-102</a>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 <script>
+// Daftar paket
+const paketList = [
+  {nama:"XL Edukasi", harga:"12000", detail:["✅ 15GB Edukasi","✅ Aktif 7 hari","✅ Ready + Config"]},
+  {nama:"XL Conference", harga:"14000", detail:["✅ 15GB Zoom/Meet","✅ Aktif 7 hari","✅ Support semua daerah"]},
+  {nama:"XL Bizz Lite", harga:"50000", detail:["✅ Unlimited","✅ Aktif 30 hari","✅ Ping stabil + low latency"]},
+  {nama:"XL Bizz Tayo", harga:"65000", detail:["✅ Unlimited","✅ Aktif 30 hari","✅ Ready semua daerah"]},
+  {nama:"XL Double YouTube (Premium)", harga:"75000", detail:["✅ Unlimited","✅ Aktif 30 hari","✅ Kuota siap pakai","✅ Support semua daerah"]}
+];
+
+const container=document.getElementById("paketContainer");
+paketList.forEach(p=>{
+  const card=document.createElement("div");
+  card.className="kuota-card";
+  card.innerHTML=`
+    <h2>${p.nama}</h2>
+    <p class="price">Rp${p.harga}</p>
+    <ul>${p.detail.map(d=>`<li>${d}</li>`).join("")}</ul>
+    <a class="btn" onclick="openPayment('${p.nama}','${p.harga}')">Order & Bayar via QRIS</a>
+  `;
+  container.appendChild(card);
+});
+
 const modal=document.getElementById("paymentModal");
 const paketInfo=document.getElementById("paketInfo");
 const waConfirm=document.getElementById("waConfirm");
 const qrisImage=document.getElementById("qrisImage");
 const downloadQR=document.getElementById("downloadQR");
+
 const qrisCode="00020101021126670016COM.NOBUBANK.WWW01189360050300000879140214338591332891790303UMI51440014ID.CO.QRIS.WWW0215ID20253892885930303UMI5204541153033605802ID5923LAMPUNG STORE OK23053346009PESAWARAN61053535362070703A01630448C0";
 
-document.querySelectorAll(".btn").forEach(btn=>{
-  btn.onclick=e=>{
-    const card=e.target.closest(".kuota-card");
-    openPayment(card.dataset.name,card.dataset.price);
-  };
-});
 function openPayment(paket,harga){
   modal.style.display="flex";
   paketInfo.innerHTML=`📦 <b>${paket}</b><br>💰 Rp${harga}`;
@@ -309,7 +297,7 @@ function openPayment(paket,harga){
 document.querySelector(".close").onclick=()=>modal.style.display="none";
 window.onclick=e=>{if(e.target==modal)modal.style.display="none";};
 
-/* === Bintang === */
+// Bintang
 const starsContainer=document.getElementById("stars");
 for(let i=0;i<90;i++){
   const s=document.createElement("div");
@@ -321,7 +309,7 @@ for(let i=0;i<90;i++){
   starsContainer.appendChild(s);
 }
 
-/* === Parallax Glow === */
+// Glow saat hover
 document.querySelectorAll(".kuota-card").forEach(card=>{
   card.addEventListener("mousemove",e=>{
     const rect=card.getBoundingClientRect();
@@ -333,4 +321,4 @@ document.querySelectorAll(".kuota-card").forEach(card=>{
 });
 </script>
 </body>
-  </html>
+</html>
